@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyerSearchResult">
+            <connections>
+                <outlet property="btList" destination="AKW-Vk-dx2" id="KmT-JA-GPx"/>
+                <outlet property="btMap" destination="3i3-RN-sUC" id="LBy-no-N1q"/>
+                <outlet property="myMapView" destination="VSF-e1-zcQ" id="rY0-02-a5N"/>
+                <outlet property="tbSearchResult" destination="2Xy-vv-BiE" id="2ej-sd-QLG"/>
+                <outlet property="view" destination="ip1-xw-d6M" id="D8L-ze-kZK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ip1-xw-d6M">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-HV-Kac">
+                    <rect key="frame" x="0.0" y="64" width="414" height="800"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="800" id="XjO-2k-6kN"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_logo_intro_v1" translatesAutoresizingMaskIntoConstraints="NO" id="Hzb-7H-Wic">
+                    <rect key="frame" x="68" y="66" width="186" height="122"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="122" id="5gg-Zg-pDA"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Xy-vv-BiE">
+                    <rect key="frame" x="10" y="209" width="301" height="309"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="T4U-A7-Tri"/>
+                        <outlet property="delegate" destination="-1" id="j4O-Id-LhQ"/>
+                    </connections>
+                </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VSF-e1-zcQ">
+                    <rect key="frame" x="0.0" y="63" width="325" height="455"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3i3-RN-sUC">
+                    <rect key="frame" x="204" y="520" width="107" height="38"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="ic_map.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btMapPress:" destination="-1" eventType="touchUpInside" id="LeY-d9-BmR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKW-Vk-dx2">
+                    <rect key="frame" x="10" y="520" width="107" height="38"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="107" id="9tM-SU-YWK"/>
+                        <constraint firstAttribute="height" constant="38" id="g9Y-g3-frr"/>
+                    </constraints>
+                    <state key="normal" image="ic_nav_list.png">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btListPress:" destination="-1" eventType="touchUpInside" id="2cN-g8-6IZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="VSF-e1-zcQ" firstAttribute="leading" secondItem="ip1-xw-d6M" secondAttribute="leading" id="1mc-2t-8QS"/>
+                <constraint firstItem="VSF-e1-zcQ" firstAttribute="leading" secondItem="HX4-HV-Kac" secondAttribute="leading" id="6uQ-J3-xaC"/>
+                <constraint firstItem="Hzb-7H-Wic" firstAttribute="leading" secondItem="ip1-xw-d6M" secondAttribute="leading" constant="68" id="8B1-6N-wWL"/>
+                <constraint firstItem="AKW-Vk-dx2" firstAttribute="centerY" secondItem="3i3-RN-sUC" secondAttribute="centerY" id="9gt-Zw-Mw8"/>
+                <constraint firstAttribute="bottom" secondItem="AKW-Vk-dx2" secondAttribute="bottom" constant="10" id="A4v-zE-cO3"/>
+                <constraint firstAttribute="centerX" secondItem="VSF-e1-zcQ" secondAttribute="centerX" id="Bn2-P2-nim"/>
+                <constraint firstAttribute="trailing" secondItem="HX4-HV-Kac" secondAttribute="trailing" constant="-94" id="DP1-Ft-ODl"/>
+                <constraint firstItem="AKW-Vk-dx2" firstAttribute="top" secondItem="VSF-e1-zcQ" secondAttribute="bottom" constant="2" id="HTj-Az-yt8"/>
+                <constraint firstItem="VSF-e1-zcQ" firstAttribute="top" secondItem="ip1-xw-d6M" secondAttribute="top" constant="63" id="Hgz-d5-W6d"/>
+                <constraint firstAttribute="centerX" secondItem="2Xy-vv-BiE" secondAttribute="centerX" id="KZA-85-I0F"/>
+                <constraint firstItem="VSF-e1-zcQ" firstAttribute="bottom" secondItem="2Xy-vv-BiE" secondAttribute="bottom" id="L6c-7K-fxM"/>
+                <constraint firstAttribute="trailing" secondItem="3i3-RN-sUC" secondAttribute="trailing" constant="9" id="O0E-MP-wxN"/>
+                <constraint firstItem="Hzb-7H-Wic" firstAttribute="top" secondItem="ip1-xw-d6M" secondAttribute="top" constant="66" id="Qty-Cc-rfG"/>
+                <constraint firstAttribute="centerX" secondItem="Hzb-7H-Wic" secondAttribute="centerX" id="RBY-5o-zUt"/>
+                <constraint firstItem="AKW-Vk-dx2" firstAttribute="height" secondItem="3i3-RN-sUC" secondAttribute="height" id="eUq-QI-X3d"/>
+                <constraint firstItem="AKW-Vk-dx2" firstAttribute="width" secondItem="3i3-RN-sUC" secondAttribute="width" id="ei9-L4-80E"/>
+                <constraint firstItem="AKW-Vk-dx2" firstAttribute="leading" secondItem="ip1-xw-d6M" secondAttribute="leading" constant="10" id="hcM-9S-eFj"/>
+                <constraint firstItem="HX4-HV-Kac" firstAttribute="top" secondItem="ip1-xw-d6M" secondAttribute="top" constant="64" id="l7e-lf-qB7"/>
+                <constraint firstItem="2Xy-vv-BiE" firstAttribute="top" secondItem="Hzb-7H-Wic" secondAttribute="bottom" constant="21" id="nyU-5C-OVF"/>
+                <constraint firstItem="2Xy-vv-BiE" firstAttribute="leading" secondItem="ip1-xw-d6M" secondAttribute="leading" constant="10" id="x4g-G2-POE"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="301" y="223"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Background" width="640" height="960"/>
+        <image name="ic_logo_intro_v1" width="680" height="375"/>
+        <image name="ic_map.png" width="53" height="53"/>
+        <image name="ic_nav_list.png" width="53" height="53"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

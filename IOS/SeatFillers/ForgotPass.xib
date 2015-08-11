@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ForgotPass">
+            <connections>
+                <outlet property="ScrollAvoidKeyBoard" destination="pSU-pj-K9h" id="LHR-ZS-4ot"/>
+                <outlet property="btSubmit" destination="sLa-4d-FN3" id="7dF-3h-XGI"/>
+                <outlet property="containView" destination="tT7-N2-bWj" id="PGi-z7-WbZ"/>
+                <outlet property="tfMail" destination="XVz-Gq-aBo" id="Hgc-MF-8k5"/>
+                <outlet property="view" destination="NOr-TP-v6k" id="koh-bk-DZK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NOr-TP-v6k">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSU-pj-K9h" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-D6-OtR">
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="960"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1" translatesAutoresizingMaskIntoConstraints="NO" id="bXn-H0-XA0">
+                            <rect key="frame" x="75" y="8" width="170" height="122"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="122" id="TGS-XZ-JXa"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please type in your email.Next, click Submit and your username and password will be delivered to your email." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2tz-uL-kiB">
+                            <rect key="frame" x="16" y="196" width="288" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="797-re-jlH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tT7-N2-bWj">
+                            <rect key="frame" x="15" y="251" width="290" height="115"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XVz-Gq-aBo">
+                                    <rect key="frame" x="15" y="15" width="260" height="35"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="arP-ob-gdO"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLa-4d-FN3">
+                                    <rect key="frame" x="15" y="65" width="260" height="35"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="1kV-ZH-WXt"/>
+                                    </constraints>
+                                    <state key="normal" title="Submit">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btSubmitPress:" destination="-1" eventType="touchUpInside" id="6Pi-oR-BZD"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.45061613" green="0.81857322379999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="XVz-Gq-aBo" firstAttribute="leading" secondItem="tT7-N2-bWj" secondAttribute="leading" constant="15" id="52u-gp-UAu"/>
+                                <constraint firstItem="sLa-4d-FN3" firstAttribute="leading" secondItem="tT7-N2-bWj" secondAttribute="leading" constant="15" id="8JG-Ha-lPQ"/>
+                                <constraint firstAttribute="height" constant="115" id="E6o-wX-6nj"/>
+                                <constraint firstAttribute="bottom" secondItem="sLa-4d-FN3" secondAttribute="bottom" constant="15" id="XqS-PQ-xnN"/>
+                                <constraint firstItem="XVz-Gq-aBo" firstAttribute="top" secondItem="tT7-N2-bWj" secondAttribute="top" constant="15" id="bBR-ts-FlO"/>
+                                <constraint firstItem="sLa-4d-FN3" firstAttribute="top" secondItem="XVz-Gq-aBo" secondAttribute="bottom" constant="15" id="cBb-JW-FE4"/>
+                                <constraint firstAttribute="centerX" secondItem="XVz-Gq-aBo" secondAttribute="centerX" id="oGR-SL-ssO"/>
+                                <constraint firstAttribute="centerX" secondItem="sLa-4d-FN3" secondAttribute="centerX" id="rrg-d4-2hJ"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-Lr-xpA">
+                            <rect key="frame" x="44" y="138" width="232" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="c20-TI-fZb"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="bXn-H0-XA0" firstAttribute="top" secondItem="pSU-pj-K9h" secondAttribute="top" constant="8" id="0Tu-yw-O77"/>
+                        <constraint firstAttribute="centerX" secondItem="BO0-Lr-xpA" secondAttribute="centerX" id="2gd-vK-ULl"/>
+                        <constraint firstItem="BO0-Lr-xpA" firstAttribute="top" secondItem="bXn-H0-XA0" secondAttribute="bottom" constant="8" id="62h-SP-TPz"/>
+                        <constraint firstItem="2tz-uL-kiB" firstAttribute="top" secondItem="BO0-Lr-xpA" secondAttribute="bottom" constant="8" id="Bru-qY-o4q"/>
+                        <constraint firstAttribute="centerX" secondItem="2tz-uL-kiB" secondAttribute="centerX" id="SC6-Bq-sdZ"/>
+                        <constraint firstItem="tT7-N2-bWj" firstAttribute="top" secondItem="2tz-uL-kiB" secondAttribute="bottom" constant="16" id="aUU-hJ-p2Q"/>
+                        <constraint firstItem="2tz-uL-kiB" firstAttribute="leading" secondItem="pSU-pj-K9h" secondAttribute="leading" constant="16" id="mE0-Qe-U7F"/>
+                        <constraint firstItem="BO0-Lr-xpA" firstAttribute="leading" secondItem="pSU-pj-K9h" secondAttribute="leading" constant="44" id="neO-Td-htn"/>
+                        <constraint firstAttribute="centerX" secondItem="tT7-N2-bWj" secondAttribute="centerX" id="nql-D4-aVF"/>
+                        <constraint firstItem="tT7-N2-bWj" firstAttribute="leading" secondItem="pSU-pj-K9h" secondAttribute="leading" constant="15" id="oLH-ss-gCX"/>
+                        <constraint firstItem="bXn-H0-XA0" firstAttribute="leading" secondItem="pSU-pj-K9h" secondAttribute="leading" constant="75" id="oLS-5L-7JT"/>
+                        <constraint firstAttribute="centerX" secondItem="bXn-H0-XA0" secondAttribute="centerX" id="wzL-TJ-Gxk"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pSU-pj-K9h" secondAttribute="trailing" id="6Ig-IA-HvR"/>
+                <constraint firstItem="pSU-pj-K9h" firstAttribute="top" secondItem="NOr-TP-v6k" secondAttribute="top" id="Z2x-To-N5J"/>
+                <constraint firstAttribute="bottom" secondItem="pSU-pj-K9h" secondAttribute="bottom" id="d33-dg-cNK"/>
+                <constraint firstItem="pSU-pj-K9h" firstAttribute="leading" secondItem="NOr-TP-v6k" secondAttribute="leading" id="i5s-zy-KdR"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="208" y="243"/>
+        </view>
+        <navigationItem id="D4Z-ym-Gmi"/>
+    </objects>
+    <resources>
+        <image name="Background" width="640" height="960"/>
+        <image name="SloganNew.png" width="433" height="74"/>
+        <image name="ic_logo_intro_v1" width="680" height="375"/>
+    </resources>
+</document>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUp">
+            <connections>
+                <outlet property="btSignUp" destination="oxe-WC-49o" id="pKc-rO-Hkr"/>
+                <outlet property="btTerm" destination="kLL-u6-VBu" id="P0y-m2-C1I"/>
+                <outlet property="tfEmail" destination="sof-Wa-cMP" id="3em-Rm-Bq9"/>
+                <outlet property="tfFirstName" destination="jHS-JV-mFB" id="Qhw-q8-yKB"/>
+                <outlet property="tfLastName" destination="R7X-DS-JHC" id="LfK-pX-x4B"/>
+                <outlet property="tfPassword" destination="WnU-gY-ZBA" id="5Qz-Hv-MQ2"/>
+                <outlet property="tfRetypePassword" destination="oB2-uS-3my" id="bSB-mi-MMN"/>
+                <outlet property="tfTerm" destination="KWi-7e-ciN" id="vJ1-6J-Xns"/>
+                <outlet property="tfUserName" destination="AHN-e3-bXa" id="9hD-7s-7VR"/>
+                <outlet property="tpVIew" destination="e5T-vO-Fwd" id="QZY-U3-Qcy"/>
+                <outlet property="view" destination="tVI-jS-kr3" id="5Eu-d2-8lP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="tVI-jS-kr3">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeatLogo" id="2nF-VY-2Oq">
+                    <rect key="frame" x="67" y="179" width="186" height="122"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" id="QSm-aX-Hjb">
+                    <rect key="frame" x="-5" y="0.0" width="325" height="656"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="0.57935114489999995" blue="0.84489939520000001" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="e5T-vO-Fwd" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="10" y="64" width="300" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oxe-WC-49o" userLabel="BtSign Up">
+                            <rect key="frame" x="10" y="463" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Sign Up">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btSignUpPress:" destination="-1" eventType="touchUpInside" id="VRF-mq-Usc"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to Term of Use" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p5m-hR-HAx">
+                            <rect key="frame" x="66" y="425" width="224" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" id="KWi-7e-ciN">
+                            <rect key="frame" x="10" y="289" width="280" height="128"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">SEAT FILLERS USER AGREEMENT/TERMS OF USELast Updated: May 1, 2015Seat Fillers is an online mobile ticket marketplace where you can connect with people in your vicinity who are seeking or providing event tickets to sports, concerts, and other live entertainment events.1. TERMS OF USEBy accessing the Seat Fillers application (“App”) or its website found at www.seatfillersapp.com, whether through a mobile device, mobile application or computer (collectively, the “Services”) you agree to be bound by these Terms of Use (collectively, the “Agreement”), whether or not you register to create a Seat Fillers account. Seat Fillers allows users to buy (“Buyers”) and sell (“Sellers”) tickets and related passes for live events. As a marketplace, Seat Fillers does not own the tickets posted for sale on the App nor does it set prices for tickets. Because Sellers set ticket prices, they may be higher than face value.If you wish to create a Seat Fillers account and make use of the App, please read these Terms of Use. The terms "Seat Fillers" or "us" or "we" or "our" refers to Seat Fillers, LLC (also known as “Seat Fillers”), the owner and operator of the App providing the Services. The term "You" refers to the person accessing or using the App or the company or organization on behalf of which that person accesses the App.By completing the registration process, you agree to accept the terms and the conditions of this Agreement to become a Registered User of the Services. By using the App and its associated Services, you are agreeing to these terms, and these terms will govern your use of the App and Services. If you do not agree to these terms, you must cease use of the App.You should also read the Seat Fillers Privacy Policy, Seller Policies and Rules, and Safety Policy which are incorporated by reference into this Agreement and available in the Services. If you do not accept and agree to be bound by all of the terms of this User Agreement, including the Seat Fillers Privacy Policy and Seller Policies and Rules, do not use the App or the Services. Please contact us with any questions regarding this Agreement at customerservice@seatfillersapp.com.a. ModificationsSeat Fillers reserves the right to modify the terms and conditions of this Agreement or its policies relating to the App or Services at any time, effective upon posting an updated version of this Agreement on the App or Services. You are responsible for regularly reviewing this Agreement. Continued use of the App or Services after any such changes shall constitute your consent to such changes. Do not continue to use the App or Services if you do not agree with the terms of this Agreement or any revised version of this Agreement.b. App Changes and Availability of ServicesSeat Fillers reserves the right at any time to modify or discontinue, temporarily or permanently, the App, Services, or any part of the App or Services with or without notice for any reason. Seat Fillers performs regularly scheduled maintenance. We will do our best to avoid customer impact or interruptions during maintenance periods.2. REGISTRATIONSeat Fillers requires users to register before they can buy or sell tickets. To register (become a "Registered User"), you must provide your name, an online user name and an active email address. If you want to become a Seller, you must create a Seller’s account, agree to the Seller Policies and Rules, and pay the applicable listing or subscription fees using a valid PayPal account.If you choose to register to create a Seat Fillers account, you agree to provide only accurate, complete registration information, and that you will keep that information up-to-date if it changes. Access to the App is not authorized by any other person or entity using your registration information and you are responsible for preventing such unauthorized use.Once you have registered to create a Seat Fillers account and become a Registered User, you have the option to sign in to your Seat Fillers account using your Facebook login. If you do so, you authorize us to access and use certain Facebook account information, including but not limited to your public Facebook profile and information about Facebook friends you might share in common with other Seat Fillers users. For more information regarding the data we collect from you and how we use it, please consult our Privacy Policy.A Registered User of the Services must agree to accept the terms and conditions of this Agreement. You may only use these Services if you are legally able to enter into a binding contract. If you are under the age of 18, you may only use the App or Services in conjunction with and under the supervision of a parent or guardian.a. Account SecuritySeat Fillers will use reasonable efforts to maintain the security and integrity of information you provide to us. However, you acknowledge and agree that Seat Fillers cannot fully eliminate security risks and cannot guarantee that unauthorized access to your information will never occur. You agree that you will keep your password for your Seat Fillers account confidential and secure, and that you will not share it with others.You are responsible for maintaining the confidentiality of the username and password you designate during the registration process, and you are solely responsible for all activities that occur under your username and password. You agree to immediately notify Seat Fillers of any disclosure or unauthorized use of your username or password or any other breach of security at customerservice@seatfillersapp.com and ensure that you log out from your account at the end of each session.3. PRIVACYWe believe that personal privacy issues are important, so we developed a Privacy Policy to explain how we collect, use and disclose information and content. The Privacy Policy forms part of our agreement with you and is incorporated in this Agreement by reference. For full details, please refer to our Privacy Policy within the App Settings or on the Seat Fillers website.You confirm that you have read and accept our Privacy Policy, the terms of which are incorporated herein, and agree that the terms of this policy are reasonable and satisfactory to you. You consent to the use of your personal information by Seat Fillers and/or its third-party providers and distributors in accordance with the terms of and for the purposes set forth in the Privacy Policy. Seat Fillers utilizes third parties for storage and running of the Seat Fillers App and related software, therefore, Seat Fillers makes no representation or warranty with regard to the sufficiency of the security measures used for data handling and storage. Seat Fillers will not be responsible for any actual or consequential damages that result from a lapse in compliance with the Privacy Policy because of a security breach or technical malfunction.4. TRANSACTIONS ARE BETWEEN BUYERS AND SELLERS a. Seat Fillers Is a Marketplace, Not Selling TicketsSeat Fillers acts as a marketplace only to allow Buyers and Sellers to interact regarding tickets. Seat Fillers is not the party offering any tickets for sale. Seat Fillers is in no way affiliated with any venue, promoter, team, league or organizing group and is not associated with any official organizer of the events for which Sellers may post ticket information. In all cases, the submission of ticket postings is solely the responsibility of the Registered Users acting as Sellers. Any and all communication and negotiation between a Buyer and a Seller regarding the possible purchase of tickets posted by the Seller are transactions between Buyers and Sellers only. The fulfillment of a negotiated purchase of tickets, including delivery or shipment of tickets, is the responsibility of the Seller. Buyers need to communicate directly with the Seller to make arrangements for the payment to the Seller and receipt of the tickets purchased from the Seller.b. Ticket Pricing Set by SellersThe price printed on the ticket in most cases will not be the same as the purchase price or the cost of the transaction. Ticket prices are set by the owners of ticket(s) or the Seller posting the tickets on the App. Seat Fillers does not own ticket inventory nor set ticket prices. As a result, the ticket prices listed may be higher (or in some cases lower) than the original face value printed on the ticket.Seat Fillers does not guarantee any information provided by our Sellers in the postings area of the ticket listings. It is the Buyer's responsibility to verify any possible inconsistency or discrepancy in the ticket location, description, and/or price by contacting the Seller as soon as possible following the discovery of such a discrepancy.c. Ticket Purchase PolicyDue to the large volume of ticket sellers listing tickets on our App, locations, descriptions and pricing of similar or equal tickets may vary and pricing errors do occur. Because Seat Fillers does not set the pricing of the tickets posted on the App, Seat Fillers shall not be liable for any pricing errors listed on this App.It will be the Buyer's responsibility to verify any possible inconsistency or discrepancy in the ticket location, description and/or price.Event dates, times, venues, and subject matter, which are listed on the ticket, may change. It is the responsibility of the Buyer to verify the most recent details for an event. Please contact the box office or refer to local listings for any changes.d. Lost, Stolen, or Damaged Tickets-Buyer ResponsibilityPlease keep your tickets in a safe place. Seat Fillers is not the Seller or broker of any tickets purchased from a Seller through use of the App and is not responsible for lost, stolen, damaged or destroyed tickets. Please note that direct sunlight or heat can damage certain types of tickets.5. CONTENT TERMSa. Content Posted by Users on the App or in the ServicesYou are solely responsible for the content and information that you post, upload, publish, link to, transmit, record, display or otherwise make available (hereinafter, “post”) on the App or transmit to other Registered Users, including text messages, chat, videos (including streaming videos), photographs, or profile text, whether publicly posted or privately transmitted (collectively, “Content”). You may not post as part of the Services, or transmit to Seat Fillers or any other user (either on or off the Services), any offensive, inaccurate, incomplete, abusive, obscene, profane, threatening, intimidating, harassing...</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                        </textView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-type Password" minimumFontSize="17" id="oB2-uS-3my">
+                            <rect key="frame" x="10" y="239" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="WnU-gY-ZBA">
+                            <rect key="frame" x="10" y="192" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" id="AHN-e3-bXa">
+                            <rect key="frame" x="10" y="147" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" id="R7X-DS-JHC">
+                            <rect key="frame" x="10" y="102" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" id="jHS-JV-mFB">
+                            <rect key="frame" x="10" y="57" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" id="sof-Wa-cMP">
+                            <rect key="frame" x="10" y="14" width="280" height="35"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kLL-u6-VBu" userLabel="BtTermPress">
+                            <rect key="frame" x="10" y="421" width="35" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btTermPress:" destination="-1" eventType="touchUpInside" id="Cuk-Fd-Fal"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.37647058820000001" green="0.53333333329999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="253" y="-774"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Background" width="640" height="960"/>
+        <image name="SeatLogo" width="1090" height="634"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

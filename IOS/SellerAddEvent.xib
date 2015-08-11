@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment version="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SellerAddEvent">
+            <connections>
+                <outlet property="cityPicker" destination="qDc-CH-Kem" id="Dqi-dy-KAP"/>
+                <outlet property="collapseView" destination="IGu-Mo-Lvi" id="XvY-sq-jb9"/>
+                <outlet property="datePicker" destination="bfO-Hy-fdY" id="5Bc-KG-aqB"/>
+                <outlet property="quantityPicker" destination="Yh8-n7-OqB" id="DmD-Kq-qZD"/>
+                <outlet property="rangePicker" destination="d0w-d8-L4b" id="mms-G4-bbC"/>
+                <outlet property="scrollView" destination="DTJ-kp-m5C" id="ofs-Kq-DE0"/>
+                <outlet property="statePicker" destination="sZA-EO-Sgd" id="0pH-Hg-hpY"/>
+                <outlet property="timePicker" destination="Cbr-JD-xTH" id="elu-ST-i3R"/>
+                <outlet property="tpView" destination="1ZC-mn-Xaz" id="FiJ-cc-Kfh"/>
+                <outlet property="typePicker" destination="KtU-bD-Gcg" id="4KI-zr-sgL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewEventCity" destination="t2o-8l-r8h" id="XlL-L3-aop"/>
+                <outlet property="viewEventDate" destination="TMX-r4-gbG" id="qsV-c2-j3F"/>
+                <outlet property="viewEventPrice" destination="tda-gj-0Z1" id="Rwd-wQ-WNx"/>
+                <outlet property="viewEventQuantity" destination="kGE-Tw-umy" id="2kL-i5-gMU"/>
+                <outlet property="viewEventState" destination="SGq-wg-ETq" id="SMF-oy-6yw"/>
+                <outlet property="viewEventTime" destination="Xdn-zq-ywf" id="zGS-qE-jnO"/>
+                <outlet property="viewEventType" destination="BuZ-K1-1jv" id="3ER-98-ivl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-HH-a1m">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DTJ-kp-m5C" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGu-Mo-Lvi" customClass="CollapseClick">
+                            <rect key="frame" x="0.0" y="112" width="414" height="736"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="quE-d9-edK"/>
+                            </connections>
+                        </scrollView>
+                    </subviews>
+                </scrollView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_intro_v1" translatesAutoresizingMaskIntoConstraints="NO" id="7zu-nG-A3l">
+                    <rect key="frame" x="67" y="65" width="186" height="122"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="-279" y="-2003"/>
+        </view>
+        <view contentMode="scaleToFill" id="TMX-r4-gbG" userLabel="EventDate">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x84-gQ-tSV">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bfO-Hy-fdY">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <date key="date" timeIntervalSinceReferenceDate="457297592.64711303">
+                        <!--2015-06-29 19:06:32 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="dateChanged:" destination="-1" eventType="valueChanged" id="iQf-s8-pLm"/>
+                    </connections>
+                </datePicker>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="x84-gQ-tSV" secondAttribute="bottom" id="FRK-eQ-bP0"/>
+                <constraint firstAttribute="bottom" secondItem="bfO-Hy-fdY" secondAttribute="bottom" id="JPt-G2-bAO"/>
+                <constraint firstItem="x84-gQ-tSV" firstAttribute="top" secondItem="TMX-r4-gbG" secondAttribute="top" id="Of9-XY-tkb"/>
+                <constraint firstItem="bfO-Hy-fdY" firstAttribute="leading" secondItem="TMX-r4-gbG" secondAttribute="leading" id="T7Z-jr-4KK"/>
+                <constraint firstItem="bfO-Hy-fdY" firstAttribute="top" secondItem="TMX-r4-gbG" secondAttribute="top" id="eY9-CY-Qcm"/>
+                <constraint firstAttribute="trailing" secondItem="bfO-Hy-fdY" secondAttribute="trailing" id="efa-OT-Jxz"/>
+                <constraint firstAttribute="trailing" secondItem="x84-gQ-tSV" secondAttribute="trailing" id="mV4-sk-QIG"/>
+                <constraint firstItem="x84-gQ-tSV" firstAttribute="leading" secondItem="TMX-r4-gbG" secondAttribute="leading" id="teU-id-xd0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-1596"/>
+        </view>
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" id="1ZC-mn-Xaz" customClass="TPKeyboardAvoidingScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxm-Tl-c3y">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-61-VLl">
+                            <rect key="frame" x="15" y="300" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Event Date">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxZ-Al-M7y">
+                            <rect key="frame" x="15" y="350" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Event Time">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="105" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-bf-9JR">
+                            <rect key="frame" x="15" y="450" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Event City">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaE-2A-buR">
+                            <rect key="frame" x="15" y="400" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Event State">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="107" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdE-Li-uub">
+                            <rect key="frame" x="15" y="550" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Price Range">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="110" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRB-zT-Ifj">
+                            <rect key="frame" x="15" y="700" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" tag="109" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gyw-vq-dbA">
+                            <rect key="frame" x="15" y="650" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="108" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ticket Selling Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgK-KE-dDQ">
+                            <rect key="frame" x="15" y="600" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SeatLogo" translatesAutoresizingMaskIntoConstraints="NO" id="63g-bK-4Hd">
+                            <rect key="frame" x="67" y="72" width="186" height="122"/>
+                        </imageView>
+                        <button opaque="NO" tag="106" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07a-3o-TGp">
+                            <rect key="frame" x="15" y="500" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title=" Tickets On hand">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iA3-4H-wVy">
+                            <rect key="frame" x="15" y="250" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kci-yN-2ff" userLabel="Event Type">
+                            <rect key="frame" x="15" y="202" width="289" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  Event Type">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.57935114489999995" blue="0.84489939520000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.2666666667" green="0.54901960780000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="-401" y="-1287"/>
+        </scrollView>
+        <view contentMode="scaleToFill" id="tda-gj-0Z1" userLabel="EventPrice">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-d8-L4b">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="MPp-m6-cfp"/>
+                        <outlet property="delegate" destination="-1" id="Hbx-7n-a0c"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-2030"/>
+        </view>
+        <view contentMode="scaleToFill" id="BuZ-K1-1jv" userLabel="EventType">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtU-bD-Gcg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Ivl-x9-cIh"/>
+                        <outlet property="delegate" destination="-1" id="ujC-4b-Csu"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-1806"/>
+        </view>
+        <view contentMode="scaleToFill" id="Xdn-zq-ywf" userLabel="EventTime">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbW-YX-991">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cbr-JD-xTH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <date key="date" timeIntervalSinceReferenceDate="457296718.70729399">
+                        <!--2015-06-29 18:51:58 +0000-->
+                    </date>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                        <!--1970-01-01 11:00:00 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="timeChanged:" destination="-1" eventType="valueChanged" id="uO0-L9-ets"/>
+                    </connections>
+                </datePicker>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LbW-YX-991" secondAttribute="trailing" id="17o-VL-uzd"/>
+                <constraint firstItem="Cbr-JD-xTH" firstAttribute="top" secondItem="Xdn-zq-ywf" secondAttribute="top" id="402-UH-m9L"/>
+                <constraint firstItem="LbW-YX-991" firstAttribute="leading" secondItem="Xdn-zq-ywf" secondAttribute="leading" id="Oy4-Wf-0gi"/>
+                <constraint firstAttribute="bottom" secondItem="Cbr-JD-xTH" secondAttribute="bottom" id="TQR-ZH-PFt"/>
+                <constraint firstAttribute="trailing" secondItem="Cbr-JD-xTH" secondAttribute="trailing" id="UEW-Td-4tE"/>
+                <constraint firstItem="LbW-YX-991" firstAttribute="top" secondItem="Xdn-zq-ywf" secondAttribute="top" id="ZZw-3r-t7K"/>
+                <constraint firstAttribute="bottom" secondItem="LbW-YX-991" secondAttribute="bottom" id="ZsX-gr-b2o"/>
+                <constraint firstItem="Cbr-JD-xTH" firstAttribute="leading" secondItem="Xdn-zq-ywf" secondAttribute="leading" id="m6a-wE-KcV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-1384"/>
+        </view>
+        <view contentMode="scaleToFill" id="t2o-8l-r8h" userLabel="EventCity">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-ON-FVZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDc-CH-Kem">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="yiB-kk-ITa"/>
+                        <outlet property="delegate" destination="-1" id="jvZ-HC-dCc"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-1193"/>
+        </view>
+        <view contentMode="scaleToFill" id="SGq-wg-ETq" userLabel="EventState">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZA-EO-Sgd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="2sm-Zq-GvL"/>
+                        <outlet property="delegate" destination="-1" id="b9E-0V-TvD"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231" y="-1018"/>
+        </view>
+        <view contentMode="scaleToFill" id="kGE-Tw-umy" userLabel="EventQuantity">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-n7-OqB">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="CcR-ZP-E86"/>
+                        <outlet property="delegate" destination="-1" id="Mny-r8-2N2"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yh8-n7-OqB" secondAttribute="trailing" id="dY1-6m-2zZ"/>
+                <constraint firstItem="Yh8-n7-OqB" firstAttribute="leading" secondItem="kGE-Tw-umy" secondAttribute="leading" id="g2O-mW-qLq"/>
+                <constraint firstAttribute="bottom" secondItem="Yh8-n7-OqB" secondAttribute="bottom" id="jrQ-Ku-OsT"/>
+                <constraint firstItem="Yh8-n7-OqB" firstAttribute="top" secondItem="kGE-Tw-umy" secondAttribute="top" id="tYC-JR-eBa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="248" y="-1983"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Background" width="640" height="960"/>
+        <image name="SeatLogo" width="1090" height="634"/>
+        <image name="ic_logo_intro_v1" width="680" height="375"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
