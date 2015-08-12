@@ -13,8 +13,6 @@
 
 - (void)awakeFromNib
 {
-    
-    NSLog(@"awake");
     [self.lbName setBackgroundColor:[UIColor clearColor]];
     [self.lbDate setBackgroundColor:[UIColor clearColor]];
     [self.lbRange setBackgroundColor:[UIColor clearColor]];

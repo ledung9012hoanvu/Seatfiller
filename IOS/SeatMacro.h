@@ -64,8 +64,7 @@
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568)
 #define IS_IPHONE_6 ( [ [ UIScreen mainScreen ] bounds ].size.height == 667)
 #define IS_IPHONE_6P ( [ [ UIScreen mainScreen ] bounds ].size.height > 667)
-
-
+#define SCREEN_WIDTH [ [ UIScreen mainScreen ] bounds ].size.width
 
 
 

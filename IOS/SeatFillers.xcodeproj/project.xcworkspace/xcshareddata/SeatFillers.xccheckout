@@ -10,31 +10,31 @@
 	<string>SeatFillers</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E11D72A86568FC46DC1863C326CF4E62E83D63EA</key>
-		<string>https://bitbucket.org/hoanvusolutions/seat-filter-ios.git</string>
+		<key>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</key>
+		<string>https://github.com/ledung9012hoanvu/Seatfiller.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>IOS/SeatFillers.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E11D72A86568FC46DC1863C326CF4E62E83D63EA</key>
+		<key>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/hoanvusolutions/seat-filter-ios.git</string>
+	<string>https://github.com/ledung9012hoanvu/Seatfiller.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E11D72A86568FC46DC1863C326CF4E62E83D63EA</string>
+	<string>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E11D72A86568FC46DC1863C326CF4E62E83D63EA</string>
+			<string>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SeatXib</string>
+			<string>Seatfiller</string>
 		</dict>
 	</array>
 </dict>

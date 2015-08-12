@@ -92,11 +92,6 @@
 -(IBAction)btBuyerPress:(id)sender
 {
     [self loadTicketByBuyer];
-//    self.seatUser.type=@"buyer";
-//    self.mainTabbar= [[UITabBarController alloc]init];
-//    NSArray *array =[NSArray arrayWithObjects:[[BuyerHome alloc]init],self.chattingList,self.appSetting, nil];
-//    [self.mainTabbar setViewControllers:array];
-//    [self.navigationController pushViewController:self.mainTabbar animated:YES];
 }
 
 - (IBAction)btSellerPress:(id)sender {

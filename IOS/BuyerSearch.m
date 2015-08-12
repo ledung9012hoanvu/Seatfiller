@@ -238,7 +238,7 @@
      forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Search" forState:UIControlStateNormal];
     float originX = (self.view.frame.size.width /2)-20;
-    button.frame = CGRectMake(originX, 0, 50, 50);
+    button.frame = CGRectMake(originX, -10, 50, 50);
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [searchBtnCell addSubview:button];
 }
@@ -248,39 +248,17 @@
 
 -(void)seatFillerDesign
 {
-    if(IS_IPHONE_6P)
-    {
-        [self.tpView setContentSize:CGSizeMake(414, 737)];
-    }
-    if(IS_IPHONE_6)
-    {
-        [self.tpView setContentSize:CGSizeMake(350, 737)];
-    }
-    if(IS_IPHONE_5)
-    {
-        [self.tpView setContentSize:CGSizeMake(320, 737)];
-    }
-    if(IS_IPHONE_4)
-    {
-        [self.tpView setContentSize:CGSizeMake(320, 737)];
-    }
-    
+    [self.tpView setContentSize:CGSizeMake(SCREEN_WIDTH, 737)];
     self.title =@"Buyer Search";
-
     [Interface setFullWidth:self.viewEventCity];
+    [Interface setFullWidth:self.typePicker];
     [Interface setFullWidth:self.cityPicker];
-    
     [Interface setFullWidth:self.viewEventDate];
     [Interface setFullWidth:self.datePicker];
-
-    
-    
     [Interface setFullWidth:self.viewEventPrice];
     [Interface setFullWidth:self.viewEventState];
-    
     [Interface setFullWidth:self.viewEventTime];
     [Interface setFullWidth:self.timePicker];
-
 }
 
 -(void)searchTicket{
@@ -368,41 +346,6 @@
     
     
     
-    
-//    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-//    [dic setValue:@"" forKey:@"title"];
-//    [dic setValue:_selectedType forKey:@"type"];
-//    [dic setValue:_selectedDate forKey:@"start_date"];
-//    [dic setValue:_selectedTime forKey:@"start_time"];
-//    [dic setValue:_selectedState forKey:@"state"];
-//    [dic setValue:_selectedCity forKey:@"city"];
-//    //[dic setValue:@"" forKey:@"qty"];
-//    [dic setValue:_selectedPriceRange forKey:@"price_range"];
-//    [SeatService callWebserviceAtRequestPOST:YES andApi:SeatAPISearchTicket withParameters:dic onSuccess:^(SeatServiceResult *result) {
-//        NSMutableArray *dicArr=[result.dictionaryResponse objectForKey:@"data"];
-//        NSMutableArray *resultArr=[NSMutableArray array];
-//        if (dicArr.count>0) {
-//            for (int i=0; i<dicArr.count; i++) {
-//                NSMutableDictionary *dic=[dicArr objectAtIndex:i];
-//                SeatTicket *seatObj=[SeatTicket ticketFromDictionary:dic];
-//                [resultArr addObject:seatObj];
-//                seatObj =nil;
-//                dic=nil;
-//            }
-//            BuyerSearchResult *searchResult = [[BuyerSearchResult alloc]init];
-//            
-//            
-////            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-////            BuyerSearchResult *searchResult=[storyboard instantiateViewControllerWithIdentifier:@"BuyerSearchResult"];
-//            NSLog(@"result array&&&& %@",resultArr);
-//            searchResult.resultArray=resultArr;
-//            [self.navigationController pushViewController:searchResult animated:YES];
-//            resultArr=nil;
-//        }
-//    } onFailure:^(NSError *err) {
-//        
-//    }];
-
 }
 
 #pragma mark - Picker View Data source

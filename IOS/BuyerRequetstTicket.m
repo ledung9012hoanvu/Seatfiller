@@ -33,8 +33,6 @@
 
 -(void)fillData
 {
-    //[self.myMap setShowsUserLocation:YES];
-    
     self.app = [[UIApplication sharedApplication]delegate];
     self.lbUsernameVL.text = self.seatTicket.byUser;
     self.lbTicketrequest.text= [NSString stringWithFormat:@"Ticket(s)Request by %@:",self.app.seatUser.lastName];
@@ -58,25 +56,8 @@
     
     [self.myMap addAnnotation:annotation];
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(self.seatTicket.lat.floatValue, self.seatTicket.lng.floatValue), 1000, 1000);
-    
     [self.myMap setRegion:region];
-    
-    
-    
-    
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (IBAction)btStep:(id)sender {
     self.lbQlt.text = [NSString stringWithFormat:@"%d",(int)self.btStepper.value];
@@ -147,7 +128,6 @@
                     
                     
                 }else {
-                    //[SeatService alertFail:@"Can't submit this tickets, Try again Later" andTitle:@"Error"];
                 }
                 
                 

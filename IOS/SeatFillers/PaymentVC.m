@@ -102,7 +102,6 @@ updatedTransactions:(NSArray *)transactions {
             default:
                 break;
         }
-        
     }
 }
 
@@ -117,8 +116,6 @@ updatedTransactions:(NSArray *)transactions {
         if ([validProduct.productIdentifier
              isEqualToString:ITEM_PURCHASE]) {
             NSLog(@"Product Title:%@. Product Price: %@. Product Description: %@. Product identifier:%@",validProduct.localizedTitle,validProduct.price,validProduct.localizedDescription,validProduct.productIdentifier);
-            
-            
         }
     } else {
         UIAlertView *tmp = [[UIAlertView alloc]
@@ -128,20 +125,8 @@ updatedTransactions:(NSArray *)transactions {
                             cancelButtonTitle:nil
                             otherButtonTitles:@"Ok", nil];
         [tmp show];
+    NSLog(@"-----------%@",validProducts);
     }
-    //[activityIndicatorView stopAnimating];
-    //buttonBuy.hidden = NO;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

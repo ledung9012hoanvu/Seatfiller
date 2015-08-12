@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -81,7 +81,7 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_buy_tick.png" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-WD-FhA">
                     <rect key="frame" x="33" y="252" width="30" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.62352941179999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5G-ms-wQq">
                     <rect key="frame" x="121" y="442" width="78" height="30"/>
@@ -100,7 +100,7 @@
                         <constraint firstAttribute="height" constant="122" id="qqb-iD-pLL"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-Ad-nuJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-Ad-nuJ">
                     <rect key="frame" x="44" y="166" width="230" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="56W-x3-vjX"/>
@@ -108,7 +108,7 @@
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sell_tick" translatesAutoresizingMaskIntoConstraints="NO" id="1Oy-SY-D8z">
                     <rect key="frame" x="33" y="357" width="30" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.62352941179999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -116,7 +116,7 @@
                 <constraint firstItem="ifl-w6-W6l" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" id="0QV-Hh-fxr"/>
                 <constraint firstItem="TTV-dv-iHu" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" constant="36" id="3Ou-hu-pqU"/>
                 <constraint firstAttribute="centerX" secondItem="Fjs-Uc-CQq" secondAttribute="centerX" id="4Ph-ev-Nfn"/>
-                <constraint firstAttribute="centerX" secondItem="0bb-Ad-nuJ" secondAttribute="centerX" id="7h8-RZ-Ohx"/>
+                <constraint firstAttribute="centerX" secondItem="0bb-Ad-nuJ" secondAttribute="centerX" constant="1" id="7h8-RZ-Ohx"/>
                 <constraint firstAttribute="centerX" secondItem="ifl-w6-W6l" secondAttribute="centerX" id="9rc-yw-S0O"/>
                 <constraint firstItem="a4V-LD-4L6" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" constant="295" id="Dlo-m0-7S1"/>
                 <constraint firstAttribute="trailing" secondItem="eZM-pB-eI4" secondAttribute="trailing" constant="16" id="G0t-MX-0wk"/>
@@ -142,7 +142,7 @@
                 <constraint firstAttribute="centerX" secondItem="a4V-LD-4L6" secondAttribute="centerX" id="yNB-2Y-Viy"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="234" y="55"/>
+            <point key="canvasLocation" x="227" y="-12"/>
         </view>
     </objects>
     <resources>

@@ -65,7 +65,7 @@
 }
 
 -(void)fakeUsername{
-    self.tfUserName.text=@"ledung";
+    self.tfUserName.text=@"dunglh9012";
     self.tfPassword.text=@"thanhdung";
     
 }

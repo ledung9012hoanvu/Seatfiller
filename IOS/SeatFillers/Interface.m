@@ -26,23 +26,7 @@
 
 +(CGFloat)screedWidth
 {
-    if(IS_IPHONE_6P)
-    {
-        return 414;
-    }
-    if(IS_IPHONE_6)
-    {
-        return 350;
-    }
-    if(IS_IPHONE_5)
-    {
-        return 320;
-    }
-    if(IS_IPHONE_4)
-    {
-        return 320;
-    }
-    return 320;
+    return SCREEN_WIDTH;
 }
 
 
