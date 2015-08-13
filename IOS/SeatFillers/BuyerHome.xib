@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -19,12 +19,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="usd-Wn-hNo">
                     <rect key="frame" x="0.0" y="0.0" width="640" height="960"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1" translatesAutoresizingMaskIntoConstraints="NO" id="oqJ-D5-o3H">
-                    <rect key="frame" x="67" y="72" width="186" height="122"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="122" id="1Sb-vD-fxX"/>
-                    </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kUX-HR-75w">
                     <rect key="frame" x="16" y="232" width="289" height="145"/>
@@ -56,20 +50,26 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1" translatesAutoresizingMaskIntoConstraints="NO" id="oqJ-D5-o3H">
+                    <rect key="frame" x="60" y="65" width="200" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="P0I-2b-qDY"/>
+                        <constraint firstAttribute="width" constant="200" id="aba-dr-ZxZ"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kQF-ph-eEH" secondAttribute="trailing" constant="15" id="2MS-bw-O3t"/>
+                <constraint firstAttribute="centerX" secondItem="oqJ-D5-o3H" secondAttribute="centerX" id="3SP-28-cKo"/>
                 <constraint firstItem="kUX-HR-75w" firstAttribute="top" secondItem="kQF-ph-eEH" secondAttribute="bottom" constant="9" id="9jX-Pg-OTl"/>
                 <constraint firstItem="d1V-Ab-mgB" firstAttribute="leading" secondItem="lNz-pT-BeC" secondAttribute="leading" constant="110" id="C4n-NV-u8J"/>
-                <constraint firstItem="oqJ-D5-o3H" firstAttribute="leading" secondItem="lNz-pT-BeC" secondAttribute="leading" constant="67" id="D0A-MK-aeY"/>
                 <constraint firstAttribute="bottom" secondItem="d1V-Ab-mgB" secondAttribute="bottom" constant="65" id="Gb9-hR-WKj"/>
                 <constraint firstItem="kUX-HR-75w" firstAttribute="leading" secondItem="lNz-pT-BeC" secondAttribute="leading" constant="16" id="V43-oh-kAd"/>
                 <constraint firstAttribute="centerX" secondItem="kUX-HR-75w" secondAttribute="centerX" id="VNv-5x-oFI"/>
-                <constraint firstAttribute="centerX" secondItem="oqJ-D5-o3H" secondAttribute="centerX" id="bBe-M8-hqO"/>
-                <constraint firstItem="oqJ-D5-o3H" firstAttribute="top" secondItem="lNz-pT-BeC" secondAttribute="top" constant="72" id="fBL-E3-gXT"/>
+                <constraint firstItem="kQF-ph-eEH" firstAttribute="top" secondItem="oqJ-D5-o3H" secondAttribute="bottom" constant="22" id="ZgM-tj-MMJ"/>
+                <constraint firstItem="oqJ-D5-o3H" firstAttribute="top" secondItem="lNz-pT-BeC" secondAttribute="top" constant="65" id="hVO-MM-Fv3"/>
                 <constraint firstItem="kQF-ph-eEH" firstAttribute="leading" secondItem="lNz-pT-BeC" secondAttribute="leading" constant="16" id="lXu-a9-PCP"/>
-                <constraint firstItem="kQF-ph-eEH" firstAttribute="top" secondItem="oqJ-D5-o3H" secondAttribute="bottom" constant="8" id="ldZ-nl-Wb8"/>
                 <constraint firstAttribute="centerX" secondItem="d1V-Ab-mgB" secondAttribute="centerX" id="msc-1V-Ycu"/>
                 <constraint firstItem="d1V-Ab-mgB" firstAttribute="top" secondItem="kUX-HR-75w" secondAttribute="bottom" constant="8" id="qgS-q9-Vbr"/>
                 <constraint firstItem="kUX-HR-75w" firstAttribute="top" secondItem="kQF-ph-eEH" secondAttribute="bottom" constant="9" id="zxt-cE-xDx"/>

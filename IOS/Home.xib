@@ -94,27 +94,27 @@
                         <action selector="btLogOutPress:" destination="-1" eventType="touchUpInside" id="fVE-nE-SG5"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1.png" translatesAutoresizingMaskIntoConstraints="NO" id="TTV-dv-iHu">
-                    <rect key="frame" x="67" y="36" width="186" height="122"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="122" id="qqb-iD-pLL"/>
-                    </constraints>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-Ad-nuJ">
-                    <rect key="frame" x="44" y="166" width="230" height="50"/>
+                    <rect key="frame" x="44" y="166" width="230" height="37"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="56W-x3-vjX"/>
+                        <constraint firstAttribute="height" constant="37" id="56W-x3-vjX"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sell_tick" translatesAutoresizingMaskIntoConstraints="NO" id="1Oy-SY-D8z">
                     <rect key="frame" x="33" y="357" width="30" height="30"/>
                     <color key="backgroundColor" red="0.12941176469999999" green="0.62352941179999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1.png" translatesAutoresizingMaskIntoConstraints="NO" id="TTV-dv-iHu">
+                    <rect key="frame" x="60" y="28" width="200" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="qqb-iD-pLL"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ifl-w6-W6l" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" id="0QV-Hh-fxr"/>
-                <constraint firstItem="TTV-dv-iHu" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" constant="36" id="3Ou-hu-pqU"/>
+                <constraint firstItem="TTV-dv-iHu" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" constant="28" id="3Ou-hu-pqU"/>
                 <constraint firstAttribute="centerX" secondItem="Fjs-Uc-CQq" secondAttribute="centerX" id="4Ph-ev-Nfn"/>
                 <constraint firstAttribute="centerX" secondItem="0bb-Ad-nuJ" secondAttribute="centerX" constant="1" id="7h8-RZ-Ohx"/>
                 <constraint firstAttribute="centerX" secondItem="ifl-w6-W6l" secondAttribute="centerX" id="9rc-yw-S0O"/>
@@ -133,12 +133,12 @@
                 <constraint firstAttribute="bottom" secondItem="b5G-ms-wQq" secondAttribute="bottom" constant="8" id="YFP-VR-cb6"/>
                 <constraint firstAttribute="trailingMargin" secondItem="Fjs-Uc-CQq" secondAttribute="trailing" constant="22" id="YJy-8W-fR9"/>
                 <constraint firstItem="0bb-Ad-nuJ" firstAttribute="leading" secondItem="SgQ-uM-nSl" secondAttribute="leading" constant="44" id="bHU-Mb-89G"/>
-                <constraint firstItem="0bb-Ad-nuJ" firstAttribute="top" secondItem="TTV-dv-iHu" secondAttribute="bottom" constant="8" id="bPB-Zt-iuV"/>
+                <constraint firstItem="0bb-Ad-nuJ" firstAttribute="top" secondItem="TTV-dv-iHu" secondAttribute="bottom" constant="23" id="bPB-Zt-iuV"/>
                 <constraint firstItem="eZM-pB-eI4" firstAttribute="top" secondItem="Fjs-Uc-CQq" secondAttribute="bottom" constant="33" id="cQh-56-I5g"/>
                 <constraint firstItem="Fjs-Uc-CQq" firstAttribute="leading" secondItem="SgQ-uM-nSl" secondAttribute="leadingMargin" constant="22" id="f6L-de-RqF"/>
                 <constraint firstItem="ifl-w6-W6l" firstAttribute="leading" secondItem="SgQ-uM-nSl" secondAttribute="leading" id="gXX-q0-CgN"/>
                 <constraint firstItem="eZM-pB-eI4" firstAttribute="top" secondItem="SgQ-uM-nSl" secondAttribute="top" constant="352" id="ge9-oo-JJW"/>
-                <constraint firstItem="TTV-dv-iHu" firstAttribute="leading" secondItem="SgQ-uM-nSl" secondAttribute="leading" constant="67" id="m6S-cj-i9M"/>
+                <constraint firstItem="TTV-dv-iHu" firstAttribute="leading" secondItem="SgQ-uM-nSl" secondAttribute="leading" constant="60" id="m6S-cj-i9M"/>
                 <constraint firstAttribute="centerX" secondItem="a4V-LD-4L6" secondAttribute="centerX" id="yNB-2Y-Viy"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

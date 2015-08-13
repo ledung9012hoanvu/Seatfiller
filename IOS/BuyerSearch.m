@@ -208,13 +208,19 @@
 
 -(void)collapseDesign{
     CollapseClickCell *lbCell = [self.collapseView collapseClickCellForIndex:2];
-    UILabel *lbText = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, lbCell.frame.size.width, lbCell.frame.size.height)];
+    UILabel *lbText = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, lbCell.frame.size.width, lbCell.frame.size.height)];
     [lbText setTextAlignment:NSTextAlignmentLeft];
-    [lbText setFont:[UIFont systemFontOfSize:13]];
+    [lbText setFont:[UIFont systemFontOfSize:14]];
     lbText.numberOfLines = 2;
     [lbText setTextColor:[UIColor whiteColor]];
-    lbText.text = [NSString stringWithFormat:@" Hi %@ Please input the ticket information below in order to search the tickets that you want.",self.app.seatUser.userName];
+    lbText.text = [NSString stringWithFormat:@"Hi %@ Please input the ticket information below in order to search the tickets that you want.",self.app.seatUser.userName];
     [lbCell addSubview:lbText];
+    
+    
+    
+    
+    
+    
     
     CollapseClickCell *eventNameCell=[self.collapseView collapseClickCellForIndex:4];
     self.eventNameTf= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, eventNameCell.frame.size.width-10, eventNameCell.frame.size.height)];
@@ -229,18 +235,20 @@
     self.eventNameTf.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.eventNameTf.delegate = self;
     [eventNameCell addSubview:self.eventNameTf];
-    
     CollapseClickCell *searchBtnCell=[self.collapseView collapseClickCellForIndex:11];
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
                action:@selector(searchTicket)
      forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Search" forState:UIControlStateNormal];
-    float originX = (self.view.frame.size.width /2)-20;
-    button.frame = CGRectMake(originX, -10, 50, 50);
+    button.frame = CGRectMake(0, -10, searchBtnCell.frame.size.width, 50);
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [searchBtnCell addSubview:button];
+    
+    UIImageView *line =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, searchBtnCell.frame.size.width, 1)];
+    [searchBtnCell addSubview:line];
+    [line setBackgroundColor:[UIColor whiteColor]];
+    [line setAlpha:0.5];
 }
 
 
@@ -293,9 +301,7 @@
         }
         if (self.selectedPriceRange.length>0) {
             linkSearch = [linkSearch stringByAppendingString:[NSString stringWithFormat:@"&price-range=%@",self.selectedPriceRange]];
-            
         }
-        NSLog(@"link search final %@",linkSearch);
         AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
         af.requestSerializer = [AFHTTPRequestSerializer serializer];
         af.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -317,35 +323,19 @@
                     BuyerSearchResult *buyerSearchResult = [[BuyerSearchResult alloc]init];
                     buyerSearchResult.resultArray = arrResult;
                     [self.navigationController pushViewController:buyerSearchResult animated:YES];
-                    
-                    
                 }else{
                     [SeatService alertFail:@"No ticket available found" andTitle:@"Not Found"];
                     
                 }
-                
-                
             }else {
                 [SeatService alertFail:@"No ticket available found" andTitle:@"Not Found"];
-                
             }
-            
-            
-            
-            
-            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SeatService alertFail:[NSString stringWithFormat:@"%@",error.localizedDescription] andTitle:@"Error"];
-            
-            
         }];
     }else {
         [SeatService alertFail:@"Event type can't be blank" andTitle:@"Error"];
     }
-    
-    
-    
-    
 }
 
 #pragma mark - Picker View Data source
@@ -412,7 +402,6 @@ numberOfRowsInComponent:(NSInteger)component{
         [[self.collapseView collapseClickCellForIndex:10]TitleLabel].text = [NSString stringWithFormat:@"Price range:$%@",self.selectedPriceRange];
     }else if (pickerView==self.quantityPicker){
         [[self.collapseView collapseClickCellForIndex:9]TitleLabel].text = [NSString stringWithFormat:@"Quanlity:%@",self.arrQuantity[row]];
-        
     }
 }
 
@@ -424,12 +413,10 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (IBAction)dateChanged:(id)sender {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //[dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     NSString *strDate = [dateFormatter stringFromDate:_datePicker.date];
     self.selectedDate = strDate;
     [[self.collapseView collapseClickCellForIndex:6]TitleLabel].text = [NSString stringWithFormat:@"Date:%@",self.selectedDate];
-    
 }
 
 - (IBAction)timeChanged:(id)sender {
@@ -439,11 +426,5 @@ numberOfRowsInComponent:(NSInteger)component{
     NSString *strTime = [dateFormatter stringFromDate:_timePicker.date];
     self.selectedTime = strTime;
     [[self.collapseView collapseClickCellForIndex:5]TitleLabel].text=[NSString stringWithFormat:@"Time:%@",self.selectedTime];
-    
 }
-
-
-
-
-
 @end

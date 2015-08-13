@@ -32,11 +32,6 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    
-    
-    
-   // [self fillData];
     [self seatFillerDesign];
     _tableViewListTicket.separatorStyle=UITableViewCellSeparatorStyleNone;
     
@@ -54,33 +49,14 @@
     
     self.tabBarController.navigationItem.rightBarButtonItem = btnCancel;
     [self fillData];
-    
-    
-    
-    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    self.isNext = [[NSUserDefaults standardUserDefaults]boolForKey:@"next"];
-//    if (self.isNext) {
-//        self.isNext =NO;
-//        NSLog(@"next is Yes");
-//        [self gotoSearch];
-//        
-//        
-//        
-//    }else {
-//        NSLog(@"next is no");
-//  }
 }
 -(void)gotoSearch
 {
     BuyerSearch *search=[[BuyerSearch alloc] init];
-    //NSLog(@"go to search");
-    
-    
     [self.tabBarController.navigationController pushViewController:search animated:YES];
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -153,12 +129,6 @@
     UIAlertView *alertBuy = [[UIAlertView alloc]initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"View Detail",@"Chat With Seller",@"Delete", nil];
     alertBuy.tag = 100;
     [alertBuy show];
-    
-    
-//    self.buyerRequestTicket = [self.storyboard instantiateViewControllerWithIdentifier:@"BuyerRequetstTicket"];
-//    SeatTicket *seatTicket= self.ticketArray[indexPath.row];
-//    self.buyerRequestTicket.seatTicket =seatTicket;
-//    [self.navigationController pushViewController:self.buyerRequestTicket animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -233,10 +203,6 @@
             app.BuyerTicketArray = self.ticketArray;
             
             [_tableViewListTicket reloadData];
-            
-        
-            
-            
         }
 
     } onFailure:^(NSError *err) {
@@ -280,11 +246,7 @@
                     if (result.integerValue==1) {//Please check your email to confirm your request.
                         [SeatService alertFail:@"Please check your email to confirm your request." andTitle:@"Report Seller"];
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                        
                     }
-                    
-                    
-                    
                 }else{
                     NSLog(@"error status code");
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -292,60 +254,32 @@
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [SeatService alertFail:[NSString stringWithFormat:@"%@",error.localizedDescription] andTitle:@"Report Error"];
-                
-                
-                
             }];
-            
-            
-            
-            
-            
-            
-            
-            
         }
         else {//alert click NO
-            
-            
         }
     }
     if (alertView.tag==100) {
         if (buttonIndex==1) {
-            NSLog(@"viewdetail");
             BuyerRequetstTicket *buyerRequest = [[BuyerRequetstTicket alloc]init];
             buyerRequest.seatTicket = self.ticketArray[self.seletedIndex];
             buyerRequest.fromBuyerHome = YES;
-        
             [self.navigationController pushViewController:buyerRequest animated:YES];
-            
-            
         }
         if (buttonIndex==2) {
-            NSLog(@"chat with seller");
             BuyerChatDetail *buyerChatDetail = [[BuyerChatDetail alloc]init];
             buyerChatDetail.seatic = self.ticketArray[self.seletedIndex];
             [self.navigationController pushViewController:buyerChatDetail animated:YES];
-            
-            
-            
         }
         if (buttonIndex==3) {
-            NSLog(@"delete");
             UIAlertView *alertDelete =[[UIAlertView alloc]initWithTitle:@"DELETE" message:@"Are You Sure Want To Delete?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
             alertDelete.tag = 101;
             [alertDelete show];
-            
-            
-            
         }
     }
     if (alertView.tag==101) {//delete
         if (buttonIndex==1) {
-           
             [self CancelBookingTicket];
-            
-            
         }
     }
 
@@ -362,34 +296,16 @@
         NSDictionary *dicResult = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSString *result = dicResult[@"status"];
         if (result.integerValue==1) {
-           // NSLog(@"Delete thanh cong");
-            
             [SeatService alertFail:@"Cancel Booking" andTitle:@""];
             [self.ticketArray removeObjectAtIndex:self.seletedIndex];
             [self.tableViewListTicket reloadData];
             
-            
-            
-            
-            
-            
         }else {
             [SeatService alertFail:@"Delete Error" andTitle:@"Error"];
-            
-            
-            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SeatService alertFail:[NSString stringWithFormat:@"%@",error.localizedDescription] andTitle:@"Error"];
-        
     }];
-    
-    
-    
-    
-    
-    
-    
 }
 @end

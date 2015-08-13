@@ -38,17 +38,8 @@
     if (self.deviceToken.length<1) {
         self.deviceToken = @"test";
     }
-    
     [self setUpFaceBook];
-    
-    
-    
-    
-    
-    
     [self.ScrollKeyBoard setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 50)];
-    
-    
     [self seatFillerDesign];
     [self fakeUsername];
 }
@@ -61,13 +52,12 @@
     [self.viewSignIn addSubview:loginButton];
     self.fbManager = [[FBSDKLoginManager alloc]init];
     [self.fbManager logOut];
-    
+    [loginButton setFrame:CGRectMake(loginButton.frame.origin.x, loginButton.frame.origin.y,SCREEN_WIDTH-60, loginButton.frame.size.height)];
 }
 
 -(void)fakeUsername{
     self.tfUserName.text=@"dunglh9012";
     self.tfPassword.text=@"thanhdung";
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -224,19 +214,13 @@
                 self.app.seatUser = [SeatUser initWithDictionaryString:dicResult];
                 [self signInSucceed];
                 
-                
             }else {
                 [SeatService alertFail:message andTitle:@"Error"];
             }
-            
-            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SeatService alertFail:@"Can't login by Facebook, Try again!" andTitle:@"Error"];
     }];
-    
-    
-    
 }
 #pragma FaceBook 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
@@ -248,16 +232,10 @@
         if (self.accessToken.length>1) {
             //log in
             [self logInFaceBook];
-            
-            
         }else {
             [SeatService alertFail:@"Can't log in by Facebook, Try again!" andTitle:@"Error"];
-            
         }
-        
-        
     }
-    
 }
 #pragma Alert View 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

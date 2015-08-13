@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -32,41 +32,62 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="701"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="mxO-8Q-8a8">
                     <rect key="frame" x="0.0" y="0.0" width="420" height="850"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_intro_v1.png" translatesAutoresizingMaskIntoConstraints="NO" id="FF1-3b-rVQ">
-                    <rect key="frame" x="75" y="71" width="170" height="122"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo_intro_v1.png" translatesAutoresizingMaskIntoConstraints="NO" id="FF1-3b-rVQ">
+                    <rect key="frame" x="60" y="65" width="200" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="TbA-pa-EwA"/>
+                        <constraint firstAttribute="height" constant="115" id="hUY-LT-PFH"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-VA-Djc">
+                    <rect key="frame" x="72" y="165" width="176" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="176" id="4iO-3Z-Pr6"/>
+                        <constraint firstAttribute="height" constant="31" id="NgB-M3-7LC"/>
+                    </constraints>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmT-5H-C1C" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name Seting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0W-pG-XNU">
+                            <rect key="frame" x="8" y="199" width="153" height="21"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbm-du-y9V" customClass="CollapseClick">
-                            <rect key="frame" x="0.0" y="300" width="414" height="442"/>
+                            <rect key="frame" x="0.0" y="228" width="320" height="442"/>
                             <color key="backgroundColor" red="0.37647058820000001" green="0.53333333329999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="iDo-x4-jgS"/>
                             </connections>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name Seting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0W-pG-XNU">
-                            <rect key="frame" x="8" y="271" width="153" height="21"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SloganNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-VA-Djc">
-                            <rect key="frame" x="49" y="184" width="221" height="50"/>
-                        </imageView>
                     </subviews>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="FF1-3b-rVQ" secondAttribute="centerX" id="95R-eH-NGx"/>
+                <constraint firstAttribute="centerX" secondItem="WeC-VA-Djc" secondAttribute="centerX" id="ZLu-Px-9ed"/>
+                <constraint firstItem="FF1-3b-rVQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="cjv-7m-ADi"/>
+                <constraint firstItem="WeC-VA-Djc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="165" id="hw5-K0-qwu"/>
+                <constraint firstAttribute="centerX" secondItem="FF1-3b-rVQ" secondAttribute="centerX" id="j27-Vb-3G0"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1463" y="-7851.5"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="j27-Vb-3G0"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="1489" y="-7937"/>
         </view>
         <view contentMode="scaleToFill" id="FKH-hy-mB6">
             <rect key="frame" x="0.0" y="0.0" width="415" height="107"/>
@@ -298,9 +319,4 @@
         <image name="SloganNew.png" width="433" height="74"/>
         <image name="ic_logo_intro_v1.png" width="680" height="375"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

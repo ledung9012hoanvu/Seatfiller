@@ -14,8 +14,11 @@
 #import "SeatService.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "SignIn.h"
+#import "UIView+LeafUI.h"
 
 
+
+#define Swich_Right_margin 10
 
 @interface AppSetting () <UITextFieldDelegate>
 
@@ -25,13 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"viewDidLoad");
     [self.collapseView setScrollEnabled:NO];
     
     self.app = [[UIApplication sharedApplication]delegate];
     self.lbnameUserSetting.text = [NSString stringWithFormat:@"%@ Setting",self.app.seatUser.lastName];
-    
-    
     
     [self.tpView setBackgroundColor:[UIColor clearColor]];
     [self.tpView setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height * 1.8)];
@@ -185,7 +185,6 @@
 
 -(void)collapseDesign
 {
-    
     [[[self.collapseView collapseClickCellForIndex:0] TitleArrow] setHidden:YES];
     [[[self.collapseView collapseClickCellForIndex:1] TitleArrow] setHidden:YES];
     [[[self.collapseView collapseClickCellForIndex:2] TitleArrow] setHidden:YES];
@@ -199,15 +198,16 @@
     UISwitch *onOffNotifcation = [[UISwitch alloc] initWithFrame: CGRectZero];
     onOffNotifcation.frame=CGRectMake(cellNotification.frame.size.width-180, onOffNotifcation.frame.origin.y, onOffNotifcation.frame.size.width, onOffNotifcation.frame.size.height);
     [onOffNotifcation setOn:YES];
-    
     [cellNotification addSubview:onOffNotifcation];
+    [onOffNotifcation setXTLocation:Swich_Right_margin];
+
 
     CollapseClickCell *cellVibration=[self.collapseView collapseClickCellForIndex:1];
     UISwitch *onOffVibration = [[UISwitch alloc] initWithFrame: CGRectZero];
     onOffVibration.frame=CGRectMake(cellVibration.frame.size.width-180, onOffVibration.frame.origin.y, onOffVibration.frame.size.width, onOffVibration.frame.size.height);
     [onOffVibration setOn:YES];
-    
     [cellVibration addSubview:onOffVibration];
+    [onOffVibration setXTLocation:Swich_Right_margin];
     
     CollapseClickCell *cellSound=[self.collapseView collapseClickCellForIndex:2];
     UISwitch *onOffSound = [[UISwitch alloc] initWithFrame: CGRectZero];
@@ -215,6 +215,7 @@
     [onOffSound setOn:YES];
     
     [cellSound addSubview:onOffSound];
+    [onOffSound setXTLocation:Swich_Right_margin];
     
     CollapseClickCell *cellAbout = [self.collapseView collapseClickCellForIndex:8];
     UIButton *btAbout = [[UIButton alloc]initWithFrame:CGRectMake(30, 0, 120, 50)];
@@ -470,8 +471,6 @@
         if (buttonIndex==1) {
             AppDelegate *app = [[UIApplication sharedApplication]delegate];
             NSString *linkLogOut = [NSString stringWithFormat:@"%@%@",API_LOG_OUT,app.seatUser.token];
-            NSLog(@"link log out %@",linkLogOut);
-            
             AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
             af.requestSerializer = [AFHTTPRequestSerializer serializer];
             af.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -480,9 +479,6 @@
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 //
             }];
-            
-            
-            
             SignIn *signIn = [[SignIn alloc]init];
             self.app.window.rootViewController = signIn;
             

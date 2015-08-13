@@ -23,19 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
-   
-    
-    
     [self fillData];
     [self setMapView];
-    
     [self seatFillerDesign];
     _tbSearchResult.separatorStyle=UITableViewCellSeparatorStyleNone;
-}
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,7 +94,7 @@
     fromLabel.text = [NSString stringWithFormat:@"We have found %ld Event Seller(s) that closely match your search. Please select a seller below for more information.",self.resultArray.count];
     //fromLabel.font = customFont;
     fromLabel.numberOfLines = 2;
-    [fromLabel setFont:[UIFont systemFontOfSize:11]];
+    [fromLabel setFont:[UIFont systemFontOfSize:14]];
     [fromLabel setTextColor:[UIColor whiteColor]];
     
     fromLabel.adjustsFontSizeToFitWidth = YES;
@@ -147,39 +142,7 @@
     }
     return headerView;
 }
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 60;
-//}
 
-//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    UIView *footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tbSearchResult.frame.size.width, 60)];
-//    UIButton *requestButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    requestButton.backgroundColor=[UIColor blueColor];
-//    [requestButton addTarget:self
-//               action:@selector(requestBuyer)
-//     forControlEvents:UIControlEventTouchUpInside];
-//    [requestButton setTitle:@"List" forState:UIControlStateNormal];
-//    requestButton.frame = CGRectMake(0, 10, _tbSearchResult.frame.size.width/2, 50);
-//    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    
-//    UIButton *mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    mapButton.backgroundColor=[UIColor greenColor];
-//    [mapButton addTarget:self
-//                   action:@selector(searchMapTicket)
-//         forControlEvents:UIControlEventTouchUpInside];
-//    [mapButton setTitle:@"Map" forState:UIControlStateNormal];
-//    mapButton.frame = CGRectMake(requestButton.frame.size.width, 10, _tbSearchResult.frame.size.width/2, 50);
-//    [mapButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [footerView addSubview:requestButton];
-//    [footerView addSubview:mapButton];
-//    
-//    return footerView;
-//}
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    return 60;
-//}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //SeatTicket *seatTicket= self.ticketArray[indexPath.row];
@@ -200,40 +163,25 @@
 {
     self.title = @"Result";
     self.myMapView.delegate = self;
-    
     [self.btList setUserInteractionEnabled:NO];
     [self.btMap setUserInteractionEnabled:YES];
     [self.view bringSubviewToFront:self.tbSearchResult];
     self.tbSearchResult.alpha = 1;
     self.myMapView.alpha =0;
-    
-    
-
 }
 - (void)setMapView{
-    NSLog(@"count result array %ld",self.resultArray.count);
     for (int i=0; i<self.resultArray.count; i++) {
         SeatTicket *seatic = self.resultArray[i];
         
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
         annotation.title = seatic.address;
         annotation.subtitle = seatic.sId;
-        
-        
-        
-        
         annotation.coordinate = CLLocationCoordinate2DMake(seatic.lat.floatValue, seatic.lng.floatValue);
-        
         [self.myMapView addAnnotation:annotation];
         SeatTicket *seaticMap = self.resultArray[0];
-        
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(seaticMap.lat.floatValue, seaticMap.lng.floatValue), 2000, 2000);
-        
         [self.myMapView setRegion:region];
-        
-        
     }
-    
 }
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     MKPinAnnotationView *annomationView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"annomation"];
@@ -252,20 +200,16 @@
             buyerRequestTicket.seatTicket = seatTic;
             [self.navigationController pushViewController:buyerRequestTicket animated:YES];
             break;
-            
         }
     }
-    
-   
-    
-    
 }
 
 
 -(void)seatFillerDesign
 {
     [self.tbSearchResult setBackgroundColor:[UIColor clearColor]];
-    
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.myMapView];
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.tbSearchResult];
 }
 
 -(void)searchMapTicket{
@@ -283,22 +227,13 @@
     self.tbSearchResult.alpha = 1;
     [self.btList setUserInteractionEnabled:NO];
     [self.btMap setUserInteractionEnabled:YES];
-    
-    
-    
 }
 
 - (IBAction)btMapPress:(id)sender {
-    
     [self.view bringSubviewToFront:self.myMapView];
-     //[self.btMap setTranslatesAutoresizingMaskIntoConstraints:YES];
-    
     [self.btMap setUserInteractionEnabled:NO];
     [self.btList setUserInteractionEnabled:YES];
-    
     self.tbSearchResult.alpha = 0;
     self.myMapView.alpha = 1;
-    
-    
 }
 @end

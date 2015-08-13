@@ -66,10 +66,6 @@
     BuyerChatDetail *buyerChatDe = [[BuyerChatDetail alloc]init];
     buyerChatDe.seatic = self.ListBuyerChat[indexPath.row];
     [self.navigationController pushViewController:buyerChatDe animated:YES];
-    
-    
-    
-    
 }
 
 /*

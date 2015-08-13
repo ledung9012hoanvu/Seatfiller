@@ -23,11 +23,6 @@
     [super viewDidLoad];
     [self seatFillerDesign];
     [self.tpVIew setContentSize:CGSizeMake(self.tpVIew.frame.size.width, self.tpVIew.frame.size.height + 200)];
-    
-    
-    
-    
-
 }
 
 
@@ -87,11 +82,6 @@
 }
 //-------------------------------------------------------------
 
-
-
-
-
-
 #pragma mark ---------------------------------------------TextFieldDelegate
 
 - (IBAction)btSignUpPress:(id)sender
@@ -99,7 +89,6 @@
     if ([self.tfPassword.text isEqualToString:self.tfRetypePassword.text]) {
         if(self.isAcceppt)
         {
-            NSLog(@"signup press");
             [self.btSignUp setUserInteractionEnabled:NO];
             NSMutableDictionary *dictionary =[[NSMutableDictionary alloc]init];
             [dictionary setValue:self.tfUserName.text forKey:USER_NAME];
@@ -108,11 +97,6 @@
             [dictionary setValue:self.tfLastName.text forKey:USER_LASTNAME];
             [dictionary setValue:self.tfEmail.text forKey:USER_EMAIL];
             [dictionary setValue:self.tfRetypePassword.text forKey:USER_REPASS];
-            
-            
-            NSLog(@"dictionary send : %@",dictionary);
-            
-            NSLog(@"user name : %@", self.tfUserName.text);
             [SeatService callWebserviceAtRequestPOST:YES andApi:SeatAPISingUp withParameters:dictionary onSuccess:^(SeatServiceResult *result) {
                 [self.btSignUp setUserInteractionEnabled:YES];
                 
@@ -137,8 +121,6 @@
         {
             [SeatService alertFail:@"You not agree Term of Use" andTitle:@"Error"];
         }
-
-        
     }else {
         [SeatService alertFail:@"Password and Re-type PassWord don't same " andTitle:@"Error"];
     }
@@ -165,13 +147,7 @@
 -(void)signinFailure
 {
     [SeatService alertFail:@"Sign up Fail, Please Try again" andTitle:@"Error"];
-    
-    
 }
-
-
-
-
 
 - (IBAction)btTermPress:(id)sender
 {

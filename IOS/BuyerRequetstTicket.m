@@ -26,9 +26,6 @@
 {
     [self.mainScroll setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height *1.8f)];
     self.title = @"BuyerTicketRequest";
-    
-    
-  
 }
 
 -(void)fillData
@@ -61,40 +58,28 @@
 
 - (IBAction)btStep:(id)sender {
     self.lbQlt.text = [NSString stringWithFormat:@"%d",(int)self.btStepper.value];
-    
-    
 }
 
 - (IBAction)btPhotoPress:(id)sender {
     NSString *linkPhoto = self.seatTicket.imageURLString;
-    NSLog(@"LINK PHOTO %@ ",linkPhoto);
     if([[NSString stringWithFormat:@"%@",linkPhoto] isEqualToString:@"<null>"])
     {
         [SeatService alertFail:@"NO Photos Availble" andTitle:@"No Photo"];
     }else {
         SellerImage *sellerImage = [[SellerImage alloc]init];
         [self.navigationController pushViewController:sellerImage animated:YES];
-        
-        
         [[NSUserDefaults standardUserDefaults]setObject:[self null2Empty:self.seatTicket.imageURLString] forKey:PHOTO_LINK];
-        
     }
-    
-    
 }
 
 - (IBAction)btSubmitNotification:(id)sender {
     [self submitNotificationToSeller];
-  
-    
 }
 - (void)submitNotificationToSeller{
     int quanlityBook = self.lbQlt.text.intValue;
     if (quanlityBook<=self.seatTicket.qty.intValue) {
         //submit
-        
         NSString *link = [NSString stringWithFormat:@"%@%@",API_SUBMIT_TICKET,self.app.seatUser.token];
-        NSLog(@"link submit %@",link);
         NSMutableDictionary *param = [[NSMutableDictionary alloc]init];
         [param setObject:self.seatTicket.sId forKey:@"id"];
         [param setObject:self.lbQlt.text forKey:@"qty"];
@@ -107,49 +92,31 @@
             if (operation.response.statusCode==200) {
                 NSDictionary *dicResult = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
                 NSString *result = dicResult[@"status"];
-                NSLog(@"mes %@",dicResult[@"message"]);
                 if (result.intValue==1) {
-                    //submit thanh cong
                     [SeatService alertFail:@"Submit Successfull" andTitle:@""];
-                    //BuyerHome *buyerhome = [[BuyerHome alloc]init];
-                    //[self.navigationController pushViewController:buyerhome animated:YES];
                     NSUInteger ownIndex = [self.navigationController.viewControllers indexOfObject:self];
                     if (self.fromBuyerHome) {
                         [self.navigationController popViewControllerAnimated:YES];
                         
                     }else {
                         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:ownIndex - 3] animated:YES];
-                        
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                 }else {
                 }
-                
-                
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SeatService alertFail:@"Can't connect to server, Try again later" andTitle:@"Error"];
-            NSLog(@"error: %@",error.localizedDescription);
-            
         }];
         
     }else {
         [SeatService alertFail:@"Your request is greater on ticket on hand" andTitle:@"Error"];
-        
-        
     }
-    
 }
 -(NSString*)null2Empty:(NSString*)string
 {
     if([[NSString stringWithFormat:@"%@", string] isEqualToString:@"<null>"])
     {
-        return @" ";
+        return @"";
     }
     return [NSString stringWithFormat:@"%@",string];
 }

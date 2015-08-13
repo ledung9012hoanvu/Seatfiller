@@ -18,14 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (nonatomic) BOOL isNext;
 
-
-
-
-
-
-
-
-
 - (IBAction)btReportSeller:(id)sender;
 
 @end
