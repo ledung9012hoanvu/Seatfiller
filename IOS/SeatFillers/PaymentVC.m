@@ -8,7 +8,10 @@
 
 #import "PaymentVC.h"
 #import "SeatMacro.h"
+#import "PaymentCell.h"
+#import "UIView+LeafUI.h"
 
+#define TABLE_PRODUCT_LIST_CELL_HEIGH 50
 @interface PaymentVC ()
 
 @end
@@ -16,31 +19,32 @@
 @implementation PaymentVC
 
 - (void)viewDidLoad {
+    [self.tableProductList setHidden:YES];
     [super viewDidLoad];
-    // IN APP PURCHASE
-    
+    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
     [self fetchAvailableProducts];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.title = @"Payment";
     self.navigationController.navigationBarHidden = NO;
+
+    
+    [self.tableProductList setSeparatorColor:[UIColor whiteColor]];
+    [self.tableProductList setBackgroundColor:[UIColor clearColor]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma IN APP PURCHASE
 
 -(void)fetchAvailableProducts{
+    [self.view setUserInteractionEnabled:NO];
     NSSet *productIdentifiers = [NSSet
-                                 setWithObjects:ITEM_PURCHASE,nil];
+                                 setWithObjects:INAPP_PRODUCT_ID_1,INAPP_PRODUCT_ID_2,INAPP_PRODUCT_ID_3,nil];
     productsRequest = [[SKProductsRequest alloc]
                        initWithProductIdentifiers:productIdentifiers];
     productsRequest.delegate = self;
     [productsRequest start];
-    NSLog(@"product : %@",productIdentifiers);
+    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
 }
 
 - (BOOL)canMakePurchases
@@ -66,37 +70,35 @@
 -(void)paymentQueue:(SKPaymentQueue *)queue
 updatedTransactions:(NSArray *)transactions {
     for (SKPaymentTransaction *transaction in transactions) {
+        [self.view setUserInteractionEnabled:NO];
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchasing:
                 NSLog(@"Purchasing");
                 break;
             case SKPaymentTransactionStatePurchased:
             {
-                
-               //goi  API mua thanh cong
-                
+                [self.view setUserInteractionEnabled:YES];
+                NSLog(@"payment succedd");
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
             }
                 
-                break;
             case SKPaymentTransactionStateRestored:
-                NSLog(@"Restored ");
+            {
+                [self.view setUserInteractionEnabled:YES];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
+            }
             case SKPaymentTransactionStateFailed:
             {
-                
-                
-                //NSLog(@"Purchase failed %@",transaction.error.localizedDescription);
+                [self.view setUserInteractionEnabled:YES];
+
                 NSString *purchaseFail = [NSString stringWithFormat:@"%@",transaction.error.localizedDescription];
                 
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
                                           @"Purchase failed" message:purchaseFail delegate:
                                           self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
                 [alertView show];
-                //buttonBuy.enabled = YES;
-                
-                
             }
                 break;
             default:
@@ -108,25 +110,45 @@ updatedTransactions:(NSArray *)transactions {
 -(void)productsRequest:(SKProductsRequest *)request
     didReceiveResponse:(SKProductsResponse *)response
 {
-    SKProduct *validProduct = nil;
-    long count = [response.products count];
-    if (count>0) {
-        validProducts = response.products;
-        validProduct = [response.products objectAtIndex:0];
-        if ([validProduct.productIdentifier
-             isEqualToString:ITEM_PURCHASE]) {
-            NSLog(@"Product Title:%@. Product Price: %@. Product Description: %@. Product identifier:%@",validProduct.localizedTitle,validProduct.price,validProduct.localizedDescription,validProduct.productIdentifier);
-        }
-    } else {
-        UIAlertView *tmp = [[UIAlertView alloc]
-                            initWithTitle:@"Not Available"
-                            message:@"No products to purchase"
-                            delegate:self
-                            cancelButtonTitle:nil
-                            otherButtonTitles:@"Ok", nil];
-        [tmp show];
-    NSLog(@"-----------%@",validProducts);
+    [self.tableProductList setHidden:NO];
+    [self.view setUserInteractionEnabled:YES];
+        self.arrayValidProducts = response.products;
+        [self.tableProductList reloadData];
+    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
+}
+
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"PaymentCell";
+    PaymentCell *cell = (PaymentCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PaymentCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
+    SKProduct *unit =self.arrayValidProducts[indexPath.row];
+    cell.labelType.text =unit.localizedTitle;
+    cell.labelCost.text =[NSString stringWithFormat:@"$%@",unit.price];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell.labelCost setTextColor:[UIColor whiteColor]];
+    [cell.labelType setTextColor:[UIColor whiteColor]];
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrayValidProducts.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SKProduct *product =self.arrayValidProducts[indexPath.row];
+    [self purchaseMyProduct:product];
 }
 
 @end

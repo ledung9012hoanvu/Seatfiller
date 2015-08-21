@@ -28,23 +28,13 @@
     [self setDelegate:self];
     
     [self setTitle:@"Chat"];
-    
-    // Dummy data
     self.data =[[NSMutableArray alloc] init];
-    //[self getListComment];
-    
-    
-
-    
-    // Set a style
     [self setTableStyle:AMBubbleTableStyleFlat];
-    
     [self setBubbleTableOptions:@{AMOptionsBubbleDetectionType: @(UIDataDetectorTypeAll),
                                   AMOptionsBubblePressEnabled: @NO,
                                   AMOptionsBubbleSwipeEnabled: @NO,
                                   AMOptionsButtonTextColor: [UIColor colorWithRed:1.0f green:1.0f blue:184.0f/256 alpha:1.0f]}];
     
-    // Call super after setting up the options
     [super viewDidLoad];
     
     [self.tableView setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
@@ -81,54 +71,26 @@
                        //
                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
                        NSString *message = [dicCom valueForKey:@"comment"];
-//                       if (message.length>0) {
-//                           [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
-//                       }else {
-//                           [dicComUser setObject:@"" forKey:@"text"];
-//                       }
-                      // [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
                        [dicComUser setObject:@"1" forKey:@"type"];
                        [dicComUser setObject:self.app.seatUser.lastName forKey:@"username"];
                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
                        [dicComUser setObject:[UIColor greenColor] forKey:@"color"];
-                       
-                       
-                       
                        [self.data addObject:dicComUser];
                        
                    }else {
                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
                        [dicComUser setObject:@"2" forKey:@"type"];
-                      // NSString *message = [dicCom valueForKey:@"comment"];
-//                       if (message.length>0) {
-//                           [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
-//                       }else {
-//                           [dicComUser setObject:@"" forKey:@"text"];
-//                       }
                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
-                       
                        [dicComUser setObject:self.bookTic.byDisplayName forKey:@"username"];
                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
                        [dicComUser setObject:[UIColor blueColor] forKey:@"color"];
-                       
-                       
-
                        [self.data addObject:dicComUser];
-                       
-                       
                        }
                    [self.tableView reloadData];
                    [self scrollToBottomAnimated:NO];
-
-                   
-                   
                }
-               
-               
-               
            }
-           
        }
    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
        [self alertFail:@"Can't loading message" andTitle:@"Error"];
@@ -152,17 +114,6 @@
     return arrComment;
     
 }
-
-//- (void)fakeMessages
-//{
-//
-//    NSLog(@"fake message");
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self didSendText:@"Fake message here!"];
-//        [self fakeMessages];
-//    });
-//}
-
 
 - (void)swipedCellAtIndexPath:(NSIndexPath *)indexPath withFrame:(CGRect)frame andDirection:(UISwipeGestureRecognizerDirection)direction
 {
@@ -188,14 +139,7 @@
 
 - (NSDate *)timestampForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
-    
     return [self converFromTimeStamp:self.data[indexPath.row][@"time"]];
-    
-    
-    //return [NSDate date];
-    
-    
 }
 
 - (UIImage*)avatarForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -218,21 +162,6 @@
         [af POST:link parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (operation.response.statusCode==200) {
                 [self getlastComment];
-                
-//                [self.data addObject:@{ @"text": text,
-//                                        @"date": [NSDate date],
-//                                        @"type": @(AMBubbleCellSent),
-//                                        @"time": [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]],
-//                                        @"color": [UIColor greenColor]
-//                                        }];
-//                
-//                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.data.count - 1) inSection:0];
-//                [self.tableView beginUpdates];
-//                [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-//                [self.tableView endUpdates];
-//                // Either do this:
-//                [self scrollToBottomAnimated:YES];
-                
                 
             }else {
                 [self alertFail:@"Can't chat, Try again" andTitle:@"Error"];
@@ -282,17 +211,10 @@
         
     }else {
         NSDictionary *lastMessage = [self.data lastObject];
-        //        if ([[lastMessage[@"id"]].intValue>0) {
-        //            self.idLastMessage = lastMessage[@"id"];
-        //        }
         NSString *lastMessageString = lastMessage[@"id"];
         if (lastMessageString.intValue>0) {
             self.idLastMessage=lastMessageString;
         }
-        
-        
-        
-        //NSLog(@"id last message %@",self.idLastMessage);
         
     }
     [self getlastComment];
@@ -304,9 +226,7 @@
 {
     NSLog(@"get last");
     self.app = [[UIApplication sharedApplication]delegate];
-    
     NSString *link =[NSString stringWithFormat:@"%@%@%@&book_id=%@&type=seller",SEATSEVERADDRESS,API_GET_LISTCOMMENT,self.app.seatUser.token,self.bookTic.sid];
-    
     NSLog(@"link get comment:%@",link);
     AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
     af.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -334,10 +254,6 @@
                             //[dicComUser setObject:[UIColor greenColor] forKey:@"color"];
                             [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
                             self.idLastMessage = lastMess;
-                            
-                            
-                            
-                            
                             [self.data addObject:dicComUser];
                             
                         }else {
@@ -349,25 +265,12 @@
                             //[dicComUser setObject:[UIColor blueColor] forKey:@"color"];
                             [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
                             self.idLastMessage = lastMess;
-                            
-                            
-                            
-                            
                             [self.data addObject:dicComUser];
-                            
-                            
                         }
                         [self.tableView reloadData];
                         [self scrollToBottomAnimated:NO];
                     }
-                    
-                    
-                    
-                    
                 }
-                
-                
-                
             }
             
         }

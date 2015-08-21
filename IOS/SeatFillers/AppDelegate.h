@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SeatUser.h"
 #import "AMBubbleTableViewController.h"
+#import "SEConfig.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic,strong) SeatUser * seatUser;
-
-@property(nonatomic,strong) NSMutableDictionary *dictionaryCiteState;
-@property (nonatomic,strong) NSMutableArray *ListArray;
-@property (nonatomic,strong) NSMutableArray *BuyerTicketArray;
+@property (nonatomic, strong) NSMutableDictionary *dictionaryCiteState;
+@property (nonatomic, strong) NSMutableArray *ListArray;
+@property (nonatomic, strong) NSMutableArray *BuyerTicketArray;
 
 
+
+@property (nonatomic, strong) SeatUser * seatUser;
 @end
 

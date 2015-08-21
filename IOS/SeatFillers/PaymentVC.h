@@ -9,17 +9,23 @@
 #import "ViewController.h"
 #import <StoreKit/StoreKit.h>
 
-@interface PaymentVC : ViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate>{
-    
-    //IN APP PURCHASE
-    SKProductsRequest *productsRequest;
-    NSArray *validProducts;
+
+
+#define INAPP_PRODUCT_ID_1 @"HoanVu.Type1"
+#define INAPP_PRODUCT_ID_2 @"HoanVu.Type2"
+#define INAPP_PRODUCT_ID_3 @"HoanVu.Type3"
+
+
+@interface PaymentVC : ViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate,UITableViewDelegate,UITableViewDataSource>{
+        SKProductsRequest *productsRequest;
 }
-//In APP Purchase
+@property(nonatomic,strong) NSArray *arrayValidProducts;
+
 
 - (void)fetchAvailableProducts;
 - (BOOL)canMakePurchases;
 - (void)purchaseMyProduct:(SKProduct*)product;
+@property (weak, nonatomic) IBOutlet UITableView *tableProductList;
 
 
 @end

@@ -78,11 +78,9 @@
     
     
 }
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"receipush user info *@",userInfo);
-    
-    
-    
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVER_MESSAGE object:userInfo];
 }
 
 - (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex

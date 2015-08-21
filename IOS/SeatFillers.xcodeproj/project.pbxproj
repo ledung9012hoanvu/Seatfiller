@@ -18,6 +18,8 @@
 		394FE49D1B799ECC00ECCEC7 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394FE49C1B799ECC00ECCEC7 /* FBSDKShareKit.framework */; };
 		394FE49F1B799EE100ECCEC7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394FE49E1B799EE000ECCEC7 /* FBSDKLoginKit.framework */; };
 		396918201B317CE900DCDD92 /* SeatAller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969181F1B317CE900DCDD92 /* SeatAller.m */; };
+		396FB8581B7D955E005F735A /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FB8561B7D955E005F735A /* PaymentCell.m */; };
+		396FB8591B7D955E005F735A /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396FB8571B7D955E005F735A /* PaymentCell.xib */; };
 		3972CF041B37A354002CA1A1 /* ChattingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3972CF021B37A354002CA1A1 /* ChattingList.m */; };
 		397A837A1B50D26500B361A7 /* Policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 397A83761B50D26500B361A7 /* Policy.pdf */; };
 		397A837B1B50D26500B361A7 /* Privacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 397A83771B50D26500B361A7 /* Privacy.pdf */; };
@@ -31,6 +33,7 @@
 		39D3DB871B57D4190004D5E2 /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB861B57D4190004D5E2 /* SignUp.xib */; };
 		39D3DB891B57D4270004D5E2 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB881B57D4270004D5E2 /* SignIn.xib */; };
 		39D3DB8B1B57D44C0004D5E2 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB8A1B57D44C0004D5E2 /* ForgotPass.xib */; };
+		39DB1B161B86DE62002643FF /* SEConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DB1B151B86DE62002643FF /* SEConfig.m */; };
 		434E8AF41B58DFA900D5CE1A /* SellerImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 434E8AF21B58DFA900D5CE1A /* SellerImage.m */; };
 		434E8AF51B58DFA900D5CE1A /* SellerImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434E8AF31B58DFA900D5CE1A /* SellerImage.xib */; };
 		434E8AF91B590AAC00D5CE1A /* SellerMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 434E8AF71B590AAC00D5CE1A /* SellerMap.m */; };
@@ -252,6 +255,9 @@
 		394FE49E1B799EE000ECCEC7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../FacebookSDKs-iOS-20150810/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		3969181E1B317CE900DCDD92 /* SeatAller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeatAller.h; path = ../SeatAller.h; sourceTree = "<group>"; };
 		3969181F1B317CE900DCDD92 /* SeatAller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeatAller.m; path = ../SeatAller.m; sourceTree = "<group>"; };
+		396FB8551B7D955E005F735A /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
+		396FB8561B7D955E005F735A /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
+		396FB8571B7D955E005F735A /* PaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		3972CF011B37A354002CA1A1 /* ChattingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChattingList.h; sourceTree = "<group>"; };
 		3972CF021B37A354002CA1A1 /* ChattingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChattingList.m; sourceTree = "<group>"; };
 		397A83761B50D26500B361A7 /* Policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Policy.pdf; sourceTree = "<group>"; };
@@ -266,6 +272,8 @@
 		39D3DB861B57D4190004D5E2 /* SignUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUp.xib; path = ../SignUp.xib; sourceTree = "<group>"; };
 		39D3DB881B57D4270004D5E2 /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignIn.xib; path = ../SignIn.xib; sourceTree = "<group>"; };
 		39D3DB8A1B57D44C0004D5E2 /* ForgotPass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
+		39DB1B141B86DE62002643FF /* SEConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEConfig.h; sourceTree = "<group>"; };
+		39DB1B151B86DE62002643FF /* SEConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEConfig.m; sourceTree = "<group>"; };
 		434E8AF11B58DFA900D5CE1A /* SellerImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerImage.h; sourceTree = "<group>"; };
 		434E8AF21B58DFA900D5CE1A /* SellerImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerImage.m; sourceTree = "<group>"; };
 		434E8AF31B58DFA900D5CE1A /* SellerImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellerImage.xib; sourceTree = "<group>"; };
@@ -1019,6 +1027,11 @@
 		51DDB01B1B293EC90023A53F = {
 			isa = PBXGroup;
 			children = (
+				39DB1B141B86DE62002643FF /* SEConfig.h */,
+				39DB1B151B86DE62002643FF /* SEConfig.m */,
+				396FB8551B7D955E005F735A /* PaymentCell.h */,
+				396FB8561B7D955E005F735A /* PaymentCell.m */,
+				396FB8571B7D955E005F735A /* PaymentCell.xib */,
 				394FE49E1B799EE000ECCEC7 /* FBSDKLoginKit.framework */,
 				394FE49C1B799ECC00ECCEC7 /* FBSDKShareKit.framework */,
 				394FE49A1B799EB200ECCEC7 /* FBSDKMessengerShareKit.framework */,
@@ -1216,7 +1229,7 @@
 				TargetAttributes = {
 					51DDB0231B293EC90023A53F = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 5TP8PA3939;
+						DevelopmentTeam = 2M657QX4KB;
 					};
 					51DDB03C1B293ECA0023A53F = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1335,6 +1348,7 @@
 				51DDB0501B293FC70023A53F /* AFNetworking in Resources */,
 				43BF09361B5DF7D70014464C /* imageInput.png in Resources */,
 				43C686DF1B5F73BA00DD5F93 /* ListUserChat.xib in Resources */,
+				396FB8591B7D955E005F735A /* PaymentCell.xib in Resources */,
 				43BF09411B5DF7D70014464C /* messageBubbleHighlighted@2x.png in Resources */,
 				43BF094D1B5DF8B30014464C /* ChatDetail.xib in Resources */,
 				51CA8F9C1B583B20002F2EFA /* ChatHistoryCell.xib in Resources */,
@@ -1396,6 +1410,7 @@
 				517CECEC1B2EE64B00367064 /* CHCSVParser.m in Sources */,
 				43C686DE1B5F73BA00DD5F93 /* ListUserChat.m in Sources */,
 				5115F9FA1B400E3B007C0DA8 /* RMCustomViewActionController.m in Sources */,
+				39DB1B161B86DE62002643FF /* SEConfig.m in Sources */,
 				518BD9E21B29855A003CE89B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				51DDB0301B293ECA0023A53F /* ViewController.m in Sources */,
 				51F46F3E1B2CBED10063F123 /* BuyerSearch.m in Sources */,
@@ -1425,6 +1440,7 @@
 				51DDB0721B296BB40023A53F /* SignIn.m in Sources */,
 				518BD9CD1B298454003CE89B /* SeatFillerDesign.m in Sources */,
 				5179766B1B29FD9C006F7A29 /* AFURLConnectionOperation.m in Sources */,
+				396FB8581B7D955E005F735A /* PaymentCell.m in Sources */,
 				51CA8FA21B583D7F002F2EFA /* SeatTicket.m in Sources */,
 				43C686E21B5F8BA300DD5F93 /* BookTicket.m in Sources */,
 				517CECD31B2EBB4B00367064 /* NSDate+Compare.m in Sources */,
@@ -1529,8 +1545,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hai Truong (VEWX939Z4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hai Truong (VEWX939Z4G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1552,7 +1568,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a3a975d5-91fd-4ca9-a064-858916ca7f7e";
+				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1574,8 +1590,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hai Truong (VEWX939Z4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hai Truong (VEWX939Z4G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1590,7 +1606,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "a3a975d5-91fd-4ca9-a064-858916ca7f7e";
+				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1600,8 +1616,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hoangquocan/Documents/FacebookSDK,
@@ -1611,7 +1627,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1620,8 +1636,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jerry Crockett (99P54Z3LN2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hoangquocan/Documents/FacebookSDK,
@@ -1631,7 +1647,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
