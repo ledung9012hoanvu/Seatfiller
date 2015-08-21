@@ -41,8 +41,6 @@
 		434E8AFA1B590AAC00D5CE1A /* SellerMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434E8AF81B590AAC00D5CE1A /* SellerMap.xib */; };
 		438073451B68E4B8004D1840 /* BuyerListChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 438073431B68E4B8004D1840 /* BuyerListChat.m */; };
 		438073461B68E4B8004D1840 /* BuyerListChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438073441B68E4B8004D1840 /* BuyerListChat.xib */; };
-		4380734A1B68E519004D1840 /* BuyerChatDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 438073481B68E519004D1840 /* BuyerChatDetail.m */; };
-		4380734B1B68E519004D1840 /* BuyerChatDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438073491B68E519004D1840 /* BuyerChatDetail.xib */; };
 		4396B8E91B6C792C0037AE2F /* About.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4396B8E81B6C792C0037AE2F /* About.pdf */; };
 		4396B8EB1B6CA0C30037AE2F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4396B8EA1B6CA0C30037AE2F /* MessageUI.framework */; };
 		4396E4241B59FFA8002024B3 /* research.png in Resources */ = {isa = PBXBuildFile; fileRef = 4396E4231B59FFA8002024B3 /* research.png */; };
@@ -286,9 +284,6 @@
 		438073421B68E4B8004D1840 /* BuyerListChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerListChat.h; sourceTree = "<group>"; };
 		438073431B68E4B8004D1840 /* BuyerListChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerListChat.m; sourceTree = "<group>"; };
 		438073441B68E4B8004D1840 /* BuyerListChat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerListChat.xib; sourceTree = "<group>"; };
-		438073471B68E519004D1840 /* BuyerChatDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerChatDetail.h; sourceTree = "<group>"; };
-		438073481B68E519004D1840 /* BuyerChatDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerChatDetail.m; sourceTree = "<group>"; };
-		438073491B68E519004D1840 /* BuyerChatDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerChatDetail.xib; sourceTree = "<group>"; };
 		4396B8E81B6C792C0037AE2F /* About.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = About.pdf; sourceTree = "<group>"; };
 		4396B8EA1B6CA0C30037AE2F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4396B8EC1B6CDECE0037AE2F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -813,9 +808,6 @@
 				438073421B68E4B8004D1840 /* BuyerListChat.h */,
 				438073431B68E4B8004D1840 /* BuyerListChat.m */,
 				438073441B68E4B8004D1840 /* BuyerListChat.xib */,
-				438073471B68E519004D1840 /* BuyerChatDetail.h */,
-				438073481B68E519004D1840 /* BuyerChatDetail.m */,
-				438073491B68E519004D1840 /* BuyerChatDetail.xib */,
 			);
 			name = Buyer;
 			sourceTree = "<group>";
@@ -1294,7 +1286,6 @@
 				397A837B1B50D26500B361A7 /* Privacy.pdf in Resources */,
 				43BF09321B5DF7D70014464C /* imageBar.png in Resources */,
 				434E8AFA1B590AAC00D5CE1A /* SellerMap.xib in Resources */,
-				4380734B1B68E519004D1840 /* BuyerChatDetail.xib in Resources */,
 				43BF093D1B5DF7D70014464C /* messageBubbleGray@2x.png in Resources */,
 				510A658C1B41C04400F059F3 /* MGCDPImages.xcassets in Resources */,
 				43BF09431B5DF7D70014464C /* messageBubbleTyping@2x.png in Resources */,
@@ -1486,7 +1477,6 @@
 				517CECD81B2EBB4B00367064 /* NSDate+Time.m in Sources */,
 				518BD9E31B29855A003CE89B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3929C3A71B7C9B2C009006D4 /* UIView+LeafUI.m in Sources */,
-				4380734A1B68E519004D1840 /* BuyerChatDetail.m in Sources */,
 				517CECA51B2EB63900367064 /* TTTNameFormatter.m in Sources */,
 				517CECF01B2EEDA600367064 /* USCityReader.m in Sources */,
 				438073451B68E4B8004D1840 /* BuyerListChat.m in Sources */,

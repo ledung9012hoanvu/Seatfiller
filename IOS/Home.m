@@ -79,9 +79,7 @@
     [SeatFillerDesign buttonStyleWithGreenColor:self.btLogOut];
     [SeatService boundView:self.Im_buyTic];
     [SeatService boundView:self.Im_searchTic];
-    
     [[UITabBar appearance] setTintColor:[SeatFillerDesign greenNavi]];
-   // [[UITabBar appearance] setBarTintColor:[UIColor yellowColor]];
 }
 -(IBAction)btBuyerPress:(id)sender
 {
@@ -180,11 +178,9 @@
             NSDictionary *dicResult = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             NSString *result = dicResult[@"status"];
             if (result.intValue==1) {
-                //push to view seller
                 [self goToSellerPage];
                 
             }else {
-                //chua thanh toan hien alert
                 UIAlertView *alertNotPay = [[UIAlertView alloc]initWithTitle:@"Payment" message:@"The Seller's account needs to be updated. Would you like to updated your account" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 alertNotPay.tag = 105;
                 [alertNotPay show];

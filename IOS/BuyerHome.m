@@ -18,7 +18,6 @@
 #import "BuyerSearch.h"
 #import "SellerHome.h"
 #import "BuyerRequetstTicket.h"
-#import "BuyerChatDetail.h"
 #import "SEConfig.h"
 @interface BuyerHome () <UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) BuyerRequetstTicket *buyerRequestTicket;
@@ -236,10 +235,8 @@
             buyerRequest.fromBuyerHome = YES;
             [self.navigationController pushViewController:buyerRequest animated:YES];
         }
-        if (buttonIndex==2) {
-            BuyerChatDetail *buyerChatDetail = [[BuyerChatDetail alloc]init];
-            buyerChatDetail.seatic = self.ticketArray[self.seletedIndex];
-            [self.navigationController pushViewController:buyerChatDetail animated:YES];
+        if (buttonIndex==2)
+        {
         }
         if (buttonIndex==3) {
             UIAlertView *alertDelete =[[UIAlertView alloc]initWithTitle:@"DELETE" message:@"Are You Sure Want To Delete?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];

@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"-------------ChatDetail---------");
+    
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
     [self setDataSource:self];

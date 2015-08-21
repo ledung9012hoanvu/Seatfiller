@@ -20,41 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SeatFillerDesign viewGeneralWithBlueHeader:self.mTableView];
-    
-    
-    
-    
-    
-    
-    
-    
-    // Do any additional setup after loading the view from its nib.
     _chatHistoryArr=[NSMutableArray array];
-   // [_mTableView registerChatHistoryCell];
     [self initData];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-   
     [super viewWillAppear:animated];
-    //NSLog(@"view will appear chattingList");
-    
     [self.tabBarController setTitle:@"Chatting List"];
     self.navigationController.navigationBarHidden=NO;
-  
-    
-    
 }
 
 
 -(void)initData{
     self.app = [[UIApplication sharedApplication]delegate];
     self.chatHistoryArr = self.app.ListArray;
-    
-
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,23 +62,15 @@
     cell.eventLabel.text = seatTic.title;
     cell.subTextLabel.text = @"";
     cell.noMessageLabel.text = seatTic.interested;
-    
-    
-
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-
     SeatTicket *seatTic = self.chatHistoryArr[indexPath.row];
     if (seatTic.interested.intValue>0) {
         ListUserChat *listUserChat = [[ListUserChat alloc]init];
         
         listUserChat.ticket_id = seatTic.sId;
         listUserChat.title = seatTic.title;
-        
-        
-        
         [self.navigationController pushViewController:listUserChat animated:YES];
     }
     

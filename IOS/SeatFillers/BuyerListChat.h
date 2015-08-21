@@ -13,7 +13,6 @@
 #import "SeatService.h"
 #import "SeatFillerDesign.h"
 #import "SeatTicket.h"
-#import "BuyerChatDetail.h"
 #import "BuyerHome.h"
 @interface BuyerListChat : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbLishChat;

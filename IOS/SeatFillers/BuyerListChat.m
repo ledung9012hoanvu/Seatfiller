@@ -8,7 +8,7 @@
 
 #import "BuyerListChat.h"
 #import "BuyerHome.h"
-
+#import "ChatDetail.h"
 @interface BuyerListChat ()
 
 @end
@@ -47,15 +47,12 @@
     SeatTicket *unitSeatTicket = self.arrayUserChat[indexPath.row];
     cell.textLabel.text = unitSeatTicket.byUser;
     return cell;
-    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.arrayUserChat.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    BuyerChatDetail *buyerChatDe = [[BuyerChatDetail alloc]init];
-    buyerChatDe.seatic = self.arrayUserChat[indexPath.row];
-    [self.navigationController pushViewController:buyerChatDe animated:YES];
+    ChatDetail *chatDetail = [[ChatDetail alloc]init];
 }
 
 
