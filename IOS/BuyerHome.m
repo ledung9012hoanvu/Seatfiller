@@ -19,7 +19,7 @@
 #import "SellerHome.h"
 #import "BuyerRequetstTicket.h"
 #import "BuyerChatDetail.h"
-
+#import "SEConfig.h"
 @interface BuyerHome () <UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) BuyerRequetstTicket *buyerRequestTicket;
 
@@ -33,22 +33,20 @@
     
     [super viewDidLoad];
     [self seatFillerDesign];
-    _tableViewListTicket.separatorStyle=UITableViewCellSeparatorStyleNone;
-    
+    [self getListTicket];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(submitTicket) name:NOTIFICATION_KEY_SUMMIT_TICKET object:nil];
 }
-
+-(void)submitTicket
+{
+    [self getListTicket];
+    [SEConfig postNotify:NOTIFICATION_KEY_CHANGE_TICKET];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
-    
     self.tabBarController.title =@"Buyer Home";
-    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"Search"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(gotoSearch)];
-    
+    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleBordered target:self action:@selector(gotoSearch)];
     self.tabBarController.navigationItem.rightBarButtonItem = btnCancel;
-    [self fillData];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -73,23 +71,16 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *simpleTableIdentifier = @"ListTicketCell";
-    
     ListTicketCell *cell = (ListTicketCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListTicketCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
     SeatTicket *ticket =self.ticketArray [indexPath.row];
     [cell setFrame:CGRectMake(0, 0, self.tableViewListTicket.frame.size.width, 60)];
-    
-    
-
     cell.lbDate.text = ticket.startDate;
-    
     cell.lbName.text =ticket.typeName;
     cell.lbDescription.text=ticket.title;
     cell.lbRange.text =[NSString stringWithFormat:@"$%@",ticket.priceRange];
@@ -105,8 +96,6 @@
         [cell setBackgroundColor:[ListTicketCell browColor]];
     }
     [cell setFrame:CGRectMake(0, 0, self.tableViewListTicket.frame.size.width, 50)];
-    
-    
     CGFloat lbWidth = self.tableViewListTicket.frame.size.width/7-2;
     [cell.lbName setFrame:CGRectMake(  lbWidth*0,0,lbWidth, 60)];
     [cell.lbDescription setFrame:CGRectMake(  lbWidth*1,0,lbWidth, 60)];
@@ -117,7 +106,6 @@
     [cell.lbRange setFrame:CGRectMake(lbWidth*6,0,lbWidth, 60)];
     return cell;
 }
-
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -134,7 +122,6 @@
 {
     return 50;
 }
-
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -182,31 +169,19 @@
     return headerView;
 }
 
-
-
--(void)fillData
+-(void)getListTicket
 {
     self.ticketArray =nil;
     self.ticketArray =[[NSMutableArray alloc]init];
     AppDelegate *app =[[UIApplication sharedApplication]delegate];
     self.lbTitle.text = [NSString stringWithFormat:@"%@ has requested tickets for the following events",app.seatUser.userName];
-    [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListTicket withParameters:[SeatUser dictionaryFromSeatUser:app.seatUser] onSuccess:^(SeatServiceResult *result) {
-        NSArray *dicArr=[result.dictionaryResponse objectForKey:@"data"];
-        if (dicArr.count!=0) {
-            for (int i=0; i<dicArr.count; i++) {
-                NSMutableDictionary *dic=[dicArr objectAtIndex:i];
-                SeatTicket *seatObj=[SeatTicket ticketFromDictionary:dic];
-                [self.ticketArray addObject:seatObj];
-                seatObj =nil;
-                dic=nil;
-            }
-            app.BuyerTicketArray = self.ticketArray;
-            
-            [_tableViewListTicket reloadData];
-        }
-
-    } onFailure:^(NSError *err) {
-        
+    [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListTicket withParameters:[SeatUser dictionaryFromSeatUser:app.seatUser] onSuccess:^(SeatServiceResult *result)
+    {
+        NSLog(@"-----BuyerHome------GetListTicket : %@",result.dictionaryResponse);
+        self.ticketArray =[NSMutableArray arrayWithArray:[SeatTicket arrayTicketFromDictionary:result.dictionaryResponse]];
+        [self.tableViewListTicket reloadData];
+    } onFailure:^(NSError *err)
+    {
     }];
 }
 
@@ -214,20 +189,15 @@
 {
     [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.tableViewListTicket];
     [self.tableViewListTicket setBackgroundColor:[UIColor clearColor]];
+    _tableViewListTicket.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
 
-
-
-
-- (IBAction)btnSearchPress:(id)sender {
-}
 - (IBAction)btReportSeller:(id)sender {
     UIAlertView *alertReport =[[UIAlertView alloc]initWithTitle:@"Do you still want to report a user?" message:@"Please review Seat Fillers Terms of Use Policy. If you feel the Seat Fillers' user has violated the terms specifically based on Paragraph 9, section d, please report this user" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     alertReport.tag = 102;
     [alertReport show];
-    
-    
 }
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag==102) {//alert report
         if (buttonIndex==1) {
@@ -287,7 +257,6 @@
 - (void)CancelBookingTicket{
     AppDelegate *app =[[UIApplication sharedApplication]delegate];
     SeatTicket *seatTic = self.ticketArray[self.seletedIndex];
-    //NSLog(@"token %@ va book_id %@",app.seatUser.token,seatTic.bookId);
     NSString *link =[NSString stringWithFormat:@"http://52.68.134.162/api/ticketbook/cancel?token=%@&book_id=%@",app.seatUser.token,seatTic.bookId];
     AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
     af.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -299,6 +268,7 @@
             [SeatService alertFail:@"Cancel Booking" andTitle:@""];
             [self.ticketArray removeObjectAtIndex:self.seletedIndex];
             [self.tableViewListTicket reloadData];
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_KEY_CANCEL_TICKET object:nil];
             
         }else {
             [SeatService alertFail:@"Delete Error" andTitle:@"Error"];

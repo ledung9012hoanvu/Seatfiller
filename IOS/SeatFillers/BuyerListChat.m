@@ -7,7 +7,7 @@
 //
 
 #import "BuyerListChat.h"
-
+#import "BuyerHome.h"
 
 @interface BuyerListChat ()
 
@@ -18,28 +18,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpInterFace];
-    
+    self.buyerHome =self.tabBarController.viewControllers[0];
     [self fillData];
-    
-    
-    // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillData) name:NOTIFICATION_KEY_CHANGE_TICKET object:nil];
 }
 - (void)setUpInterFace{
     self.navigationItem.title = @"Buyer Chatting";
     [SeatFillerDesign viewGeneralWithBlueHeader:self.tbLishChat];
-    
-    
 }
-- (void)fillData{
-    self.app = [[UIApplication sharedApplication]delegate];
-    self.ListBuyerChat = self.app.BuyerTicketArray;
-    
-    
+- (void)fillData
+{
+    self.arrayUserChat =[NSMutableArray arrayWithArray:self.buyerHome.ticketArray];
+    [self.tbLishChat reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -50,32 +44,19 @@
     if (cell==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellChat"];
     }
-    SeatTicket *seatic = self.ListBuyerChat[indexPath.row];
-    
-    cell.textLabel.text = seatic.byUser;
-    
+    SeatTicket *unitSeatTicket = self.arrayUserChat[indexPath.row];
+    cell.textLabel.text = unitSeatTicket.byUser;
     return cell;
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.ListBuyerChat.count;
-    
+    return self.arrayUserChat.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"click buyer chat detail");
     BuyerChatDetail *buyerChatDe = [[BuyerChatDetail alloc]init];
-    buyerChatDe.seatic = self.ListBuyerChat[indexPath.row];
+    buyerChatDe.seatic = self.arrayUserChat[indexPath.row];
     [self.navigationController pushViewController:buyerChatDe animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

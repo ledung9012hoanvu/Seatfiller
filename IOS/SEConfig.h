@@ -15,12 +15,13 @@
 
 
 #define NOTIFICATION_KEY_RECEIVER_MESSAGE @"ReceiverMessage"
-
-
+#define NOTIFICATION_KEY_CANCEL_TICKET @"CancelTicket"
+#define NOTIFICATION_KEY_SUMMIT_TICKET @"SubmitTicket"
+#define NOTIFICATION_KEY_CHANGE_TICKET @"ChangeTIcket"
 
 
 
 
 @interface SEConfig : NSObject
-
++(void)postNotify:(NSString*)key;
 @end

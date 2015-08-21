@@ -9,5 +9,8 @@
 #import "SEConfig.h"
 
 @implementation SEConfig
-
++(void)postNotify:(NSString *)key
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:key object:nil];
+}
 @end

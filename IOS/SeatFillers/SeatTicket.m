@@ -30,25 +30,27 @@
     seatTicket.city = [SeatTicket null2Empty:[dictionary valueForKey:TICKET_CITY]];
     seatTicket.expiryDate = [SeatTicket null2Empty:[dictionary valueForKey:@"expiry_date"]];
     seatTicket.imageURLString = [dictionary valueForKey:@"image"];
-    
     seatTicket.lat = [SeatTicket null2Empty:[dictionary valueForKey:@"lat"]];
     seatTicket.lng = [SeatTicket null2Empty:[dictionary valueForKey:@"lng"]];
     seatTicket.bookId = [SeatTicket null2Empty:[dictionary valueForKey:@"book_id"]];
     seatTicket.interested =[SeatTicket null2Empty:[dictionary valueForKey:@"interest"]];
     seatTicket.byUser = [SeatTicket null2Empty:[dictionary valueForKey:@"by_user"]];
     seatTicket.userId = [SeatTicket null2Empty:[dictionary valueForKey:@"user_id"]];
-    
-    
-    
-    
-    
-    
-    
-    
-    
     return seatTicket;
 }
 
++(NSMutableArray*)arrayTicketFromDictionary:(NSMutableDictionary*)dictionary
+{
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    NSArray *dataArray=[dictionary objectForKey:@"data"];
+        for (int i=0; i<dataArray.count; i++)
+        {
+            SeatTicket *unit=[SeatTicket ticketFromDictionary:[dataArray objectAtIndex:i]];
+            [array addObject:unit];
+            unit=nil;
+        }
+    return array;
+}
 +(NSString*)null2Empty:(NSString*)string
 {
     if([[NSString stringWithFormat:@"%@", string] isEqualToString:@"<null>"])

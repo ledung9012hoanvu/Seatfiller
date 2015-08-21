@@ -8,7 +8,7 @@
 
 #import "BuyerRequetstTicket.h"
 #import "AFHTTPRequestOperationManager.h"
-
+#import "SEConfig.h"
 @interface BuyerRequetstTicket ()
 
 @end
@@ -94,6 +94,7 @@
                 NSString *result = dicResult[@"status"];
                 if (result.intValue==1) {
                     [SeatService alertFail:@"Submit Successfull" andTitle:@""];
+                    [SEConfig postNotify:NOTIFICATION_KEY_SUMMIT_TICKET];
                     NSUInteger ownIndex = [self.navigationController.viewControllers indexOfObject:self];
                     if (self.fromBuyerHome) {
                         [self.navigationController popViewControllerAnimated:YES];

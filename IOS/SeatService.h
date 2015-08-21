@@ -18,7 +18,6 @@
 @property(nonatomic,strong) NSString *message;
 @property(nonatomic,strong) NSString *error;
 @property(nonatomic,strong) NSMutableDictionary *dictionaryResponse;
-
 @end
 
 
@@ -31,7 +30,9 @@ typedef enum
     SeatAPISetting,
     SeatAPISearchTicket,
     SeatAPIGetListTicket,
-    SeatAPIAddTicket
+    SeatAPIAddTicket,
+    SeatAPIGetListComment,
+    SeatAPIComment
 } SeatAPIService;
 +(instancetype)sharedClient;
 +(AFHTTPRequestOperation*)callWebserviceAtRequestPOST:(BOOL)isPOST andApi:(SeatAPIService)path withParameters:(NSMutableDictionary *)params onSuccess:(void (^)(SeatServiceResult* result))successHandler onFailure:(void (^)(NSError *err))errorHandler;

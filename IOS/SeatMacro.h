@@ -32,20 +32,18 @@
 #define TICKET_NOTE                 @"note"
 #define TICKET_QTY                  @"qty"
 #define TICKET_TYPE                  @"type"
-
 #define TICKET_STATE                 @"state"
 #define TICKET_CITY                  @"city"
 
 
-
-
+#define API_KEY_BOOK_ID @"book_id"
+#define API_KEY_USER_TYPE @"type"
 
 #define USER_ID             @"user_id"
 #define USER_NAME           @"username"
 #define USER_EMAIL          @"email"
 #define USER_PASS           @"password"
 #define USER_REPASS         @"repassword"
-
 #define USER_TYPE           @"type"
 #define USER_FIRSTNAME      @"first_name"
 #define USER_LASTNAME       @"last_name"
@@ -102,8 +100,8 @@
 #define API_SEARCH                  @"/api/ticket/search?token="
 #define API_DELETE_TICKET           @"/api/ticket/delete?token="
 #define API_UPDATE_TICKET           @"/api/ticket/update?token="
-#define API_LIST_COMMNET
-
+#define API_GET_LIST_COMMNET        @"/api/comment/getList"
+#define API_COMMENT                 @"/api/comment/replyTo"
 
 
 #define API_VIEW_TICKET           @"/api/ticketbook/view"
@@ -111,8 +109,6 @@
 #define FOLDER_IMAGE               @"http://52.68.134.162/www/uploads/events/"
 #define API_REPORT                 @"/api/user/sendReport?token="
 #define API_BOOK_USER_TICKET            @"/api/ticketbook/getListUserBook?token="
-#define API_GET_LISTCOMMENT         @"/api/comment/getList?token="
-#define API_COMMENT                 @"http://52.68.134.162/api/comment/replyTo?token="
 #define API_LIST_BUYER_TICKET       @"http://52.68.134.162/api/ticketbook/getList?token="
 #define API_SUBMIT_TICKET            @"http://52.68.134.162/api/ticket/bookTicket?token="
 
@@ -123,8 +119,6 @@
 #pragma mark-----------------------------clik add event
 #define CLICK_ADD_EVENT @"clickAddEvent"
 #define PUSH_SEAT @"PushSeat"
-
-
 #define PHOTO_LINK @"photoLink"
 #define NEWTOKEN @"newtoken"
 

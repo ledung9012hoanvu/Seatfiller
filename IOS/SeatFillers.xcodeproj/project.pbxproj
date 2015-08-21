@@ -33,6 +33,7 @@
 		39D3DB871B57D4190004D5E2 /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB861B57D4190004D5E2 /* SignUp.xib */; };
 		39D3DB891B57D4270004D5E2 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB881B57D4270004D5E2 /* SignIn.xib */; };
 		39D3DB8B1B57D44C0004D5E2 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D3DB8A1B57D44C0004D5E2 /* ForgotPass.xib */; };
+		39D978DC1B8715CA00953448 /* BookMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D978DB1B8715CA00953448 /* BookMessage.m */; };
 		39DB1B161B86DE62002643FF /* SEConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DB1B151B86DE62002643FF /* SEConfig.m */; };
 		434E8AF41B58DFA900D5CE1A /* SellerImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 434E8AF21B58DFA900D5CE1A /* SellerImage.m */; };
 		434E8AF51B58DFA900D5CE1A /* SellerImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434E8AF31B58DFA900D5CE1A /* SellerImage.xib */; };
@@ -272,6 +273,8 @@
 		39D3DB861B57D4190004D5E2 /* SignUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUp.xib; path = ../SignUp.xib; sourceTree = "<group>"; };
 		39D3DB881B57D4270004D5E2 /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignIn.xib; path = ../SignIn.xib; sourceTree = "<group>"; };
 		39D3DB8A1B57D44C0004D5E2 /* ForgotPass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
+		39D978DA1B8715CA00953448 /* BookMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMessage.h; sourceTree = "<group>"; };
+		39D978DB1B8715CA00953448 /* BookMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMessage.m; sourceTree = "<group>"; };
 		39DB1B141B86DE62002643FF /* SEConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEConfig.h; sourceTree = "<group>"; };
 		39DB1B151B86DE62002643FF /* SEConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEConfig.m; sourceTree = "<group>"; };
 		434E8AF11B58DFA900D5CE1A /* SellerImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerImage.h; sourceTree = "<group>"; };
@@ -1027,6 +1030,8 @@
 		51DDB01B1B293EC90023A53F = {
 			isa = PBXGroup;
 			children = (
+				39D978DA1B8715CA00953448 /* BookMessage.h */,
+				39D978DB1B8715CA00953448 /* BookMessage.m */,
 				39DB1B141B86DE62002643FF /* SEConfig.h */,
 				39DB1B151B86DE62002643FF /* SEConfig.m */,
 				396FB8551B7D955E005F735A /* PaymentCell.h */,
@@ -1445,6 +1450,7 @@
 				43C686E21B5F8BA300DD5F93 /* BookTicket.m in Sources */,
 				517CECD31B2EBB4B00367064 /* NSDate+Compare.m in Sources */,
 				43BF094C1B5DF8B30014464C /* ChatDetail.m in Sources */,
+				39D978DC1B8715CA00953448 /* BookMessage.m in Sources */,
 				43BF091E1B5DF7D70014464C /* AMBubbleFlatAccessoryView.m in Sources */,
 				517CECBC1B2EB6B300367064 /* DTTimePeriod.m in Sources */,
 				391E211D1B33AE3B00E4139D /* ListTicketCell.m in Sources */,
@@ -1624,7 +1630,7 @@
 					"/Users/hoanvu/Desktop/HoanVu/FacebookSDKs-iOS-20150810",
 				);
 				INFOPLIST_FILE = SeatFillers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";
@@ -1644,7 +1650,7 @@
 					"/Users/hoanvu/Desktop/HoanVu/FacebookSDKs-iOS-20150810",
 				);
 				INFOPLIST_FILE = SeatFillers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9c9438ca-f9cb-4c50-80f3-0bd3d3606724";

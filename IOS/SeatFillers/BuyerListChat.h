@@ -14,10 +14,12 @@
 #import "SeatFillerDesign.h"
 #import "SeatTicket.h"
 #import "BuyerChatDetail.h"
-
+#import "BuyerHome.h"
 @interface BuyerListChat : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbLishChat;
-@property (strong,nonatomic) NSMutableArray *ListBuyerChat;
-@property (strong,nonatomic) AppDelegate *app;
+
+
+@property (strong,nonatomic) NSMutableArray *arrayUserChat;
+@property(nonatomic, strong) BuyerHome *buyerHome;
 
 @end

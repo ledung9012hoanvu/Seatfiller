@@ -44,5 +44,6 @@
 
 +(SeatTicket*)ticketFromDictionary:(NSMutableDictionary*)dictionary;
 +(NSMutableDictionary*)dictionaryFromTicket:(SeatTicket*)ticket;
++(NSMutableArray*)arrayTicketFromDictionary:(NSMutableDictionary*)dictionary;
 
 @end

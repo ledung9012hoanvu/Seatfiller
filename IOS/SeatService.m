@@ -55,6 +55,11 @@
             break;
         case SeatAPIAddTicket:
             request = [API_CREATETICKET stringByAppendingString:seatUser.token];
+        case SeatAPIGetListComment:
+            request=API_GET_LIST_COMMNET;
+            break;
+        case SeatAPIComment:
+            request =API_COMMENT;
             break;
     }
     return request;

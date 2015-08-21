@@ -53,52 +53,52 @@
 
 
 - (void)getListComment{
-    self.app = [[UIApplication sharedApplication]delegate];
-    
-    NSString *link =[NSString stringWithFormat:@"%@%@%@&book_id=%@&type=buyer",SEATSEVERADDRESS,API_GET_LISTCOMMENT,self.app.seatUser.token,self.seatic.bookId];
-    AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
-    af.requestSerializer = [AFHTTPRequestSerializer serializer];
-    af.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [af GET:link parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //
-        if (operation.response.statusCode ==200) {
-            NSDictionary *dic_result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-            NSString *result = dic_result[@"status"];
-            if (result.intValue==1) {
-                NSArray *data = dic_result[@"data"];
-                self.arrListChat = [self arrChar:data];
-                for (int i=0; i<self.arrListChat.count; i++) {
-                    NSDictionary *dicCom = self.arrListChat[i];
-                    NSString *userId = dicCom[@"user_id"];
-                    if (userId.intValue==self.app.seatUser.userId.intValue) {
-                        //
-                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
-                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
-                        [dicComUser setObject:@"1" forKey:@"type"];
-                        [dicComUser setObject:self.app.seatUser.lastName forKey:@"username"];
-                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
-                        [dicComUser setObject:[UIColor greenColor] forKey:@"color"];
-                        [self.data addObject:dicComUser];
-                        
-                    }else {
-                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
-                        [dicComUser setObject:@"2" forKey:@"type"];
-                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
-                        [dicComUser setObject:self.seatic.byUser forKey:@"username"];
-                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
-                        [dicComUser setObject:[UIColor blueColor] forKey:@"color"];
-                        [self.data addObject:dicComUser];
-                    }
-                    [self.tableView reloadData];
-                    [self scrollToBottomAnimated:NO];
-                }
-            }
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self alertFail:@"Can't loading message" andTitle:@"Error"];
-    }];
-    
+//    self.app = [[UIApplication sharedApplication]delegate];
+//    NSString *link =[NSString stringWithFormat:@"%@%@%@&book_id=%@&type=buyer",SEATSEVERADDRESS,API_GET_LISTCOMMENT,self.app.seatUser.token,self.seatic.bookId];
+//    AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
+//    af.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    af.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [af GET:link parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        //
+//        if (operation.response.statusCode ==200) {
+//            NSDictionary *dic_result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+//            NSString *result = dic_result[@"status"];
+//            if (result.intValue==1) {
+//                NSArray *data = dic_result[@"data"];
+//                self.arrListChat = [self arrChar:data];
+//                for (int i=0; i<self.arrListChat.count; i++) {
+//                    NSDictionary *dicCom = self.arrListChat[i];
+//                    NSString *userId = dicCom[@"user_id"];
+//                    if (userId.intValue==self.app.seatUser.userId.intValue) {
+//                        //
+//                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
+//                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
+//                        [dicComUser setObject:@"1" forKey:@"type"];
+//                        [dicComUser setObject:self.app.seatUser.lastName forKey:@"username"];
+//                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
+//                        [dicComUser setObject:[UIColor greenColor] forKey:@"color"];
+//                        [self.data addObject:dicComUser];
+//                        
+//                    }else {
+//                        NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
+//                        [dicComUser setObject:@"2" forKey:@"type"];
+//                        [dicComUser setObject:[self null2Empty:[dicCom valueForKey:@"comment"]] forKey:@"text"];
+//                        [dicComUser setObject:self.seatic.byUser forKey:@"username"];
+//                        [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
+//                        [dicComUser setObject:[UIColor blueColor] forKey:@"color"];
+//                        [self.data addObject:dicComUser];
+//                    }
+//                    [self.tableView reloadData];
+//                    [self scrollToBottomAnimated:NO];
+//                }
+//            }
+//        }
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        [self alertFail:@"Can't loading message" andTitle:@"Error"];
+//    }];
 }
+
+
 - (NSMutableArray*)arrChar:(NSArray*)arrData{
     NSMutableArray *arrComment = [[NSMutableArray alloc]init];
     for (int i=(int)arrData.count-1; i>=0; i--)
@@ -160,9 +160,9 @@
             if (operation.response.statusCode==200) {
                 [self getlastComment];
                 
-            }else {
+            }else
+            {
                 [self alertFail:@"Can't chat, Try again" andTitle:@"Error"];
-                
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -218,56 +218,56 @@
 }
 - (void)getlastComment
 {
-    self.app = [[UIApplication sharedApplication]delegate];
-    NSString *link =[NSString stringWithFormat:@"%@%@%@&book_id=%@&type=buyer",SEATSEVERADDRESS,API_GET_LISTCOMMENT,self.app.seatUser.token,self.seatic.bookId];
-    NSLog(@"link get last comment:%@",link);
-    AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
-    af.requestSerializer = [AFHTTPRequestSerializer serializer];
-    af.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [af GET:link parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //
-        if (operation.response.statusCode ==200) {
-            NSDictionary *dic_result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-            NSString *result = dic_result[@"status"];
-            if (result.intValue==1) {
-                NSArray *data = dic_result[@"data"];
-                self.arrListChat = [self arrChar:data];
-                for (int i=0; i<self.arrListChat.count; i++) {
-                    NSDictionary *dicCom = self.arrListChat[i];
-                    NSString *lastMess = dicCom[@"id"];
-                    if (self.idLastMessage.floatValue<lastMess.floatValue) {
-                        NSString *userId = dicCom[@"user_id"];
-                        if (userId.intValue==self.app.seatUser.userId.intValue) {
-                            NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
-                            [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
-                            [dicComUser setObject:@"1" forKey:@"type"];
-                            [dicComUser setObject:self.app.seatUser.lastName forKey:@"username"];
-                            [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
-                            //[dicComUser setObject:[UIColor greenColor] forKey:@"color"];
-                            [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
-                            self.idLastMessage = lastMess;
-                            [self.data addObject:dicComUser];
-                            
-                        }else {
-                            NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
-                            [dicComUser setObject:@"2" forKey:@"type"];
-                            [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
-                            [dicComUser setObject:self.seatic.byUser forKey:@"username"];
-                            [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
-                            //[dicComUser setObject:[UIColor blueColor] forKey:@"color"];
-                            [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
-                            self.idLastMessage = lastMess;
-                            [self.data addObject:dicComUser];
-                        }
-                        [self.tableView reloadData];
-                        [self scrollToBottomAnimated:NO];
-                    }
-                }
-            }
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self alertFail:@"Can't loading message" andTitle:@"Error"];
-    }];
+//    self.app = [[UIApplication sharedApplication]delegate];
+//    NSString *link =[NSString stringWithFormat:@"%@%@%@&book_id=%@&type=buyer",SEATSEVERADDRESS,API_GET_LISTCOMMENT,self.app.seatUser.token,self.seatic.bookId];
+//    NSLog(@"link get last comment:%@",link);
+//    AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
+//    af.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    af.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [af GET:link parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        //
+//        if (operation.response.statusCode ==200) {
+//            NSDictionary *dic_result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+//            NSString *result = dic_result[@"status"];
+//            if (result.intValue==1) {
+//                NSArray *data = dic_result[@"data"];
+//                self.arrListChat = [self arrChar:data];
+//                for (int i=0; i<self.arrListChat.count; i++) {
+//                    NSDictionary *dicCom = self.arrListChat[i];
+//                    NSString *lastMess = dicCom[@"id"];
+//                    if (self.idLastMessage.floatValue<lastMess.floatValue) {
+//                        NSString *userId = dicCom[@"user_id"];
+//                        if (userId.intValue==self.app.seatUser.userId.intValue) {
+//                            NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
+//                            [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
+//                            [dicComUser setObject:@"1" forKey:@"type"];
+//                            [dicComUser setObject:self.app.seatUser.lastName forKey:@"username"];
+//                            [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
+//                            //[dicComUser setObject:[UIColor greenColor] forKey:@"color"];
+//                            [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
+//                            self.idLastMessage = lastMess;
+//                            [self.data addObject:dicComUser];
+//                            
+//                        }else {
+//                            NSMutableDictionary *dicComUser = [[NSMutableDictionary alloc]init];
+//                            [dicComUser setObject:@"2" forKey:@"type"];
+//                            [dicComUser setObject:[dicCom valueForKey:@"comment"] forKey:@"text"];
+//                            [dicComUser setObject:self.seatic.byUser forKey:@"username"];
+//                            [dicComUser setObject:[dicCom valueForKey:@"created"] forKey:@"time"];
+//                            //[dicComUser setObject:[UIColor blueColor] forKey:@"color"];
+//                            [dicComUser setObject:[dicCom valueForKey:@"id"] forKey:@"id"];
+//                            self.idLastMessage = lastMess;
+//                            [self.data addObject:dicComUser];
+//                        }
+//                        [self.tableView reloadData];
+//                        [self scrollToBottomAnimated:NO];
+//                    }
+//                }
+//            }
+//        }
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        [self alertFail:@"Can't loading message" andTitle:@"Error"];
+//    }];
 }
 
 - (void)alertFail:(NSString*)message andTitle:(NSString*)title{

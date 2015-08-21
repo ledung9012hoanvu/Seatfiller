@@ -15,11 +15,6 @@
 @interface ChatDetail : AMBubbleTableViewController<UIAlertViewDelegate>
 @property (strong,nonatomic) BookTicket *bookTic;
 @property (strong,nonatomic) AppDelegate *app;
-@property (strong,nonatomic) NSMutableArray *arrListChat;
-@property (strong,nonatomic) NSString *idLastMessage;
-@property (strong,nonatomic) NSTimer *addLastComment;
-
-
-
+@property (strong,nonatomic) NSMutableArray *listComment;
 
 @end
