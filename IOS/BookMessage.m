@@ -27,6 +27,10 @@
 +(NSMutableDictionary*)dictionaryFormBookMessage:(BookMessage*)bookMessage
 {
     NSMutableDictionary *dictionary =[[NSMutableDictionary alloc]init];
+    NSLog(@"buyer id : %@-------%@",bookMessage.buyerId, bookMessage.parentId);
+    
+    
+    
     if ([bookMessage.parentId isEqualToString:bookMessage.buyerId])
     {
         [dictionary setValue:@"1" forKey:@"type"];
@@ -36,6 +40,7 @@
         [dictionary setValue:@"2" forKey:@"type"];
         [dictionary setValue:bookMessage.buyeNameDisplay forKey:@"username"];
     }
+    
     [dictionary setValue: [BookMessage null2Empty:bookMessage.content] forKey:@"text"];
     [dictionary setValue:[BookMessage null2Empty:bookMessage.dateTime] forKey:@"time"];
     [dictionary setObject:[UIColor blueColor] forKey:@"color"];
@@ -49,13 +54,14 @@
     NSString *buyeNameDisplay=[[dictionary valueForKey:@"book"] valueForKey:@"by_displayname"];
     NSMutableArray *array =[[NSMutableArray alloc]init];
     NSArray *messageArray  =[dictionary valueForKey:@"data"];
-    for(int i = messageArray.count -1 ; i>-1 ;i--)
+    for(int i = messageArray.count - 1 ; i>-1 ;i--)
     {
         BookMessage *bookMessage=[BookMessage bookMessageFromDictionary:messageArray[i]];
         bookMessage.bookId=bookId;
         bookMessage.buyerId=buyerId;
         bookMessage.buyeNameDisplay=buyeNameDisplay;
         NSMutableDictionary *dictionaryUnit =[BookMessage dictionaryFormBookMessage:bookMessage];
+        NSLog(@"message dictionary : %@",dictionaryUnit);
         [array addObject:dictionaryUnit];
     }
     return array;

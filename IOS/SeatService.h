@@ -36,6 +36,11 @@ typedef enum
 } SeatAPIService;
 +(instancetype)sharedClient;
 +(AFHTTPRequestOperation*)callWebserviceAtRequestPOST:(BOOL)isPOST andApi:(SeatAPIService)path withParameters:(NSMutableDictionary *)params onSuccess:(void (^)(SeatServiceResult* result))successHandler onFailure:(void (^)(NSError *err))errorHandler;
+
+
++(AFHTTPRequestOperation*)callWebserviceAtRequestPOST:(BOOL)isPOST andPathoption:(NSString*)path andParams:(NSMutableDictionary*)params onSuccess:(void (^)(SeatServiceResult* result))successHandler onFailure:(void (^)(NSError *err))errorHandler;
+
+
 + (void)alertFail:(NSString*)message andTitle:(NSString*)title;
 + (void)boundView:(UIView*)view;
 

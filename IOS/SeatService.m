@@ -78,11 +78,8 @@
 #pragma mark ----------------------------------Webservice ---------POST
 +(AFHTTPRequestOperation*)callWebserviceAtRequestPOST:(BOOL)isPOST andApi:(SeatAPIService)path withParameters:(NSMutableDictionary *)params onSuccess:(void (^)(SeatServiceResult* result))successHandler onFailure:(void (^)(NSError *err))errorHandler;
 {
-    
     NSLog(@"parameter : %@",params);
     NSLog(@"path : %@",[SeatService getRequesStringFromPath:path]);
-
-    
     if(isPOST)
     {
     return  [[SeatService sharedClient] POST:[SeatService getRequesStringFromPath:path] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -126,9 +123,34 @@
             });
         }];
     }
-
-    
 }
+
+
+
+
++(AFHTTPRequestOperation*)callWebserviceAtRequestPOST:(BOOL)isPOST andPathoption:(NSString*)path andParams:(NSMutableDictionary*)params onSuccess:(void (^)(SeatServiceResult* result))successHandler onFailure:(void (^)(NSError *err))errorHandler;
+{
+    return  [[SeatService sharedClient] POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        SeatServiceResult *result =[[SeatServiceResult alloc]init];
+        result.dictionaryResponse = [[NSMutableDictionary alloc]initWithDictionary:responseObject copyItems:YES];
+        result.statusCode = [(NSString*)[result.dictionaryResponse valueForKey:@"status"] integerValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            successHandler(result);
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",operation.responseString);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            errorHandler(nil);
+        });
+    }];
+
+}
+
+
+
 
 
 
@@ -153,14 +175,7 @@
 + (void)boundView:(UIView *)view{
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = view.frame.size.height/2;
-    
 }
-
-
-
-
-
-
 @end
 
 
