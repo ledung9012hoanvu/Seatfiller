@@ -9,6 +9,8 @@
 #import "BuyerListChat.h"
 #import "BuyerHome.h"
 #import "ChatDetail.h"
+#import "SEConfig.h"
+
 @interface BuyerListChat ()
 
 @end
@@ -16,6 +18,9 @@
 @implementation BuyerListChat
 
 - (void)viewDidLoad {
+    [SEConfig logPage:@"BuyerListChat" andFucntion:nil];
+    
+    
     [super viewDidLoad];
     [self setUpInterFace];
     self.buyerHome =self.tabBarController.viewControllers[0];
@@ -37,7 +42,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
-    
+
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cellChat"];
@@ -53,6 +58,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ChatDetail *chatDetail = [[ChatDetail alloc]init];
+    [self.navigationController pushViewController:chatDetail animated:YES];
+
 }
 
 

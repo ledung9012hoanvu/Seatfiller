@@ -19,8 +19,10 @@
 #import "SellerHome.h"
 #import "BuyerRequetstTicket.h"
 #import "SEConfig.h"
+#import "ChatDetail.h"
 @interface BuyerHome () <UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) BuyerRequetstTicket *buyerRequestTicket;
+@property (nonatomic,strong) AppDelegate *appDelegate ;
 
 
 @end
@@ -29,7 +31,7 @@
 
 
 - (void)viewDidLoad {
-    
+    self.appDelegate =[[UIApplication sharedApplication] delegate];
     [super viewDidLoad];
     [self seatFillerDesign];
     [self getListTicket];
@@ -176,7 +178,7 @@
     self.lbTitle.text = [NSString stringWithFormat:@"%@ has requested tickets for the following events",app.seatUser.userName];
     [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListTicket withParameters:[SeatUser dictionaryFromSeatUser:app.seatUser] onSuccess:^(SeatServiceResult *result)
     {
-        NSLog(@"-----BuyerHome------GetListTicket : %@",result.dictionaryResponse);
+        NSLog(@"---book : %@",result.dictionaryResponse);
         self.ticketArray =[NSMutableArray arrayWithArray:[SeatTicket arrayTicketFromDictionary:result.dictionaryResponse]];
         [self.tableViewListTicket reloadData];
     } onFailure:^(NSError *err)
@@ -237,8 +239,32 @@
         }
         if (buttonIndex==2)
         {
+            ChatDetail *chatDetail =[[ChatDetail alloc]init];
+            SeatTicket *seatTicket =self.ticketArray[self.seletedIndex];
+            BookTicket *bookTicket =[[BookTicket alloc]init];
+            bookTicket.sid = seatTicket.bookId;
+            bookTicket.sellerId=seatTicket.userId;
+            bookTicket.BuyerId =self.appDelegate.seatUser.userId;
+            bookTicket.byUsername=seatTicket.username;
+            chatDetail.bookTic=bookTicket;
+            
+            
+            /*@property (strong,nonatomic) NSString *sid;
+             @property (strong,nonatomic) NSString *TicketId;
+             @property (strong,nonatomic) NSString *BuyerId;
+             @property (strong,nonatomic) NSString *created;
+             @property (strong,nonatomic) NSString *status;
+             @property (strong,nonatomic) NSString *qty;
+             @property (strong,nonatomic) NSString *sellerId;
+             @property (strong,nonatomic) NSString *byDisplayName;
+             @property (strong,nonatomic) NSString *byUsername;
+*/
+            
+            
+            [self.navigationController pushViewController:chatDetail animated:YES];
         }
-        if (buttonIndex==3) {
+        if (buttonIndex==3)
+        {
             UIAlertView *alertDelete =[[UIAlertView alloc]initWithTitle:@"DELETE" message:@"Are You Sure Want To Delete?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
             alertDelete.tag = 101;
             [alertDelete show];

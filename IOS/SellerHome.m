@@ -60,10 +60,7 @@
 
     SeatTicket *ticket =self.ticketArray [indexPath.row];
     [cell setFrame:CGRectMake(0, 0, self.tbListTicket.frame.size.width, 60)];
-    
-    
     cell.lbDate.text = ticket.startDate;
-    
     cell.lbName.text =ticket.typeName;
     cell.lbDescription.text=ticket.title;
     cell.lbRange.text =[NSString stringWithFormat:@"$%@",ticket.priceRange];

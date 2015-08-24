@@ -68,15 +68,10 @@
     SeatTicket *seatTic = self.chatHistoryArr[indexPath.row];
     if (seatTic.interested.intValue>0) {
         ListUserChat *listUserChat = [[ListUserChat alloc]init];
-        
         listUserChat.ticket_id = seatTic.sId;
         listUserChat.title = seatTic.title;
         [self.navigationController pushViewController:listUserChat animated:YES];
     }
-    
-    
-    
-    
 }
 
 

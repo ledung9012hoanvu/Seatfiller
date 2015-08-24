@@ -36,6 +36,7 @@
     seatTicket.interested =[SeatTicket null2Empty:[dictionary valueForKey:@"interest"]];
     seatTicket.byUser = [SeatTicket null2Empty:[dictionary valueForKey:@"by_user"]];
     seatTicket.userId = [SeatTicket null2Empty:[dictionary valueForKey:@"user_id"]];
+    seatTicket.bookId =[SeatTicket null2Empty:[dictionary valueForKey:@"book_id"]];
     return seatTicket;
 }
 

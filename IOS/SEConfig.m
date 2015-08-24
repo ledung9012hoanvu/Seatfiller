@@ -13,4 +13,11 @@
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:key object:nil];
 }
+
++(void)logPage:(NSString*)page andFucntion :(NSString*)function
+{
+    NSLog(@"--------Class : %@-------Function : %@",page,function);
+}
+
+
 @end

@@ -19,24 +19,4 @@
 @property (strong,nonatomic) NSString *byDisplayName;
 @property (strong,nonatomic) NSString *byUsername;
 +(BookTicket*)ticketFromDictionary:(NSMutableDictionary*)dictionary;
-
-
-//{
-//    "status": true,
-//    "data": [
-//             {
-//                 "id": "238",
-//                 "ticket_id": "235",
-//                 "buyer_id": "89",
-//                 "created": "1437546225",
-//                 "status": "1",
-//                 "qty": "1",
-//                 "seller_id": "71",
-//                 "by_displayname": "Susan Huynh",
-//                 "by_username": "1635297516754644"
-//             }
-//             ]
-//}
-
-
 @end

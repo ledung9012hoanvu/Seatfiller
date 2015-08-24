@@ -17,8 +17,9 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"-------------ChatDetail---------");
+
     
+    NSLog(@"Book Id : %@",self.bookTic.sid);
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
     [self setDataSource:self];
