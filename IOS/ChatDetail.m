@@ -112,6 +112,7 @@
         [self.listComment addObject:dictionary];
         [self.tableView reloadData];
         [self scrollToBottomAnimated:NO];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_KEY_RECEIVER_MESSAGE object:nil];
 
     } onFailure:^(NSError *err) {
         [self.view setUserInteractionEnabled:YES];
