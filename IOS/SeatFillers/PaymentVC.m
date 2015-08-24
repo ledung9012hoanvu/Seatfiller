@@ -10,6 +10,8 @@
 #import "SeatMacro.h"
 #import "PaymentCell.h"
 #import "UIView+LeafUI.h"
+#import "Interface.h"
+#import "SeatFillerDesign.h"
 
 #define TABLE_PRODUCT_LIST_CELL_HEIGH 50
 @interface PaymentVC ()
@@ -18,33 +20,37 @@
 
 @implementation PaymentVC
 
-- (void)viewDidLoad {
-    [self.tableProductList setHidden:YES];
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
+    [self seatFillerDesign];
     [self fetchAvailableProducts];
 }
+
+-(void)seatFillerDesign
+{
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.tableProductList];
+    [self.tableProductList setBackgroundColor:[UIColor clearColor]];
+    self.tableProductList.separatorStyle=UITableViewCellSeparatorStyleNone;
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.title = @"Payment";
     self.navigationController.navigationBarHidden = NO;
-
-    
     [self.tableProductList setSeparatorColor:[UIColor whiteColor]];
-    [self.tableProductList setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma IN APP PURCHASE
-
 -(void)fetchAvailableProducts{
     [self.view setUserInteractionEnabled:NO];
     NSSet *productIdentifiers = [NSSet
-                                 setWithObjects:INAPP_PRODUCT_ID_1,INAPP_PRODUCT_ID_2,INAPP_PRODUCT_ID_3,nil];
+                                 setWithObjects:@"SeatFiller.Type1",nil];
     productsRequest = [[SKProductsRequest alloc]
                        initWithProductIdentifiers:productIdentifiers];
+    
     productsRequest.delegate = self;
     [productsRequest start];
-    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
 }
 
 - (BOOL)canMakePurchases
@@ -110,11 +116,17 @@ updatedTransactions:(NSArray *)transactions {
 -(void)productsRequest:(SKProductsRequest *)request
     didReceiveResponse:(SKProductsResponse *)response
 {
+    
+    for (NSString *invalidProductId in response.invalidProductIdentifiers)
+    {
+        NSLog(@"Invalid product id: %@" , invalidProductId);
+    }
+
+    NSLog(@"response : %@",response.products);
     [self.tableProductList setHidden:NO];
     [self.view setUserInteractionEnabled:YES];
         self.arrayValidProducts = response.products;
         [self.tableProductList reloadData];
-    [self.tableProductList setFrame:CGRectMake(self.tableProductList.frame.origin.x, self.tableProductList.frame.origin.y, self.tableProductList.frame.size.width, TABLE_PRODUCT_LIST_CELL_HEIGH*self.arrayValidProducts.count)];
 }
 
 
@@ -127,17 +139,19 @@ updatedTransactions:(NSArray *)transactions {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PaymentCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    
     SKProduct *unit =self.arrayValidProducts[indexPath.row];
     cell.labelType.text =unit.localizedTitle;
-    cell.labelCost.text =[NSString stringWithFormat:@"$%@",unit.price];
+    cell.labelCost.text =[NSString stringWithFormat:@"$%@",@"abc"];
     [cell setBackgroundColor:[UIColor clearColor]];
-    [cell.labelCost setTextColor:[UIColor whiteColor]];
-    [cell.labelType setTextColor:[UIColor whiteColor]];
+    [cell.labelCost setTextColor:[UIColor redColor]];
+    [cell.labelType setTextColor:[UIColor redColor]];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"counter : %d",self.arrayValidProducts.count);
     return self.arrayValidProducts.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

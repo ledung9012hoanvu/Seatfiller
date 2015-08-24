@@ -10,17 +10,17 @@
 #import "BuyerHome.h"
 #import "ChatDetail.h"
 #import "SEConfig.h"
+#import "AppDelegate.h"
 
 @interface BuyerListChat ()
-
+@property(nonatomic,strong)AppDelegate *appDelegate;
 @end
 
 @implementation BuyerListChat
 
 - (void)viewDidLoad {
+    self.appDelegate =[[UIApplication sharedApplication]delegate];
     [SEConfig logPage:@"BuyerListChat" andFucntion:nil];
-    
-    
     [super viewDidLoad];
     [self setUpInterFace];
     self.buyerHome =self.tabBarController.viewControllers[0];
@@ -57,9 +57,15 @@
     return self.arrayUserChat.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ChatDetail *chatDetail = [[ChatDetail alloc]init];
+    ChatDetail *chatDetail =[[ChatDetail alloc]init];
+    SeatTicket *seatTicket = self.arrayUserChat[indexPath.row];
+    BookTicket *bookTicket =[[BookTicket alloc]init];
+    bookTicket.sid = seatTicket.bookId;
+    bookTicket.sellerId=seatTicket.userId;
+    bookTicket.BuyerId =self.appDelegate.seatUser.userId;
+    bookTicket.byUsername=seatTicket.username;
+    chatDetail.bookTic=bookTicket;
     [self.navigationController pushViewController:chatDetail animated:YES];
-
 }
 
 

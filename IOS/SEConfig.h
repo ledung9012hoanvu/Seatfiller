@@ -24,5 +24,6 @@
 
 @interface SEConfig : NSObject
 +(void)postNotify:(NSString*)key;
+
 +(void)logPage:(NSString*)page andFucntion :(NSString*)function;
 @end

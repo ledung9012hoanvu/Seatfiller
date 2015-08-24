@@ -134,6 +134,7 @@
     }
 }
 - (void)loadTicketByBuyer{
+    [self.view setUserInteractionEnabled:NO];
     AppDelegate *app = [[UIApplication sharedApplication]delegate];
     NSString *link = [NSString stringWithFormat:@"%@%@&type=buyer",API_LIST_BUYER_TICKET,app.seatUser.token];
     AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
@@ -141,6 +142,7 @@
     af.responseSerializer = [AFHTTPResponseSerializer serializer];
     [af GET:link parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (operation.response.statusCode==200) {
+            [self.view setUserInteractionEnabled:YES];
             NSDictionary *dic_Result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             NSString *result = dic_Result[@"status"];
             if (result.intValue==1) {
@@ -163,6 +165,7 @@
             }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.view setUserInteractionEnabled:YES];
         [SeatService alertFail:@"Can't not connect to server" andTitle:@"Error!"];
     }];
 }

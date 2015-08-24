@@ -46,7 +46,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
     self.tabBarController.title =@"Buyer Home";
-    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleBordered target:self action:@selector(gotoSearch)];
+    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(gotoSearch)];
     self.tabBarController.navigationItem.rightBarButtonItem = btnCancel;
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -178,7 +178,6 @@
     self.lbTitle.text = [NSString stringWithFormat:@"%@ has requested tickets for the following events",app.seatUser.userName];
     [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListTicket withParameters:[SeatUser dictionaryFromSeatUser:app.seatUser] onSuccess:^(SeatServiceResult *result)
     {
-        NSLog(@"---book : %@",result.dictionaryResponse);
         self.ticketArray =[NSMutableArray arrayWithArray:[SeatTicket arrayTicketFromDictionary:result.dictionaryResponse]];
         [self.tableViewListTicket reloadData];
     } onFailure:^(NSError *err)
@@ -206,7 +205,6 @@
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             AppDelegate *app = [[UIApplication sharedApplication]delegate];
             NSString *linkReport = [NSString stringWithFormat:@"%@%@%@",SEATSEVERADDRESS,API_REPORT,app.seatUser.token];
-            //NSLog(@"link report: %@",linkReport);
             AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
             af.requestSerializer = [AFHTTPRequestSerializer serializer];
             af.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -247,20 +245,6 @@
             bookTicket.BuyerId =self.appDelegate.seatUser.userId;
             bookTicket.byUsername=seatTicket.username;
             chatDetail.bookTic=bookTicket;
-            
-            
-            /*@property (strong,nonatomic) NSString *sid;
-             @property (strong,nonatomic) NSString *TicketId;
-             @property (strong,nonatomic) NSString *BuyerId;
-             @property (strong,nonatomic) NSString *created;
-             @property (strong,nonatomic) NSString *status;
-             @property (strong,nonatomic) NSString *qty;
-             @property (strong,nonatomic) NSString *sellerId;
-             @property (strong,nonatomic) NSString *byDisplayName;
-             @property (strong,nonatomic) NSString *byUsername;
-*/
-            
-            
             [self.navigationController pushViewController:chatDetail animated:YES];
         }
         if (buttonIndex==3)
@@ -275,7 +259,6 @@
             [self CancelBookingTicket];
         }
     }
-
 }
 - (void)CancelBookingTicket{
     AppDelegate *app =[[UIApplication sharedApplication]delegate];

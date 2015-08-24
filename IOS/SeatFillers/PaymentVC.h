@@ -10,6 +10,10 @@
 #import <StoreKit/StoreKit.h>
 
 
+@interface UnitPrice : NSObject
+@property(nonatomic,strong) NSString *upId;
+@end
+
 
 #define INAPP_PRODUCT_ID_1 @"HoanVu.Type1"
 #define INAPP_PRODUCT_ID_2 @"HoanVu.Type2"

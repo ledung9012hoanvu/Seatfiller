@@ -17,11 +17,9 @@
 
 - (void)viewDidLoad
 {
-
-    
-    NSLog(@"Book Id : %@",self.bookTic.sid);
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getListComment) name:NOTIFICATION_KEY_RECEIVER_MESSAGE object:nil];
     [self setDataSource:self];
     [self setDelegate:self];
     
@@ -39,14 +37,19 @@
 }
 - (void)getListComment
 {
+    [self.listComment removeAllObjects];
+    self.listComment = nil;
+    [self.view setUserInteractionEnabled:NO];
     NSMutableDictionary *dictionary =[[NSMutableDictionary alloc]init];
     [dictionary setValue:self.bookTic.sid forKey:API_KEY_BOOK_ID];
     [dictionary setValue:self.app.seatUser.token forKey:USER_TOKEN];
     [dictionary setValue:self.app.seatUser.type forKey:API_KEY_USER_TYPE];
     [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListComment withParameters:dictionary onSuccess:^(SeatServiceResult *result) {
+        [self.view setUserInteractionEnabled:YES];
         self.listComment =[NSMutableArray arrayWithArray: [BookMessage arrayFromBookDictionary:result.dictionaryResponse]];
         [self.tableView reloadData];
     } onFailure:^(NSError *err) {
+        [self.view setUserInteractionEnabled:YES];
     }];
 }
 
@@ -81,8 +84,8 @@
 
 - (void)didSendText:(NSString*)text
 {
+    [self.view setUserInteractionEnabled:NO];
     if (text.length==0)return;
-    
     NSMutableDictionary*dictionary =[[NSMutableDictionary alloc]init];
     [dictionary setValue:text forKey:@"comment"];
     NSString *recevierId =@"";
@@ -97,6 +100,7 @@
     NSString *link =[NSString stringWithFormat:@"%@?token=%@&book_id=%@&recevier=%@&type=%@",API_COMMENT,self.app.seatUser.token,self.bookTic.sid,recevierId,self.app.seatUser.type];
     [SeatService callWebserviceAtRequestPOST:YES andPathoption:link andParams:dictionary onSuccess:^(SeatServiceResult *result)
     {
+        [self.view setUserInteractionEnabled:YES];
         BookMessage *unitBookMessage =[[BookMessage alloc]init];
         unitBookMessage.bookId=self.bookTic.sid;
         unitBookMessage.parentId=[[result.dictionaryResponse valueForKey:@"data"] valueForKey:@"recevierId"];
@@ -110,6 +114,7 @@
         [self scrollToBottomAnimated:NO];
 
     } onFailure:^(NSError *err) {
+        [self.view setUserInteractionEnabled:YES];
     }];
 }
 

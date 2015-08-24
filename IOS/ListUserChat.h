@@ -17,6 +17,4 @@
 @interface ListUserChat : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *listUser;
 @property (nonatomic,strong) NSString *ticket_id;
-
-
 @end

@@ -9,7 +9,7 @@
 #import "ListUserChat.h"
 #import "SeatMacro.h"
 #import "Interface.h"
-
+#import "SeatFillerDesign.h"
 @interface ListUserChat ()
 @property (weak, nonatomic) IBOutlet UITableView *tbListChat;
 @property (strong,nonatomic) AppDelegate *app;
@@ -18,11 +18,18 @@
 @end
 
 @implementation ListUserChat
+-(void)seatFillerDesign
+{
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.tbListChat];
+    [self.tbListChat setBackgroundColor:[UIColor clearColor]];
+    self.tbListChat.separatorStyle=UITableViewCellSeparatorStyleNone;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Interface boderView:4 andwidth:2 andColor:[UIColor blueColor] andView:self.tbListChat];
     [self callListUserChat];
+    [self seatFillerDesign];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *indentifier = @"cellListChat";

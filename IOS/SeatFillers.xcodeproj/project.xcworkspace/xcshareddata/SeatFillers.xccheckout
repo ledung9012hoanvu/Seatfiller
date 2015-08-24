@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>A52CDF63-A3C2-44FA-841D-A7A659A465F4</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>SeatFillers</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</key>
 		<string>https://github.com/ledung9012hoanvu/Seatfiller.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>IOS/SeatFillers.xcodeproj/project.xcworkspace</string>
+	<string>IOS/SeatFillers.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>72F5F0BA2A225C3BDD690DD4AAB827091F1E0E40</key>

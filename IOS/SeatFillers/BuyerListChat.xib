@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -16,15 +15,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="7mm-Bd-psa">
-                    <rect key="frame" x="0.0" y="0.0" width="420" height="1000"/>
-                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-Ng-wPR">
-                    <rect key="frame" x="8" y="179" width="304" height="242"/>
+                    <rect key="frame" x="8" y="180" width="304" height="241"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="242" id="Xgb-FT-gYG"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="GpG-Iy-0Zn"/>
                         <outlet property="delegate" destination="-1" id="EVm-XE-fED"/>
@@ -37,9 +30,13 @@
                         <constraint firstAttribute="height" constant="115" id="rzr-dp-kh8"/>
                     </constraints>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="7mm-Bd-psa">
+                    <rect key="frame" x="0.0" y="0.0" width="420" height="1000"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="8iT-lI-PSg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="38L-Tp-1KY"/>
+                <constraint firstItem="tTU-Ng-wPR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="180" id="D38-Hd-BY1"/>
                 <constraint firstAttribute="bottom" secondItem="tTU-Ng-wPR" secondAttribute="bottom" constant="59" id="QVt-IE-Agu"/>
                 <constraint firstAttribute="centerX" secondItem="tTU-Ng-wPR" secondAttribute="centerX" id="kX5-WK-ZXU"/>
                 <constraint firstAttribute="centerX" secondItem="8iT-lI-PSg" secondAttribute="centerX" id="mpD-BB-9dc"/>
