@@ -103,7 +103,7 @@
 #define API_GET_LIST_COMMNET        @"/api/comment/getList"
 #define API_COMMENT                 @"/api/comment/replyTo"
 #define API_GET_LIST_PLAN           @"/api/plan/getList"
-#define API_UPGRADE_PLAN            @"api/payment/upgrade"
+#define API_UPGRADE_PLAN            @"api/payment/upgrade2"
 
 
 

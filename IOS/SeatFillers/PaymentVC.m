@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #define TABLE_PRODUCT_LIST_CELL_HEIGH 50
 
-@interface PaymentVC ()
+@interface PaymentVC () <UIAlertViewDelegate>
 @property(nonatomic,strong) AppDelegate *app;
 @property(nonatomic,strong) NSString *upgradeIdSelected;
 @end
@@ -96,6 +96,11 @@
 }
 #pragma mark StoreKit Delegate
 
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)paymentQueue:(SKPaymentQueue *)queue
 updatedTransactions:(NSArray *)transactions {
     for (SKPaymentTransaction *transaction in transactions) {
@@ -114,10 +119,11 @@ updatedTransactions:(NSArray *)transactions {
                 [dictionary setValue:self.upgradeIdSelected forKey:@"paymentId"];
                 [dictionary setValue:self.upgradeIdSelected forKey:@"plan_id"];
                 
-                [SeatService callWebserviceAtRequestPOST:YES andApi:SeatAPIUpgradePlan withParameters:dictionary onSuccess:^(SeatServiceResult *result) {
-                   
-                    NSLog(@"all succedd");
-                    
+                [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIUpgradePlan withParameters:dictionary onSuccess:^(SeatServiceResult *result) {
+
+                    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"Message" message:@"Upgrade Succedd" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                
                 } onFailure:^(NSError *err) {
                     
                 }];
@@ -151,7 +157,6 @@ updatedTransactions:(NSArray *)transactions {
 -(void)productsRequest:(SKProductsRequest *)request
     didReceiveResponse:(SKProductsResponse *)response
 {
-    
     NSLog(@"count : %d",self.arrayValidProducts.count);
     [self.tableProductList setHidden:NO];
     [self.view setUserInteractionEnabled:YES];
@@ -165,7 +170,6 @@ updatedTransactions:(NSArray *)transactions {
             {
                 plan.planProduct =product;
             }
-            
         }
     }
     self.tableLayoutHeigh.constant=self.arrayValidProducts.count*TABLE_PRODUCT_LIST_CELL_HEIGH;
@@ -182,13 +186,10 @@ updatedTransactions:(NSArray *)transactions {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PaymentCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
     Plan *unit =self.arrayValidProducts[indexPath.row];
     cell.labelType.text =unit.planTile;
     cell.labelCost.text =[self stringPriceFromSKProduct:unit.planProduct];
     cell.labelDescription.text=unit.planDescription;
-
-    
     [cell.labelCost setTextColor:[UIColor whiteColor]];
     [cell.labelType setTextColor:[UIColor whiteColor]];
     [cell.labelDescription setTextColor:[UIColor whiteColor]];
@@ -220,20 +221,11 @@ updatedTransactions:(NSArray *)transactions {
     self.upgradeIdSelected =plan.planId;
     [self purchaseMyProduct:plan.planProduct];
 }
-
-
-
 @end
 
 
 
 
 
-
-
-
 @implementation Plan
-
-
-
 @end

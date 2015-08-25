@@ -27,12 +27,9 @@
 -(void)showInfomation
 {
     self.eventNameTf.text = self.seatTicket.title;
-    
-    
     [[self.collapseView collapseClickCellForIndex:3]TitleLabel].text = [NSString stringWithFormat:@"Event Type:%@",self.seatTicket.typeName];
     
     self.selectedType = self.seatTicket.type;//
-    
     self.selectedCity = self.seatTicket.city;
     [[self.collapseView collapseClickCellForIndex:8]TitleLabel].text = [NSString stringWithFormat:@"City:%@",self.selectedCity];
     
@@ -56,25 +53,13 @@
     self.selectedAddress = self.seatTicket.address;
     self.lbAddress.text = [NSString stringWithFormat:@"Address:%@",self.selectedAddress];
     
-    //NSLog(@"address999 %@",self.seatTicket.address);
-    
-    
     self.selectedLat = self.seatTicket.lat;
     self.selectedLng = self.seatTicket.lng;
-    //NSLog(@"lat:%@ long:%@",self.selectedLat,self.selectedLng);
-    
-    
-    
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //an sua code
-   
     [self.scrollView setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height * 2.0f)];
-    
     self.collapseView.CollapseClickDelegate = self;
     [self.collapseView reloadCollapseClick];
     self.collapseView.contentSize =CGSizeMake([Interface screedWidth], 1000
@@ -93,8 +78,6 @@
     self.cityArray=[self getCityFromState];
     self.typeArray=@[@"1",@"2",@"3"];
     self.typeArrayCharacter = @[@"Sports",@"Concert",@"Liberal Arts"];
-    
-    
     
     self.quantityArray=@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     self.rangeArray=@[@"10-100",@"100-200",@"200-300",@"300-500",@"500+"];
@@ -119,9 +102,6 @@
     [super viewWillAppear:animated];
     if (self.isBack) {
         self.lbAddress.text = [NSString stringWithFormat:@"Address:%@",self.selectedAddress];
-        
-       // NSLog(@"lat %@ long %@ address %@",self.selectedLat,self.selectedLng,self.selectedAddress);
-        
     }
 }
 
@@ -245,10 +225,6 @@
     }else{
         lbText.text = @" Please input the ticket information below that you would like to sell.";
         lbText.numberOfLines =2;
-        //lbText.backgroundColor =[UIColor redColor];
-        
-        
-        
     }
     
     [lbCell addSubview:lbText];
@@ -283,13 +259,6 @@
     [self.lbAddress addGestureRecognizer:taplbAddress];
     [addressCell addSubview:self.lbAddress];
     
-    
-    
-    
-    
-    
-
-    
     CollapseClickCell *noteCell=[self.collapseView collapseClickCellForIndex:12];
     self.noteTf = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, noteCell.frame.size.width-10, noteCell.frame.size.height)];
     self.noteTf.borderStyle = UITextBorderStyleNone;
@@ -303,12 +272,11 @@
     self.noteTf.delegate = self;
     [noteCell addSubview:self.noteTf];
     
-    
     CollapseClickCell *postTicketCell=[self.collapseView collapseClickCellForIndex:14];
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
-    if (self.isEdit) {
+    if (self.isEdit)
+    {
         [button setTitle:@"Update" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(updateTicket) forControlEvents:UIControlEventTouchUpInside];
         
@@ -317,18 +285,14 @@
         [button addTarget:self
                    action:@selector(postTicket)
          forControlEvents:UIControlEventTouchUpInside];
-        
     }
     
     button.frame = CGRectMake(postTicketCell.frame.size.width/3, 0, postTicketCell.frame.size.width/3, postTicketCell.frame.size.height);
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     NSLog(@"%@",NSStringFromCGRect(button.frame));
     [postTicketCell addSubview:button];
-
-    
     
     CollapseClickCell *takePhotoCell=[self.collapseView collapseClickCellForIndex:13];
-    
     UIButton *takePhotoBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [takePhotoBtn addTarget:self
                action:@selector(choosePhoto)
@@ -344,7 +308,6 @@
     [takePhotoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     NSLog(@"%@",NSStringFromCGRect(button.frame));
     [takePhotoCell addSubview:takePhotoBtn];
-    
 }
 
 -(UIColor*)colorForTitleLabelAtIndex:(int)index
@@ -375,8 +338,6 @@
     [dic setValue:_selectedCity forKey:@"city"];
     [dic setValue:self.selectedAddress forKey:@"address"];
     
-    
-    
     [dic setValue:_selectedQuantity forKey:@"qty"];
     [dic setValue:_selectedPriceRange forKey:@"price_range"];
     [dic setValue:self.selectedLat forKey:@"lat"];
@@ -386,24 +347,11 @@
     [dic setValue:_encodedStr forKey:@"image"];
    
     [SeatService callWebserviceAtRequestPOST:YES andApi:SeatAPIAddTicket withParameters:dic onSuccess:^(SeatServiceResult *result) {
-        NSLog(@"status code %ld",(long)result.statusCode);
         [self.navigationController popViewControllerAnimated:YES];
-        
-//        NSUInteger ownIndex = [self.navigationController.viewControllers indexOfObject:self];
-//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:ownIndex-1] animated:YES];
-        
-        
-        
-        
-        
-        
     } onFailure:^(NSError *err) {
         NSString *message =[NSString stringWithFormat:@"%@",err.localizedDescription];
         UIAlertView *alertError = [[UIAlertView alloc]initWithTitle:@"Error" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertError show];
-        
-        
-        
     }];
     
 }
@@ -444,15 +392,10 @@
                 NSLog(@"update success");
                 NSUInteger ownIndex = [self.navigationController.viewControllers indexOfObject:self];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:ownIndex - 2] animated:YES];
-                
-                
             }else {
                 NSLog(@"error");
                 [self alertUpdateFail];
-                
             }
-            
-            
         }else {
             NSLog(@"error status code");
             [self alertUpdateFail];
@@ -464,14 +407,7 @@
         //[self alertUpdateFail];
         UIAlertView *alertUpdate = [[UIAlertView alloc]initWithTitle:@"Error Update" message:[NSString stringWithFormat:@"%@",error.localizedDescription] delegate:self cancelButtonTitle:@"Try again" otherButtonTitles:nil, nil];
         [alertUpdate show];
-        
-        
-        
-        
     }];
-    
-    
-    
    
     
 }
@@ -489,19 +425,13 @@
         sellMap.lng = self.selectedLng;
         sellMap.addEvent = self;
         [self.navigationController pushViewController:sellMap animated:YES];
-        
-        
-    }else{
+    }
+    else
+    {
         SellerMap *sellMap = [[SellerMap alloc]init];
         sellMap.addEvent = self;
-        
         [self.navigationController pushViewController:sellMap animated:YES];
-        
     }
-    
-
- 
-    
 }
 
 
@@ -557,17 +487,11 @@ numberOfRowsInComponent:(NSInteger)component{
         self.selectedCity=[[self getCityFromState] objectAtIndex:row];
         [[self.collapseView collapseClickCellForIndex:8]TitleLabel].text = [NSString stringWithFormat:@"City:%@",self.selectedCity];
     } else if(pickerView==self.typePicker){
-//
-//      [[[self.collapseView collapseClickCellForIndex:3] TitleLabel]setText:self.typeArray[[self.typePicker selectedRowInComponent:0]]];
-        
         
         self.selectedType=[self.typeArray objectAtIndex:row];
         self.typeName = [self.typeArrayCharacter objectAtIndex:row];
         
         [[self.collapseView collapseClickCellForIndex:3]TitleLabel].text = [NSString stringWithFormat:@"Event Type:%@",self.typeName];
-        
-        
-        
         
     } else if(pickerView==self.rangePicker){
         self.selectedPriceRange=[self.rangeArray objectAtIndex:row];
@@ -601,20 +525,13 @@ numberOfRowsInComponent:(NSInteger)component{
         picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:NULL];
     }
-    
-
 }
 
 #pragma mark -UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    //nen anh
-    //encode base64
     self.encodedStr=[UIImagePNGRepresentation(chosenImage) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    //NSLog(@"%@",self.encodedStr);
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -622,8 +539,6 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    //[_scrollView contentSizeToFit];
-    //[_scrollView scrollToActiveTextField];
     return YES;
 }
 

@@ -24,8 +24,6 @@
 @interface SellerHome ()
 @property (strong,nonatomic) SeatTicket *seatic;
 @property (strong,nonatomic) AppDelegate *appDelegate;
-
-
 @end
 
 @implementation SellerHome
@@ -57,7 +55,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListTicketCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-
+    
     SeatTicket *ticket =self.ticketArray [indexPath.row];
     [cell setFrame:CGRectMake(0, 0, self.tbListTicket.frame.size.width, 60)];
     cell.lbDate.text = ticket.startDate;
@@ -68,7 +66,7 @@
     cell.lbTixOnHane.text =ticket.qty;
     cell.lbLocation.text = [NSString stringWithFormat:@"%@, %@",[ticket.city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]],ticket.state];
     
-        if(indexPath.row %2 ==0)
+    if(indexPath.row %2 ==0)
     {
         [cell setBackgroundColor:[ListTicketCell whiteColor]];
     }
@@ -93,18 +91,14 @@
 {
     CGFloat width = self.tbListTicket.frame.size.width;
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame:CGRectMake(0, 0, width, 80)];
+    [headerView setFrame:CGRectMake(0, 0, width, 60)];
     
     UILabel *fromLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0, headerView.frame.size.width, 21)];
     [fromLabel setFont:[UIFont systemFontOfSize:12]];
     if (self.ticketArray.count>0) {
         SeatTicket *seatTic = self.ticketArray[0];
-        
-        
         fromLabel.text = [NSString stringWithFormat:@" %@ Ticket Postings Availabel Until:%@",self.appDelegate.seatUser.lastName,seatTic.expiryDate];
     }
-  
-    //fromLabel.font = customFont;
     fromLabel.numberOfLines = 1;
     fromLabel.adjustsFontSizeToFitWidth = YES;
     fromLabel.minimumScaleFactor = 10.0f/12.0f;
@@ -118,7 +112,7 @@
     for(int i = 0 ; i < 7;i++)
     {
         UILabel *label = [[UILabel alloc]init];
-        [label setFrame:CGRectMake(i*lbWidth, 30, lbWidth, 50)];
+        [label setFrame:CGRectMake(i*lbWidth, 30, lbWidth, 30)];
         [label setTextColor:[UIColor whiteColor]];
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 2;
@@ -150,7 +144,6 @@
         [label setFont:[UIFont systemFontOfSize:10]];
     }
     [headerView setBackgroundColor:[SeatFillerDesign greenNavi]];
-    
     return headerView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,34 +153,25 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    //NSLog(@"select row %ld",(long)indexPath.row);
     self.selectedRow = indexPath.row;
     SeatTicket *ticket = self.ticketArray[self.selectedRow];
-    
-    
     UIAlertView *alertPopUp = [[UIAlertView alloc]initWithTitle:ticket.note message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Interested Buyers",@"Delete",@"Edit", nil];
     alertPopUp.tag = 100;
     [alertPopUp show];
-
+    
 }
 - (void)goToAddEvent:(long)index{
-
+    
     SellerReview *sellReview = [[SellerReview alloc]init];
     sellReview.seatTicket = self.ticketArray[index];
-    //sellReview.isUpdate = YES;
     [self.navigationController pushViewController:sellReview animated:YES];
-    
-    
-    
-    
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 70;
+    return 60;
 }
-
 
 -(void)fillData
 {
@@ -195,8 +179,6 @@
     self.appDelegate =[[UIApplication sharedApplication]delegate];
     [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListTicket withParameters:[SeatUser dictionaryFromSeatUser:self.appDelegate.seatUser] onSuccess:^(SeatServiceResult *result) {
         NSArray *dicArr=[result.dictionaryResponse objectForKey:@"data"];
-       // NSLog(@"so luong phan tu la %ld",dicArr.count);
-        
         if (dicArr.count!=0) {
             for (int i=0; i<dicArr.count; i++) {
                 NSMutableDictionary *dic=[dicArr objectAtIndex:i];
@@ -205,27 +187,19 @@
                 seatObj =nil;
                 dic=nil;
             }
-            //an sua code
             self.appDelegate.ListArray = self.ticketArray;
-            
-            
-            
-            
-            
             [_tbListTicket reloadData];
         }
     } onFailure:^(NSError *err) {
         
     }];
-   
+    
 }
 
 -(void)seatFillerDesign
-
 {
     [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.tbListTicket];
     [self.tbListTicket setBackgroundColor:[UIColor clearColor]];
-
 }
 
 
@@ -236,11 +210,10 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     UIBarButtonItem *add =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goToAdd)];
     [add setTintColor:[UIColor whiteColor]];
     self.tabBarController.navigationItem.rightBarButtonItem =add;
-     
+    
     [super viewWillAppear:animated];
     [self.tabBarController setTitle:@"Seller"];
     
@@ -248,7 +221,6 @@
     if (self.ticketArray!=nil) {
         self.ticketArray = nil;
         self.ticketArray = [[NSMutableArray alloc]init];
-        
     }
     
     [self fillData];
@@ -260,28 +232,10 @@
     [self.navigationController pushViewController:add animated:YES];
 }
 
-
-//- (IBAction)btAddEventPress:(id)sender{
-//    
-//    SellerAddEvent *add =[[SellerAddEvent alloc]init];
-//    [self.navigationController pushViewController:add animated:YES];
-//}
-//
-//- (IBAction)btRefreshPress:(id)sender {
-//    if (self.ticketArray!=nil) {
-//        self.ticketArray = nil;
-//        [self fillData];
-//        [self.tbListTicket reloadData];
-//        
-//    }
-//}
-
 - (IBAction)btReportPress:(id)sender {
     UIAlertView *alertReport =[[UIAlertView alloc]initWithTitle:@"Do you still want to report a user?" message:@"Please review Seat Fillers Terms of Use Policy. If you feel the Seat Fillers' user has violated the terms specifically based on Paragraph 9, section d, please report this user" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     alertReport.tag = 102;
     [alertReport show];
-    
-    
 }
 #pragma Alert View
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -290,8 +244,6 @@
             case 3:
                 NSLog(@"nhan 3");//edit
                 [self goToAddEvent:self.selectedRow];
-                
-                
                 break;
             case 1:
                 NSLog(@"nhan Interested");//Interested buyers
@@ -299,31 +251,18 @@
                 SeatTicket *seatTic = self.ticketArray[self.selectedRow];
                 if (seatTic.interested.intValue>0) {
                     ListUserChat *listUserChat = [[ListUserChat alloc]init];
-                    
                     listUserChat.ticket_id = seatTic.sId;
                     listUserChat.title = seatTic.title;
                     [self.navigationController pushViewController:listUserChat animated:YES];
-                    
                 }
             }
-                
-            
-                
                 break;
             case 2:
-                NSLog(@"nhan 2");//Delete
             {
-                
-            //delete
                 UIAlertView *alertDelete = [[UIAlertView alloc]initWithTitle:@"Do you want to Delete this ticket" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
                 alertDelete.tag = 101;
                 [alertDelete show];
-                
-                }
-                
-                
-                
-                
+            }
             default:
                 break;
         }
@@ -345,7 +284,6 @@
                     if (self.ticketArray!=nil) {
                         self.ticketArray = nil;
                         self.ticketArray = [[NSMutableArray alloc]init];
-                        
                     }
                     
                     [self fillData];
@@ -353,27 +291,19 @@
                     
                 }else {
                     [self alertFail:@"Delete Error" andTitle:@"Error"];
-                    
-                    
-                    
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [self alertFail:[NSString stringWithFormat:@"%@",error.localizedDescription] andTitle:@"Error"];
                 
             }];
-            
-            
-            
         }
     }
     if (alertView.tag==102) {//alert report
         if (buttonIndex==1) {
-            NSLog(@"alert clik Yes");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             AppDelegate *app = [[UIApplication sharedApplication]delegate];
             NSString *linkReport = [NSString stringWithFormat:@"%@%@%@",SEATSEVERADDRESS,API_REPORT,app.seatUser.token];
-            //NSLog(@"link report: %@",linkReport);
             AFHTTPRequestOperationManager *af = [AFHTTPRequestOperationManager manager];
             af.requestSerializer = [AFHTTPRequestSerializer serializer];
             af.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -384,11 +314,7 @@
                     if (result.integerValue==1) {//Please check your email to confirm your request.
                         [self alertFail:@"Please check your email to confirm your request." andTitle:@"Report Buyer"];
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                        
                     }
-                    
-                    
-                    
                 }else{
                     NSLog(@"error status code");
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -396,31 +322,14 @@
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self alertFail:[NSString stringWithFormat:@"%@",error.localizedDescription] andTitle:@"Report Error"];
-                
-                
-                
             }];
-            
-            
-            
-            
-                                                                  
-            
-            
-            
         }
         else {//alert click NO
-           
-            
         }
     }
-    
 }
 - (void)alertFail:(NSString*)message andTitle:(NSString*)title{
     UIAlertView *alertUpdate = [[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertUpdate show];
 }
-
-
-
 @end
