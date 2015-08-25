@@ -11,5 +11,6 @@
 @interface PaymentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labelType;
 @property (weak, nonatomic) IBOutlet UILabel *labelCost;
+@property (weak, nonatomic) IBOutlet UILabel *labelDescription;
 
 @end

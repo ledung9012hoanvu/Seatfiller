@@ -48,6 +48,7 @@
         [self.view setUserInteractionEnabled:YES];
         self.listComment =[NSMutableArray arrayWithArray: [BookMessage arrayFromBookDictionary:result.dictionaryResponse]];
         [self.tableView reloadData];
+        [self scrollToBottomAnimated:NO];
     } onFailure:^(NSError *err) {
         [self.view setUserInteractionEnabled:YES];
     }];
@@ -84,6 +85,7 @@
 
 - (void)didSendText:(NSString*)text
 {
+    
     [self.view setUserInteractionEnabled:NO];
     if (text.length==0)return;
     NSMutableDictionary*dictionary =[[NSMutableDictionary alloc]init];
@@ -112,7 +114,6 @@
         [self.listComment addObject:dictionary];
         [self.tableView reloadData];
         [self scrollToBottomAnimated:NO];
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_KEY_RECEIVER_MESSAGE object:nil];
 
     } onFailure:^(NSError *err) {
         [self.view setUserInteractionEnabled:YES];

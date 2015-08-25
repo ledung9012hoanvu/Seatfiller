@@ -61,6 +61,11 @@
         case SeatAPIComment:
             request =API_COMMENT;
             break;
+        case SeatAPIGetListPlan:
+            request=API_GET_LIST_PLAN;
+            break;
+        case SeatAPIUpgradePlan:
+            request =API_UPGRADE_PLAN;
     }
     return request;
 }

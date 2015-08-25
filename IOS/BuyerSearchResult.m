@@ -91,7 +91,7 @@
     [headerView setBackgroundColor:[SeatFillerDesign greenNavi]];
     
     UILabel *fromLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0, headerView.frame.size.width, 21)];
-    fromLabel.text = [NSString stringWithFormat:@"We have found %ld Event Seller(s) that closely match your search. Please select a seller below for more information.",self.resultArray.count];
+    fromLabel.text = [NSString stringWithFormat:@"We have found %ld Event Seller(s) that closely match your search. Please select a seller below for more information.",(unsigned long)self.resultArray.count];
     //fromLabel.font = customFont;
     fromLabel.numberOfLines = 2;
     [fromLabel setFont:[UIFont systemFontOfSize:14]];

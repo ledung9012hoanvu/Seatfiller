@@ -13,7 +13,7 @@
 #import "SignIn.h"
 #import "SellerReview.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
+#import "SEConfig.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface AppDelegate () <CHCSVParserDelegate>
@@ -80,6 +80,7 @@
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [SEConfig logPage:@"AppDelegate" andFucntion:@"ReceiPush"];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVER_MESSAGE object:userInfo];
 }
 

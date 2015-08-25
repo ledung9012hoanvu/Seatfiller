@@ -10,7 +10,7 @@
 #import "ChatHistoryCell.h"
 #import "ChatDetail.h"
 #import "ListUserChat.h"
-
+#import "SEConfig.h"
 @interface ChattingList () <UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -22,6 +22,8 @@
     [SeatFillerDesign viewGeneralWithBlueHeader:self.mTableView];
     _chatHistoryArr=[NSMutableArray array];
     [self initData];
+    
+    [SEConfig logPage:@"ChattingList" andFucntion:@"ViewDidLoad"];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -66,7 +68,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SeatTicket *seatTic = self.chatHistoryArr[indexPath.row];
-    if (seatTic.interested.intValue>0) {
+    if (seatTic.interested.intValue>0)
+    {
         ListUserChat *listUserChat = [[ListUserChat alloc]init];
         listUserChat.ticket_id = seatTic.sId;
         listUserChat.title = seatTic.title;

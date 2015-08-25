@@ -20,20 +20,30 @@
     NSString *link = [[NSUserDefaults standardUserDefaults]objectForKey:PHOTO_LINK];
     NSString *ImageLinkString = [NSString stringWithFormat:@"%@/%@",FOLDER_IMAGE,link];
     
+
     
+
     
     [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:YES];
     dispatch_async(dispatch_queue_create("download_image", nil), ^{
         NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageLinkString]];
        dispatch_async(dispatch_get_main_queue(), ^{
-           [self.mainImageView setImage:[UIImage imageWithData:dataImage]];
+           
+           
+           
+           [UIView transitionWithView:self.mainImageView
+                             duration:0.5f
+                              options:UIViewAnimationOptionTransitionFlipFromBottom
+                           animations:^{
+                               [self.mainImageView setImage:[UIImage imageWithData:dataImage]];
+                           } completion:nil];
+
+           
            [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:NO];
            
        });
     
     });
-    
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {

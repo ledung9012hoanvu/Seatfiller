@@ -26,6 +26,12 @@
 {
     [self.mainScroll setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height *1.8f)];
     self.title = @"BuyerTicketRequest";
+    
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.containView];
+    [self.containView setBackgroundColor:[UIColor clearColor]];
+
+    
+    
 }
 
 -(void)fillData

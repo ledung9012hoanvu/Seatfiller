@@ -16,9 +16,4 @@
 @end
 
 @interface SeatAller : NSObject <UIAlertViewDelegate>
-{
-    
-    id <AlertDelegate> __weak alertDelegate;
-}
-@property(nonatomic,weak) id alertDelegate;
 @end

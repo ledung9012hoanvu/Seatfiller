@@ -10,20 +10,37 @@
 #import <StoreKit/StoreKit.h>
 
 
+
+
+
+
+@interface Plan : NSObject
+@property(nonatomic,strong)NSString     *planTile;
+@property(nonatomic,strong)NSString     *planDay;
+@property(nonatomic,strong)NSString     *planDescription;
+@property(nonatomic,strong)SKProduct    *planProduct;
+@property(nonatomic,strong)NSString     *planId;
+@property(nonatomic,strong)NSString     *sort;
+
+
+
+@end
+
+
+
 @interface UnitPrice : NSObject
 @property(nonatomic,strong) NSString *upId;
 @end
 
-
-#define INAPP_PRODUCT_ID_1 @"HoanVu.Type1"
-#define INAPP_PRODUCT_ID_2 @"HoanVu.Type2"
-#define INAPP_PRODUCT_ID_3 @"HoanVu.Type3"
-
+#define INAPP_PRODUCT_ID_1 @"SeatFiller.ID1"
+#define INAPP_PRODUCT_ID_2 @"SeatFiller.ID2"
+#define INAPP_PRODUCT_ID_3 @"SeatFiller.ID3"
 
 @interface PaymentVC : ViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate,UITableViewDelegate,UITableViewDataSource>{
         SKProductsRequest *productsRequest;
 }
-@property(nonatomic,strong) NSArray *arrayValidProducts;
+@property(nonatomic,strong) NSMutableArray *arrayValidProducts;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableLayoutHeigh;
 
 
 - (void)fetchAvailableProducts;

@@ -11,7 +11,7 @@
 #import "ChatDetail.h"
 #import "SEConfig.h"
 #import "AppDelegate.h"
-
+#import "SeatFillerDesign.h"
 @interface BuyerListChat ()
 @property(nonatomic,strong)AppDelegate *appDelegate;
 @end
@@ -30,6 +30,14 @@
 - (void)setUpInterFace{
     self.navigationItem.title = @"Buyer Chatting";
     [SeatFillerDesign viewGeneralWithBlueHeader:self.tbLishChat];
+    [self.tbLishChat setSeparatorColor:[UIColor clearColor]];
+    [self seatFillerDesign];
+    
+}
+
+-(void)seatFillerDesign
+{
+    
 }
 - (void)fillData
 {
@@ -50,6 +58,10 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellChat"];
     }
     SeatTicket *unitSeatTicket = self.arrayUserChat[indexPath.row];
+    
+    UIImageView *line =[[UIImageView alloc]initWithFrame:CGRectMake(0, cell.frame.size.height-1, 600, 1)];
+    [line setBackgroundColor:[UIColor whiteColor]];
+    [cell addSubview: line];
     cell.textLabel.text = unitSeatTicket.byUser;
     return cell;
 }

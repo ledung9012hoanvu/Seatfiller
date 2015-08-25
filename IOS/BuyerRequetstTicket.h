@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTixOnHand;
 @property (weak, nonatomic) IBOutlet MKMapView *myMap;
 @property (weak, nonatomic) IBOutlet UIStepper *myStepper;
+@property (weak, nonatomic) IBOutlet UIView *containView;
 
 @property (strong,nonatomic) AppDelegate *app;
 @property (weak, nonatomic) IBOutlet UIStepper *btStepper;
