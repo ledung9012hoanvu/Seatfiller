@@ -15,19 +15,33 @@
 
 @interface BuyerSearchResult ()
 @property (nonatomic,strong) AppDelegate *app;
-
 @end
 
-@implementation BuyerSearchResult
 
-- (void)viewDidLoad {
+
+
+
+@implementation BuyerSearchResult
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.title=@"";
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.title=@"Result";
+}
+
+
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
     [self fillData];
     [self setMapView];
     [self seatFillerDesign];
     _tbSearchResult.separatorStyle=UITableViewCellSeparatorStyleNone;
-    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,7 +67,7 @@
     [cell setFrame:CGRectMake(0, 0, self.tbSearchResult.frame.size.width, 60)];
     
     
-
+    
     cell.lbDate.text = ticket.startDate;
     
     cell.lbName.text =ticket.typeName;

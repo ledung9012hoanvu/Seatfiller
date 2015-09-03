@@ -19,11 +19,6 @@
     self.title = @"Photo";
     NSString *link = [[NSUserDefaults standardUserDefaults]objectForKey:PHOTO_LINK];
     NSString *ImageLinkString = [NSString stringWithFormat:@"%@/%@",FOLDER_IMAGE,link];
-    
-
-    
-
-    
     [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:YES];
     dispatch_async(dispatch_queue_create("download_image", nil), ^{
         NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageLinkString]];

@@ -94,7 +94,7 @@
         
     }else {
         //NSLog(@"add**");
-        self.navigationItem.title = @"Add";
+        self.navigationItem.title = @"Seller Ticket Info";
     }
     
 }

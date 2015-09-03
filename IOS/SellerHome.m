@@ -155,7 +155,7 @@
 {
     self.selectedRow = indexPath.row;
     SeatTicket *ticket = self.ticketArray[self.selectedRow];
-    UIAlertView *alertPopUp = [[UIAlertView alloc]initWithTitle:ticket.note message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Interested Buyers",@"Delete",@"Edit", nil];
+    UIAlertView *alertPopUp = [[UIAlertView alloc]initWithTitle:ticket.title message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Interested Buyers",@"Delete",@"Edit", nil];
     alertPopUp.tag = 100;
     [alertPopUp show];
     

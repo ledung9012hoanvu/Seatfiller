@@ -49,31 +49,36 @@
 @property (strong,nonatomic) NSArray *arrType;
 @property (strong,nonatomic) NSArray *arrQuantity;
 @property (strong,nonatomic) AppDelegate *app;
-
-
-
 - (IBAction)dateChanged:(id)sender;
 - (IBAction)timeChanged:(id)sender;
-
 @end
-
 @implementation BuyerSearch
 
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.title=@"";
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.title=@"Buyer Search";
+}
+
 -(void)fillData
 {
-    
     self.title=@"Buyer Search";
     self.navigationController.navigationBarHidden=NO;
-    
 }
+
+
 - (void)viewDidLoad {
+
     self.app = [[UIApplication sharedApplication]delegate];
-    
-    
     [self fillData];
     [self seatFillerDesign];
-    
     [super viewDidLoad];
     self.collapseView.CollapseClickDelegate = self;
     [self.collapseView reloadCollapseClick];

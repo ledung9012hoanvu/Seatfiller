@@ -15,6 +15,7 @@
 #import "SignUp.h"
 #import "ForgotPass.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "SFLoadingView.h"
 
 @interface SignIn : UIViewController <UITextFieldDelegate,SignUpDelegate,ForgotDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewSignIn;
@@ -23,6 +24,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *btSignIn;
 @property (weak, nonatomic) IBOutlet UIButton *btSignUp;
 @property (weak, nonatomic) IBOutlet UIButton *btForgot;
+@property(nonatomic,strong)SFLoadingView *sfLoadingView;
+
+
+
+
+
+
 @property (nonatomic,strong) SignUp *signUp;
 - (IBAction)btSignUpPress:(id)sender;
 

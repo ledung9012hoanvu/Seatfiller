@@ -31,7 +31,6 @@
     NSMutableDictionary *params =[[NSMutableDictionary alloc]init];
     [params setValue:self.app.seatUser.token forKey:@"token"];
     [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIGetListPlan withParameters:params onSuccess:^(SeatServiceResult *result) {
-        
         NSArray *array =[result.dictionaryResponse valueForKey:@"data"];;
         for(NSDictionary *dictionnary in array)
         {
@@ -40,13 +39,10 @@
             plan.planTile =[dictionnary valueForKey:@"title"];
             plan.planDescription =[dictionnary valueForKey:@"description"];
             plan.sort =[dictionnary valueForKey:@"sort"];
-            
             [self.arrayValidProducts addObject:plan];
         }
         [self fetchAvailableProducts];
-
     } onFailure:^(NSError *err) {
-        
     }];
 }
 
@@ -79,35 +75,27 @@
     return [SKPaymentQueue canMakePayments];
 }
 
-- (void)purchaseMyProduct:(SKProduct*)product{
-    if ([self canMakePurchases])
-    {
-        SKPayment *payment = [SKPayment paymentWithProduct:product];
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-        [[SKPaymentQueue defaultQueue] addPayment:payment];
-    }
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
-                                  @"Purchases are disabled in your device" message:nil delegate:
-                                  self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-        [alertView show];
-    }
+- (void)purchaseMyProduct:(SKProduct*)product
+{
+    SKPayment *payment = [SKPayment paymentWithProduct:product];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
-#pragma mark StoreKit Delegate
 
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark StoreKit Delegate
 -(void)paymentQueue:(SKPaymentQueue *)queue
 updatedTransactions:(NSArray *)transactions {
     for (SKPaymentTransaction *transaction in transactions) {
         [self.view setUserInteractionEnabled:NO];
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchasing:
-                NSLog(@"Purchasing");
+                NSLog(@"Case Purchasing");
                 break;
             case SKPaymentTransactionStatePurchased:
             {
@@ -118,26 +106,25 @@ updatedTransactions:(NSArray *)transactions {
                 [dictionary setValue:self.app.seatUser.token forKey:@"token"];
                 [dictionary setValue:self.upgradeIdSelected forKey:@"paymentId"];
                 [dictionary setValue:self.upgradeIdSelected forKey:@"plan_id"];
-                
                 [SeatService callWebserviceAtRequestPOST:NO andApi:SeatAPIUpgradePlan withParameters:dictionary onSuccess:^(SeatServiceResult *result) {
-
-                    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"Message" message:@"Upgrade Succedd" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    NSLog(@"Dictionary Response : %@",result.dictionaryResponse);
+                    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"Message" message:@"Upgrade Succeed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [alert show];
-                
                 } onFailure:^(NSError *err) {
-                    
                 }];
                 break;
             }
                 
             case SKPaymentTransactionStateRestored:
             {
+                NSLog(@"Case Restored");
                 [self.view setUserInteractionEnabled:YES];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             }
             case SKPaymentTransactionStateFailed:
             {
+                NSLog(@"Case Failed");
                 [self.view setUserInteractionEnabled:YES];
                 
                 NSString *purchaseFail = [NSString stringWithFormat:@"%@",transaction.error.localizedDescription];
@@ -157,7 +144,6 @@ updatedTransactions:(NSArray *)transactions {
 -(void)productsRequest:(SKProductsRequest *)request
     didReceiveResponse:(SKProductsResponse *)response
 {
-    NSLog(@"count : %d",self.arrayValidProducts.count);
     [self.tableProductList setHidden:NO];
     [self.view setUserInteractionEnabled:YES];
     
@@ -187,6 +173,7 @@ updatedTransactions:(NSArray *)transactions {
         cell = [nib objectAtIndex:0];
     }
     Plan *unit =self.arrayValidProducts[indexPath.row];
+    NSLog(@"Product Id : %@",unit.planId);
     cell.labelType.text =unit.planTile;
     cell.labelCost.text =[self stringPriceFromSKProduct:unit.planProduct];
     cell.labelDescription.text=unit.planDescription;
@@ -194,7 +181,7 @@ updatedTransactions:(NSArray *)transactions {
     [cell.labelType setTextColor:[UIColor whiteColor]];
     [cell.labelDescription setTextColor:[UIColor whiteColor]];
     [cell setBackgroundColor:[UIColor clearColor]];
-     cell.layoutMargins = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
     return cell;
 }
 -(NSString*)stringPriceFromSKProduct:(SKProduct*)product

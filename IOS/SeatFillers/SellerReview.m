@@ -22,26 +22,19 @@
     [super viewDidLoad];
     [self SetUpInterface];
     [self setMap];
-    
     [self showInformation];
-   // NSLog(@"imageString %@",self.seatTicket.imageURLString);
-    
-    
-
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (void)SetUpInterface{
     self.btImage.layer.cornerRadius = 5.0f;
-    
     self.title = @"Seller Review";
     [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.mainScrollView.frame.size.height * 1.5)];
-    
+    self.btEdit.layer.cornerRadius=self.btEdit.frame.size.height/2;
+    [self.btEdit setBackgroundColor:[SeatFillerDesign greenNavi]];
+    [self.btEdit.layer setMasksToBounds:YES];
 }
 - (void)setMap{
     self.MyMapView.delegate = self;
@@ -62,7 +55,7 @@
     
     NSLog(@"show info");
     self.appDelegate = [[UIApplication sharedApplication]delegate];
-    self.lbUserNameVL.text= self.appDelegate.seatUser.lastName;
+    self.lbUserNameVL.text= self.appDelegate.seatUser.userName;
     self.lbEventTypeVl.text = self.seatTicket.typeName;
     self.lbEventVl.text = self.seatTicket.title;
     self.lbDateTimeVl.text = [NSString stringWithFormat:@"%@, %@",self.seatTicket.startDate,[self.seatTicket.starTime substringToIndex:5]];
@@ -72,17 +65,6 @@
     self.lbTixOnHandVl.text = self.seatTicket.qty;
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)btEditPress:(id)sender {
     NSLog(@"edit press");
     SellerAddEvent *addEvent = [[SellerAddEvent alloc]init];

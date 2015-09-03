@@ -31,7 +31,6 @@
     
     
     self.window.rootViewController =[[SignIn alloc]init];
-    //self.window.rootViewController = [[SellerReview alloc]init];
     
     
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -54,13 +53,23 @@
          UIRemoteNotificationTypeSound];
     }
     
+    
+    
+    
+    
+    
+    
+    
+//    [[UINavigationBar appearance] setTitleTextAttributes:
+//     [NSDictionary dictionaryWithObjectsAndKeys:
+//      [UIFont systemFontOfSize:12],NSFontAttributeName,
+//      nil]];
+    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
 {
-    // Store the deviceToken.
-    NSLog(@"------------%@", newDeviceToken);
     NSString *newToken = [newDeviceToken description];
     newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];

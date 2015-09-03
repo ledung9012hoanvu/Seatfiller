@@ -25,26 +25,51 @@
 -(void)seatFillerDesign
 {
     [self.mainScroll setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height *1.8f)];
-    self.title = @"BuyerTicketRequest";
-    
+    self.title = @"Buyer Ticket Request";
     [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.containView];
     [self.containView setBackgroundColor:[UIColor clearColor]];
-
     
-    
+    [Interface boderView:4 andwidth:2 andColor:[SeatFillerDesign greenNavi] andView:self.btAttachFile];
+    self.btAttachFile.layer.borderWidth=1.0;
+    [self.btAttachFile setBackgroundColor:[SeatFillerDesign greenNavi]];
 }
+
+-(NSString*)timeFormatter:(NSString*)stringTime
+{
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm:ss"];
+    NSDate *oldTime =[timeFormatter dateFromString:stringTime];
+    NSDateFormatter *newTimeFormatter =[[NSDateFormatter alloc]init];
+    [newTimeFormatter setDateFormat:@"hh:mm:a"];
+    NSString* newStringTime =[newTimeFormatter stringFromDate:oldTime];
+    return newStringTime;
+}
+-(NSString*)dateFormater:(NSString*)stringDay// MMM dd, yyyy
+{
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *newDate = [dateFormatter dateFromString:stringDay];
+    NSDateFormatter *newDateFormatter = [[NSDateFormatter alloc] init];
+    [newDateFormatter setDateFormat:@"MMM dd, yyyy"];
+    return  [newDateFormatter stringFromDate:newDate];
+}
+
 
 -(void)fillData
 {
     self.app = [[UIApplication sharedApplication]delegate];
     self.lbUsernameVL.text = self.seatTicket.byUser;
-    self.lbTicketrequest.text= [NSString stringWithFormat:@"Ticket(s)Request by %@:",self.app.seatUser.lastName];
+    self.lbTicketrequest.text= [NSString stringWithFormat:@"Ticket(s) Request by %@:",self.app.seatUser.userName];
     self.lbEventTypeVl.text = self.seatTicket.typeName;
     self.lbEventVl.text = self.seatTicket.title;
-    self.lbDateTimeVl.text = [NSString stringWithFormat:@"%@, %@",self.seatTicket.startDate,[self.seatTicket.starTime substringToIndex:5]];
+    ;
+    self.lbDateTimeVl.text = [NSString stringWithFormat:@"%@, %@",[self dateFormater:self.seatTicket.startDate],[self timeFormatter:self.seatTicket.starTime]];
     self.lbEventLocationVl.text =[NSString stringWithFormat:@"%@, %@",[self.seatTicket.city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]],self.seatTicket.state];
     self.tvNote.text = self.seatTicket.note;
-    self.lbPriceRange.text = self.seatTicket.priceRange;
+    
+    
+    [self timeFormatter:self.seatTicket.starTime];
+    self.lbPriceRange.text = [@"$" stringByAppendingString: self.seatTicket.priceRange];
     self.lbTixOnHand.text = self.seatTicket.qty;
 }
 - (void)didReceiveMemoryWarning {
@@ -99,7 +124,7 @@
                 NSDictionary *dicResult = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
                 NSString *result = dicResult[@"status"];
                 if (result.intValue==1) {
-                    [SeatService alertFail:@"Submit Successfull" andTitle:@""];
+                    [SeatService alertFail:@"Request Submitted Successfully" andTitle:@""];
                     [SEConfig postNotify:NOTIFICATION_KEY_SUMMIT_TICKET];
                     NSUInteger ownIndex = [self.navigationController.viewControllers indexOfObject:self];
                     if (self.fromBuyerHome) {

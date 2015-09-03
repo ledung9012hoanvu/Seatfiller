@@ -31,7 +31,7 @@
     [self.collapseView setScrollEnabled:NO];
     
     self.app = [[UIApplication sharedApplication]delegate];
-    self.lbnameUserSetting.text = [NSString stringWithFormat:@"%@ Setting",self.app.seatUser.lastName];
+    self.lbnameUserSetting.text = [self.app.seatUser.userName stringByAppendingString:@" settings :"];
     
     [self.tpView setBackgroundColor:[UIColor clearColor]];
     [self.tpView setContentSize:CGSizeMake([Interface screedWidth], self.view.frame.size.height * 1.8)];
@@ -47,7 +47,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //NSLog(@"viewWillApper");
     [self.tabBarController setTitle:@"Setting"];
     
 }

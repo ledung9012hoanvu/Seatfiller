@@ -37,6 +37,7 @@
 @property (strong,nonatomic) AppDelegate *app;
 @property (weak, nonatomic) IBOutlet UIStepper *btStepper;
 
+@property (weak, nonatomic) IBOutlet UIButton *btAttachFile;
 
 
 

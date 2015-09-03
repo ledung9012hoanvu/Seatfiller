@@ -20,6 +20,7 @@
 #import "BuyerRequetstTicket.h"
 #import "SEConfig.h"
 #import "ChatDetail.h"
+
 @interface BuyerHome () <UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) BuyerRequetstTicket *buyerRequestTicket;
 @property (nonatomic,strong) AppDelegate *appDelegate ;
@@ -31,6 +32,8 @@
 
 
 - (void)viewDidLoad {
+
+    
     self.appDelegate =[[UIApplication sharedApplication] delegate];
     [super viewDidLoad];
     [self seatFillerDesign];
@@ -43,15 +46,14 @@
     [SEConfig postNotify:NOTIFICATION_KEY_CHANGE_TICKET];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden=NO;
+    [super viewWillAppear:YES];
+    
     self.tabBarController.title =@"Buyer Home";
+    self.navigationController.navigationBarHidden=NO;
     UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(gotoSearch)];
     self.tabBarController.navigationItem.rightBarButtonItem = btnCancel;
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
+
 -(void)gotoSearch
 {
     BuyerSearch *search=[[BuyerSearch alloc] init];
@@ -69,6 +71,7 @@
 {
     return self.ticketArray.count;
 }
+
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,7 +147,7 @@
         [headerView addSubview: label];
         switch (i) {
             case 0:
-                label.text = @"Event";
+                label.text = @"Event Type";
                 break;
             case 1:
                 label.text = @"Event Description";

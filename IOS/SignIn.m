@@ -31,6 +31,7 @@
     [alert show];
     alert = nil;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.app = [[UIApplication sharedApplication]delegate];
@@ -66,7 +67,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.fbManager logOut];
-    
+    //self.tfPassword.text=@"";
+    //self.tfUserName.text=@"";
 }
 
 

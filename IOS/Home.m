@@ -38,18 +38,18 @@
     
     self.sellerHomeVc = [[SellerHome alloc]init];
     [self.sellerHomeVc.tabBarItem setImage:[UIImage imageNamed:@"home60"]];
-    self.sellerHomeVc.title = @"Seller";
+    self.sellerHomeVc.title = @"Seller Home";
     
     self.chattingList=[[ChattingList alloc]init];
-    self.chattingList.title =@"Seller Chatting";
+    self.chattingList.title =@"Seller Chat Room";
     self.chattingList.tabBarItem.image =[UIImage imageNamed:@"chat60"];
     
     self.buyerListChat = [[BuyerListChat alloc]init];
-    self.buyerListChat.title = @"Buyer Chatting";
+    self.buyerListChat.title = @"Buyer Chat Room";
     self.buyerListChat.tabBarItem.image =[UIImage imageNamed:@"chat60"];
     
     self.appSetting =[[AppSetting alloc]init];
-    self.appSetting.title=@"Setting";
+    self.appSetting.title=@"Settings";
     self.appSetting.tabBarItem.image =[UIImage imageNamed:@"setting60"];
     
     self.buyerHome = [[BuyerHome alloc]init];
@@ -57,7 +57,10 @@
     [self.buyerHome.tabBarItem setImage:[UIImage imageNamed:@"home60"]];
 }
 
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.title=@"";
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -179,12 +182,13 @@
         //
         if (operation.response.statusCode ==200) {
             NSDictionary *dicResult = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            NSLog(@"Dictionary Result : %@",dicResult);
             NSString *result = dicResult[@"status"];
             if (result.intValue==1) {
                 [self goToSellerPage];
                 
             }else {
-                UIAlertView *alertNotPay = [[UIAlertView alloc]initWithTitle:@"Payment" message:@"The Seller's account needs to be updated. Would you like to updated your account" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                UIAlertView *alertNotPay = [[UIAlertView alloc]initWithTitle:@"Payment" message:@"The Seller's account needs to be updated. Would you like to update your account ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 alertNotPay.tag = 105;
                 [alertNotPay show];
             }
